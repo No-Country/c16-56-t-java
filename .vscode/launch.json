@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-NoCountryGrillHouseApplication<NoCountryGrillHouse>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "no_country_grill_house.NoCountryGrillHouseApplication",
+            "projectName": "NoCountryGrillHouse",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
