@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registrar Cliente</title>
+</head>
+
+<body>
+  <h1>Registrar Cliente</h1>
+  <form action="/clientes/registrar" method="post" th:object="${clienteDireccionDto}">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{clienteDto.nombre}" required><br>
+
+    <label>Email:</label>
+    <input type="email" th:field="*{clienteDto.email}" required><br>
+
+    <label>Password:</label>
+    <input type="password" th:field="*{clienteDto.password}" required><br>
+
+    <label>Teléfono:</label>
+    <input type="tel" th:field="*{clienteDto.telefono}" required><br>
+
+    <label>Calle:</label>
+    <input type="text" th:field="*{direccionDto.calle}" required><br>
+
+    <label>Número:</label>
+    <input type="text" th:field="*{direccionDto.numero}" required><br>
+
+    <label>Ciudad:</label>
+    <input type="text" th:field="*{direccionDto.ciudad}" required><br>
+
+    <button type="submit">Registrar Cliente</button>
+  </form>
+  <div th:if="${error != null}">
+    <p>Error: <span th:text="${error}"></span></p>
+  </div>
+  <div th:if="${exito != null}">
+    <p>
+    <p>
+      <span th:text="${exito}"></span><br>
+      Datos del Cliente:<br>
+      Nombre: <span th:text="${clienteDireccionDto.clienteDto.nombre}"></span><br>
+      Email: <span th:text="${clienteDireccionDto.clienteDto.email}"></span><br>
+      Teléfono: <span th:text="${clienteDireccionDto.clienteDto.telefono}"></span><br>
+      Calle: <span th:text="${clienteDireccionDto.direccionDto.calle}"></span><br>
+      Número: <span th:text="${clienteDireccionDto.direccionDto.numero}"></span><br>
+      Ciudad: <span th:text="${clienteDireccionDto.direccionDto.ciudad}"></span><br>
+    </p>
+
+    </p>
+  </div>
+</body>
+
+</html>
