@@ -29,7 +29,7 @@ public class ClienteController {
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+                   .body(e.getMessage());
         }
     }
 
@@ -43,7 +43,7 @@ public class ClienteController {
             return ResponseEntity
                     .status(HttpStatus.NOT_FOUND)
                     .body(e.getMessage());
-        }
+       }
     }
 
     // @PostMapping("/registrar")

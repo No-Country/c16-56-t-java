@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function () {
+/*document.addEventListener('DOMContentLoaded', function () {
     var registroForm = document.getElementById('registro');
 
     registroForm.addEventListener('submit', function (event) {
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 console.log(error);
                 mostrarMensaje(error.message || 'Error de conexión', 'error');
             });
-
+        
         function mostrarMensaje(mensaje, tipo) {
             var mensajeDiv = document.getElementById('mensaje');
             if (!mensajeDiv) {
@@ -52,4 +52,4 @@ document.addEventListener('DOMContentLoaded', function () {
             mensajeDiv.className = tipo; // Clase CSS para estilo de mensaje (por ejemplo, 'success' o 'error')
         }
     });
-});
+});*/

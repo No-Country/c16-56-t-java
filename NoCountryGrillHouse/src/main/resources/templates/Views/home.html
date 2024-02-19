@@ -19,28 +19,32 @@
 
     <link rel="stylesheet" th:href="|/css/styles.css|" />
   </head>
+
   <body>
-    <header>
+    <div id="inicio">
+    
+    <div class="nav-bar">
       <nav class="nav-home">
         <a class="nav-gh" href="/">
           <img th:src="|/images/Logo/Texto 2.png|" alt="grill_house_logo" />
         </a>
         <p>Bienvenidos a Grill House</p>
       </nav>
-    </header>
-    
-    <main>
-      <div>
+    </div>
+
+  <!-- Inicio de sesión -->  
+
+      <div class="login-form">
         <form>
           <label>Inicia sesión</label>
           <div class="form-group">
-            <input
+          <input
               type="email"
               class="form-control"
               id="loginEmail"
               aria-describedby="emailHelp"
               placeholder="Correo electrónico"
-            />
+          />
           </div>
           <div class="form-group">
             <input
@@ -50,22 +54,145 @@
               placeholder="Contraseña"
             />
           </div>
-            <a href="">¿Olvidaste tu contraseña?</a>
+          <div class="form-btn">
+            <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
             <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-          
+          </div>
         </form>
       </div>
-    </main>
-   
-    <div class="separador"><div class="line"></div>o<div class="line"></div></div>
-
-    <footer>
+  
+      <div class="separador"><div class="line"></div>o<div class="line"></div></div>
 
       <div class="abrir-cuenta">
         <p>¿No tienes cuenta?</p>
-        <a class="nueva-cuenta" href="/">Crear cuenta</a>
+        <a id="abrir_registro" class="nueva-cuenta" href="#registro">Crear cuenta</a>
       </div>
-    </footer>
+    </div>
+
+  <!-- Registro de clientes -->
+    
+    <div id="registro" class="row">
+      <div class="container" >
+        <div justify-content="center">
+          <div class="card">
+            <div class="card-header">
+              <a class="volver-inicio" href="#inicio">
+                <svg
+                width="28" height="16" viewBox="0 0 28 16" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525"/>
+                </svg>
+              </a><br><br>
+              <h3>¡Bienvenido a Grill House!</h3>
+              <span>Crea una cuenta para disfrutar de Grill House</span><br><br>
+              <form id="registro_form">
+                <div class="form-group">
+                  <input class="form-control" type="text" id="nombre" required placeholder="Nombre">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="email" id="email" required placeholder="Correo electrónico">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="tel" id="telefono" required placeholder="Teléfono">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="calle" required placeholder="Calle">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="numero" required placeholder="Número">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="ciudad" required placeholder="Ciudad">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="password" id="password" required placeholder="Contraseña">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="password" id="password_confirm" required placeholder="Repetir Contraseña" >
+                </div>
+                <button type="submit" class="btn btn-primary">Crear cuenta</button>
+            </div>
+          </div>
+        </div>
+      </div>  
+      <div class="large-line"></div>
+    </div>
+
+<!-- Olvidaste tu contraseña -->
+
+    <div id="password_request" class="row">
+      <div class="container">
+        <div class="card">
+          <div class="card-header">
+            <a class="volver-inicio1" href="#inicio">
+              <svg
+              width="28" height="16" viewBox="0 0 28 16" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path
+              d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+              fill="#252525"/>
+              </svg>
+            </a><br><br>
+            <h3>Recupera tu contraseña</h3><br><br>
+            <form>
+              <div class="form-group">
+                <input class="form-control" type="e-mail" id="e-mail" required placeholder="Correo electrónico">
+              </div>
+              <button type="submit" class="btn btn-primary">Recuperar contraseña</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+      <div class="large-line"></div>
+    </div>
+
+<!-- javasrcipt home page -->
+
+    <script>
+        const registroLink = document.querySelector('#abrir_registro');
+        registroLink.addEventListener('click', function(){
+          const verRegistro = document.querySelector('#registro');
+          verRegistro.style.display = 'block';
+          const ocultarHome = document.querySelector('#inicio');
+          ocultarHome.style.display = 'none';   
+          const ocultarRecovery = document.querySelector('#password_request');
+          ocultarRecovery.style.display = 'none';
+        });
+
+        const recuperarContraseña = document.querySelector('#lost_password');
+        recuperarContraseña.addEventListener('click', function(){
+          const verRecovery = document.querySelector('#password_request');
+          verRecovery.style.display = 'block';
+          const ocultarHome1 = document.querySelector('#inicio');
+          ocultarHome1.style.display = 'none';
+          const ocultarRegistro = document.querySelector('#registro');
+          ocultarRegistro.style.display = 'none';
+        });
+
+        const ocultarVista = document.querySelector('.volver-inicio');
+        ocultarVista.addEventListener('click', function(){
+          const cerrarRegistro = document.querySelector('#inicio');
+          cerrarRegistro.style.display = 'unset';    
+          const ocultarRegistro1 = document.querySelector('.row');
+          ocultarRegistro1.style.display = 'none';
+        });
+
+        const ocultarVista1 = document.querySelector('.volver-inicio1');
+        ocultarVista1.addEventListener('click', function(){
+          const cerrarRegistro1 = document.querySelector('#inicio');
+          cerrarRegistro1.style.display = 'unset';    
+          const ocultarRegistro2 = document.querySelector('#password_request');
+          ocultarRegistro2.style.display = 'none';
+        });
+
+        
+       
+    </script>
+
+<!-- javascript Bootstrap-->
 
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

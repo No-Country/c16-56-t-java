@@ -16,8 +16,8 @@
 }
 
 body {
-    margin-left: 15px;
-    margin-right: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 a {
@@ -25,22 +25,69 @@ a {
     color: inherit;
 }
 
-header {
+label {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+span {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+/* home view styles */
+
+.row {
+    display: none;
+    height: 100%;
+    background-color: white;
+    z-index: 1;
+    padding-top: 20px;
+}
+
+.nav-bar {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     height: 45vh;
-    max-width: 1200px;
     text-align: center;
 }
 
-main {
-    height: 26vh;
+.login-form {
+    height: 25vh;
     margin-bottom: 10%;
+    padding-left: 20px;
 }
 
-/* home view styles */
+.form-btn {
+    display: flex;
+    align-items: center;
+    padding-top: 5%;
+}
+
+.lost-password {
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    letter-spacing: 0em;
+    text-align: left;
+    
+}
 
 .separador {
     display: flex;
@@ -58,46 +105,58 @@ main {
     border-radius: 18%;    
 }
 
+.large-line {
+    width: 80%;
+    height: 1px;
+    background-color: #9E090F;
+    border: solid 1px;
+    border-color: #9E090F;
+    border-radius: 18%;
+    position: absolute;
+    bottom: 7%;
+    right: 10%;
+    left: 10%;
+}
+
 .btn-primary {
     background: linear-gradient(90deg, #E70820 0%, #800C1B 100%);
     border-radius: 50px;
     margin-left: 2%;
     height: 50px;
     min-width: 30%;
+
+}
+
+.btn {
+    position: absolute;
+    right: 20px;
 }
 
 .form-group {
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .form-group input {
-    width: 80%;
-    height: 50px;
+    width: 85%;
+    height: 50px;    
     border-radius: 50px;
-    max-width: 500px;
-}
-
-footer {
-    height: 20vh;
-    text-align: center;
-    padding: 40px 0;
 }
 
 .abrir-cuenta {
+    height: 20vh;
+    padding: 40px 0;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .abrir-cuenta p{
-    margin: 0 5px;
+    margin: 0 10px;
 }
 
 .nueva-cuenta {
     color: rgba(231, 8, 32, 1);
 }
-
-
-
-
