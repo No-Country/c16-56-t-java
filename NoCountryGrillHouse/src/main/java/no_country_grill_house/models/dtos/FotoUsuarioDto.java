@@ -7,12 +7,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DireccionDto {
+public class FotoUsuarioDto {
 
     private Long id;
-    private String calle;
-    private String numero;
-    private String ciudad;
-    private Boolean alta;
+    private String nombre;
+    private String url;
+    private Boolean alta = true;
+    private String fotoId;
 
 }

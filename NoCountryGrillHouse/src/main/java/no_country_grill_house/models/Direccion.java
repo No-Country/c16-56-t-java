@@ -10,15 +10,13 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
 @Entity
 @Table(name = "direccion")
@@ -33,5 +31,7 @@ public class Direccion implements Serializable {
     private String numero;
     @Column(name = "ciudad", nullable = false)
     private String ciudad;
+    @Column(name = "alta", nullable = false)
+    private Boolean alta;
 
 }
