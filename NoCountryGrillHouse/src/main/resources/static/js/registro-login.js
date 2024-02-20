@@ -1,5 +1,5 @@
 // document.addEventListener('DOMContentLoaded', function () {
-//     var registroForm = document.getElementById('registro');
+//     var registroForm = document.getElementById('registro_form');
 
 //     registroForm.addEventListener('submit', function (event) {
 //         event.preventDefault();
@@ -51,5 +51,5 @@
 //             mensajeDiv.textContent = mensaje.direccion.calle;
 //             mensajeDiv.className = tipo; // Clase CSS para estilo de mensaje (por ejemplo, 'success' o 'error')
 //         }
-//     });
-// });
+//    });
+//});
