@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -14,15 +15,13 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.ToString;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 @ToString
 @Entity
 @Table(name = "platillo")
@@ -31,10 +30,16 @@ public class Platillo implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "platillo_sequence")
     @SequenceGenerator(name = "platillo_sequence", sequenceName = "platillo_sequence", allocationSize = 100)
     private Long id;
+    @Column(name = "nombre", nullable = false)
     private String nombre;
+    @Column(name = "descripcion", nullable = false)
     private StringBuilder descripcion;
+    @Column(name = "precio", nullable = false)
     private double precio;
+    @Column(name = "tiempo_estimado", nullable = false)
     private String tiempoEstimado;
+    @Column(name = "alta", nullable = false)
+    private Boolean alta;
     @ManyToOne
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     private Categoria categoria;

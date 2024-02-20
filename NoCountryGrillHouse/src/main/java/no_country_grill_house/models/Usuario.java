@@ -1,7 +1,7 @@
 package no_country_grill_house.models;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.EnumType;
@@ -12,15 +12,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import no_country_grill_house.models.enums.Rol;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @MappedSuperclass
@@ -38,7 +37,7 @@ public abstract class Usuario implements Serializable {
     @Column(name = "telefono", nullable = false)
     private String telefono;
     @Column(name = "fecha_alta", nullable = false)
-    private LocalDate fechaAlta;
+    private LocalDateTime fechaAlta;
     @Column(name = "alta", nullable = false)
     private Boolean alta;
     @Enumerated(EnumType.STRING)
@@ -47,5 +46,8 @@ public abstract class Usuario implements Serializable {
     @ManyToOne
     @JoinColumn(name = "direccion", referencedColumnName = "id")
     private Direccion direccion;
+    @OneToOne
+    @JoinColumn(name = "id_foto", referencedColumnName = "id")
+    private FotoUsuario foto;
 
 }

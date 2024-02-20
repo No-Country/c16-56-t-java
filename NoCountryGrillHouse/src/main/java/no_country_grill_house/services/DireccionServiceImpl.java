@@ -25,6 +25,7 @@ public class DireccionServiceImpl implements DireccionService {
     @Transactional
     @Override
     public DireccionDto create(DireccionDto direccionDto) {
+        direccionDto.setAlta(true);
         Direccion direccion = repository.save(direccionMapper.toDireccion(direccionDto));
         return direccionMapper.toDireccionDto(direccion);
     }
@@ -32,7 +33,7 @@ public class DireccionServiceImpl implements DireccionService {
     @Override
     public Direccion findById(Long id) {
         Direccion direccion = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe el Direccion con el id: " + id);
+            throw new GrillHouseException("No existe la Direccion con el id: " + id);
         });
         return direccion;
     }
@@ -49,7 +50,7 @@ public class DireccionServiceImpl implements DireccionService {
     @Override
     public void deleteById(Long id) {
         repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe el Direccion con el id: " + id);
+            throw new GrillHouseException("No existe la Direccion con el id: " + id);
         });
         repository.deleteById(id);
     }
@@ -58,7 +59,7 @@ public class DireccionServiceImpl implements DireccionService {
     @Override
     public DireccionDto update(Long id, DireccionDto direccionDto) {
         Direccion direccion = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe el Direccion con el id: " + id);
+            throw new GrillHouseException("No existe la Direccion con el id: " + id);
         });
 
         if (direccion.getNumero() != null)

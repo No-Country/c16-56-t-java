@@ -1,6 +1,6 @@
 package no_country_grill_house.services;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,10 +11,12 @@ import jakarta.transaction.Transactional;
 import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.ClienteMapper;
 import no_country_grill_house.mappers.DireccionMapper;
+import no_country_grill_house.mappers.FotoUsuarioMapper;
 import no_country_grill_house.models.Cliente;
 import no_country_grill_house.models.dtos.ClienteDireccionDto;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.DireccionDto;
+import no_country_grill_house.models.dtos.FotoUsuarioDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.repositories.ClienteRepository;
 
@@ -32,6 +34,9 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private DireccionMapper direccionMapper;
+
+    @Autowired
+    private FotoUsuarioMapper fotoUsuarioMapper;
 
     @Transactional
     @Override
@@ -66,7 +71,7 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setPassword(clienteDireccionDto.getClienteDto().getPassword());
         cliente.setTelefono(clienteDireccionDto.getClienteDto().getTelefono());
         cliente.setAlta(true);
-        cliente.setFechaAlta(LocalDate.now());
+        cliente.setFechaAlta(LocalDateTime.now());
         cliente.setRol(Rol.CLIENTE);
 
         repository.save(cliente);
@@ -119,6 +124,12 @@ public class ClienteServiceImpl implements ClienteService {
 
         repository.save(cliente);
         return clienteMapper.toClienteDto(cliente);
+    }
+
+    public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {
+        Cliente cliente = findById(id);
+        cliente.setFoto(fotoUsuarioMapper.toFotoUsuario(fotoUsuarioDto));
+        repository.save(cliente);
     }
 
     private void validar(ClienteDto clienteDto) {

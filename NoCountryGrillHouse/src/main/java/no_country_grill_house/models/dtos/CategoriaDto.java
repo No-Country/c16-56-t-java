@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DireccionDto {
+public class CategoriaDto {
 
     private Long id;
-    private String calle;
-    private String numero;
-    private String ciudad;
+    private String nombre;
     private Boolean alta;
 
 }
