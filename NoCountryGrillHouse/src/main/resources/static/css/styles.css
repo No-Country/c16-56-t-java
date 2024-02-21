@@ -49,6 +49,12 @@ h3 {
     text-align: left;
 }
 
+
+/* Selecciona cualquier <input> no válido */
+input:invalid {
+    border-color: red;
+  }
+
 /* home view styles */
 
 .row {

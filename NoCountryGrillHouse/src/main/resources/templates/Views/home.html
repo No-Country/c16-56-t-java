@@ -43,7 +43,9 @@
               class="form-control"
               id="loginEmail"
               aria-describedby="emailHelp"
+              maxlength="35"
               placeholder="Correo electrónico"
+              pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
           />
           </div>
           <div class="form-group">
@@ -89,30 +91,31 @@
               <span>Crea una cuenta para disfrutar de Grill House</span><br><br>
               <form id="registro_form">
                 <div class="form-group">
-                  <input class="form-control" type="text" id="nombre" required placeholder="Nombre">
+                  <input class="form-control" type="text" id="nombre" required maxlength="35" placeholder="Nombre" pattern="[A-Za-z]{2,}" title="Campo obligatorio">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="email" id="email" required placeholder="Correo electrónico">
+                  <input class="form-control" type="email" id="email" required maxlength="35" placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="tel" id="telefono" required placeholder="Teléfono">
+                  <input class="form-control" type="tel" id="telefono" required maxlength="15" placeholder="Teléfono" pattern="[0-9]{1,15}">
+                </div>
+                <!-- <div class="form-group">
+                  <input class="form-control" type="text" id="calle"  placeholder="Calle">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="text" id="calle" required placeholder="Calle">
+                  <input class="form-control" type="text" id="numero"  placeholder="Número">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="text" id="numero" required placeholder="Número">
-                </div>
-                <div class="form-group">
-                  <input class="form-control" type="text" id="ciudad" required placeholder="Ciudad">
-                </div>
+                  <input class="form-control" type="text" id="ciudad"  placeholder="Ciudad">
+                </div> -->
                 <div class="form-group">
                   <input class="form-control" type="password" id="password" required placeholder="Contraseña">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="password" id="password" required placeholder="Repetir Contraseña" >
+                  <input class="form-control" type="password" id="password_confirm" required placeholder="Repetir Contraseña" >
                 </div>
                 <button type="submit" class="btn btn-primary">Crear cuenta</button>
+              </form>
             </div>
           </div>
         </div>
@@ -136,9 +139,9 @@
               </svg>
             </a><br><br>
             <h3>Recupera tu contraseña</h3><br><br>
-            <form>
+            <form id="form_recovery">
               <div class="form-group">
-                <input class="form-control" type="e-mail" id="e-mail" required placeholder="Correo electrónico">
+                <input class="form-control" type="e-mail" id="e-mail" required placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
               </div>
               <button type="submit" class="btn btn-primary">Recuperar contraseña</button>
             </form>
@@ -152,42 +155,44 @@
 <!-- javasrcipt home page -->
 
     <script>
-        const registroLink = document.querySelector('#abrir_registro');
-        registroLink.addEventListener('click', function(){
-          const verRegistro = document.querySelector('#registro');
-          verRegistro.style.display = 'block';
-          const ocultarHome = document.querySelector('#inicio');
-          ocultarHome.style.display = 'none';   
-          const ocultarRecovery = document.querySelector('#password_request');
-          ocultarRecovery.style.display = 'none';
-        });
+      const registroLink = document.querySelector('#abrir_registro');
+      registroLink.addEventListener('click', function(){
+        const verRegistro = document.querySelector('#registro');
+        verRegistro.style.display = 'block';
+        const ocultarHome = document.querySelector('#inicio');
+        ocultarHome.style.display = 'none';   
+        const ocultarRecovery = document.querySelector('#password_request');
+        ocultarRecovery.style.display = 'none';
+      });
 
-        const recuperarContraseña = document.querySelector('#lost_password');
-        recuperarContraseña.addEventListener('click', function(){
-          const verRecovery = document.querySelector('#password_request');
-          verRecovery.style.display = 'block';
-          const ocultarHome1 = document.querySelector('#inicio');
-          ocultarHome1.style.display = 'none';
-          const ocultarRegistro = document.querySelector('#registro');
-          ocultarRegistro.style.display = 'none';
-        });
+      const recuperarContraseña = document.querySelector('#lost_password');
+      recuperarContraseña.addEventListener('click', function(){
+        const verRecovery = document.querySelector('#password_request');
+        verRecovery.style.display = 'block';
+        const ocultarHome1 = document.querySelector('#inicio');
+        ocultarHome1.style.display = 'none';
+        const ocultarRegistro = document.querySelector('#registro');
+        ocultarRegistro.style.display = 'none';
+      });
 
-        const ocultarVista = document.querySelector('.volver-inicio');
-        ocultarVista.addEventListener('click', function(){
-          const cerrarRegistro = document.querySelector('#inicio');
-          cerrarRegistro.style.display = 'unset';    
-          const ocultarRegistro1 = document.querySelector('.row');
-          ocultarRegistro1.style.display = 'none';
-        });
+      const ocultarVista = document.querySelector('.volver-inicio'||'.volver-inicio1');
+      ocultarVista.addEventListener('click', function(){
+        const cerrarRegistro = document.querySelector('#inicio');
+        cerrarRegistro.style.display = 'unset';    
+        const ocultarRegistro1 = document.querySelector('#registro');
+        ocultarRegistro1.style.display = 'none';
+      });
 
-        const ocultarVista1 = document.querySelector('.volver-inicio1');
-        ocultarVista1.addEventListener('click', function(){
-          const cerrarRegistro1 = document.querySelector('#inicio');
-          cerrarRegistro1.style.display = 'unset';    
-          const ocultarRegistro2 = document.querySelector('#password_request');
-          ocultarRegistro2.style.display = 'none';
-        });
+      const ocultarVista1 = document.querySelector('.volver-inicio1');
+      ocultarVista1.addEventListener('click', function(){
+        const cerrarRegistro1 = document.querySelector('#inicio');
+        cerrarRegistro1.style.display = 'unset';    
+        const ocultarRegistro2 = document.querySelector('#password_request');
+        ocultarRegistro2.style.display = 'none';
+      });
       
+       
+       
     </script>
 
 <!-- javascript Bootstrap-->
@@ -210,7 +215,7 @@
 
     <!-- javascript para el Login y Registro de usuarios -->
 
-    <script th:src="|../../static/js/registro-login.js|"></script>
+    <script src="js/registrologin.js"></script>
 
   </body>
 </html>
