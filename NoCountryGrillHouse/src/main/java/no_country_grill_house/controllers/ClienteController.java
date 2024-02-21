@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jakarta.validation.Valid;
-import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.services.ClienteServiceImpl;
 
@@ -36,8 +35,15 @@ public class ClienteController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<AuthResponse> save(@Valid @RequestBody ClienteDto clienteDto) {
-        return ResponseEntity.ok(clienteServiceImpl.create(clienteDto));
+    public ResponseEntity<?> save(@Valid @RequestBody ClienteDto clienteDto) {
+        try {
+            return ResponseEntity.ok(clienteServiceImpl.create(clienteDto));
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
+
     }
 
     // @PostMapping("/registrar")

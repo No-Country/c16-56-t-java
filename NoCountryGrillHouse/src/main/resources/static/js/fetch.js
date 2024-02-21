@@ -17,7 +17,7 @@ function enviarFetch(url, metodo, datos, exitoCallback, errorCallback) {
             exitoCallback(data);
         })
         .catch(function (error) {
-            errorCallback(error.message || 'Error de conexión');
+            errorCallback(error || 'Error de conexión');
         });
 }
 

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Grill House</title>
+  <link rel="icon" href="/images/favicon/favicon.png" type="image/png" />
+
+  <!-- css Bootstrap -->
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <!-- css personalizado -->
+
+  <link rel="stylesheet" th:href="|/css/styles.css|" />
+</head>
+
+<body>
+  <div id="inicio">
+
+    <div class="nav-bar">
+      <nav class="nav-home">
+        <a class="nav-gh" href="/">
+          <img th:src="|/images/Logo/Texto 2.png|" alt="grill_house_logo" />
+        </a>
+        <p>Bienvenidos a Grill House</p>
+      </nav>
+    </div>
+
+    <!-- Inicio de sesión -->
+
+    <div class="login-form">
+      <form>
+        <label>Inicia sesión</label>
+        <div class="form-group">
+          <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" maxlength="35"
+            placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="loginContraseña" placeholder="Contraseña" />
+        </div>
+        <div class="form-btn">
+          <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="separador">
+      <div class="line"></div>o<div class="line"></div>
+    </div>
+
+    <div class="abrir-cuenta">
+      <p>¿No tienes cuenta?</p>
+      <a id="abrir_registro" class="nueva-cuenta" href="#registro">Crear cuenta</a>
+    </div>
+  </div>
+
+  <!-- Registro de clientes -->
+
+  <div id="registro" class="row">
+    <div class="container">
+      <div justify-content="center">
+        <div class="card">
+          <div class="card-header">
+            <a class="volver-inicio" href="#inicio">
+              <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                  fill="#252525" />
+              </svg>
+            </a><br><br>
+            <h3>¡Bienvenido a Grill House!</h3>
+            <span>Crea una cuenta para disfrutar de Grill House</span><br><br>
+            <form id="registro_form">
+              <div class="form-group">
+                <input class="form-control" type="text" id="nombre" required maxlength="35" placeholder="Nombre"
+                  pattern="[A-Za-z]{2,}" title="Campo obligatorio">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="email" id="email" required maxlength="35"
+                  placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="tel" id="telefono" required maxlength="15" placeholder="Teléfono"
+                  pattern="[0-9]{1,15}">
+              </div>
+              <!-- <div class="form-group">
+                  <input class="form-control" type="text" id="calle"  placeholder="Calle">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="numero"  placeholder="Número">
+                </div>
+                <div class="form-group">
+                  <input class="form-control" type="text" id="ciudad"  placeholder="Ciudad">
+                </div> -->
+              <div class="form-group">
+                <input class="form-control" type="password" id="password" required placeholder="Contraseña">
+              </div>
+              <div class="form-group">
+                <input class="form-control" type="password" id="password_confirm" required
+                  placeholder="Repetir Contraseña">
+              </div>
+              <button type="submit" class="btn btn-primary">Crear cuenta</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="large-line"></div>
+  </div>
+
+  <!-- Olvidaste tu contraseña -->
+
+  <div id="password_request" class="row">
+    <div class="container">
+      <div class="card">
+        <div class="card-header">
+          <a class="volver-inicio1" href="#inicio">
+            <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525" />
+            </svg>
+          </a><br><br>
+          <h3>Recupera tu contraseña</h3><br><br>
+          <form id="form_recovery">
+            <div class="form-group">
+              <input class="form-control" type="e-mail" id="e-mail" required placeholder="Correo electrónico"
+                pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+            </div>
+            <button type="submit" class="btn btn-primary">Recuperar contraseña</button>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="large-line"></div>
+  </div>
+
+  <!-- javasrcipt home page -->
+
+  <script>
+    const registroLink = document.querySelector('#abrir_registro');
+    registroLink.addEventListener('click', function () {
+      const verRegistro = document.querySelector('#registro');
+      verRegistro.style.display = 'block';
+      const ocultarHome = document.querySelector('#inicio');
+      ocultarHome.style.display = 'none';
+      const ocultarRecovery = document.querySelector('#password_request');
+      ocultarRecovery.style.display = 'none';
+    });
+
+    const recuperarContraseña = document.querySelector('#lost_password');
+    recuperarContraseña.addEventListener('click', function () {
+      const verRecovery = document.querySelector('#password_request');
+      verRecovery.style.display = 'block';
+      const ocultarHome1 = document.querySelector('#inicio');
+      ocultarHome1.style.display = 'none';
+      const ocultarRegistro = document.querySelector('#registro');
+      ocultarRegistro.style.display = 'none';
+    });
+
+    const ocultarVista = document.querySelector('.volver-inicio' || '.volver-inicio1');
+    ocultarVista.addEventListener('click', function () {
+      const cerrarRegistro = document.querySelector('#inicio');
+      cerrarRegistro.style.display = 'unset';
+      const ocultarRegistro1 = document.querySelector('#registro');
+      ocultarRegistro1.style.display = 'none';
+    });
+
+    const ocultarVista1 = document.querySelector('.volver-inicio1');
+    ocultarVista1.addEventListener('click', function () {
+      const cerrarRegistro1 = document.querySelector('#inicio');
+      cerrarRegistro1.style.display = 'unset';
+      const ocultarRegistro2 = document.querySelector('#password_request');
+      ocultarRegistro2.style.display = 'none';
+    });
+
+
+
+  </script>
+
+  <!-- javascript Bootstrap-->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <!-- javascript para el Login y Registro de usuarios -->
+
+  <script type="module" src="js/registrologin.js"></script>
+
+</body>
+
+</html>
