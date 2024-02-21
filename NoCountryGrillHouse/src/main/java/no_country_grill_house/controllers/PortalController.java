@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/api")
 public class PortalController {
 
     // @GetMapping("/")
@@ -18,5 +18,10 @@ public class PortalController {
     @GetMapping("/")
     public String home() {
         return "fetch.html";
+    }
+
+    @GetMapping("/saludo")
+    public String saludo() {
+        return "thymeleaf.html";
     }
 }

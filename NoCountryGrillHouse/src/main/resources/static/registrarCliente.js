@@ -1,3 +1,5 @@
+import { enviarFetch } from './enviarFetch';
+
 document.addEventListener('DOMContentLoaded', function () {
     var registroForm = document.getElementById('registro');
 
@@ -18,28 +20,14 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         };
 
-        fetch('http://localhost:8080/clientes/registrar', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(clienteData)
-        })
-            .then(function (response) {
-                if (response.ok) {
-                    return response.json();
-                } else {
-                    throw new Error('Error en el servidor');
-                }
-            })
-            .then(function (data) {
-                console.log(data);
+        enviarFetch('/clientes/registrar', 'POST', clienteData,
+            function (data) {
                 mostrarMensaje(data, 'success');
-            })
-            .catch(function (error) {
-                console.log(error);
-                mostrarMensaje(error.message || 'Error de conexión', 'error');
-            });
+            },
+            function (error) {
+                mostrarMensaje(error, 'error');
+            }
+        )
 
         function mostrarMensaje(mensaje, tipo) {
             var mensajeDiv = document.getElementById('mensaje');
