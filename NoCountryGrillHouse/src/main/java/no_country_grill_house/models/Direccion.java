@@ -9,6 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Direccion implements Serializable {
     @SequenceGenerator(name = "direccion_sequence", sequenceName = "direccion_sequence", allocationSize = 100)
     private Long id;
     @Column(name = "calle", nullable = false)
+    @NotBlank
     private String calle;
     @Column(name = "numero", nullable = false)
     private String numero;
