@@ -36,16 +36,18 @@
 
       <div class="login-form">
         <form>
-          <label>Inicia sesión</label>
+          <label for="email">Inicia sesión</label>
           <div class="form-group">
           <input
               type="email"
+              name="email"
               class="form-control"
               id="loginEmail"
               aria-describedby="emailHelp"
               maxlength="35"
               placeholder="Correo electrónico"
               pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+              autocomplete="email"
           />
           </div>
           <div class="form-group">
@@ -78,7 +80,7 @@
         <div justify-content="center">
           <div class="card">
             <div class="card-header">
-              <a class="volver-inicio" href="#inicio">
+              <a id="cerrar_btn" href="#inicio">
                 <svg
                 width="28" height="16" viewBox="0 0 28 16" fill="none"
                 xmlns="http://www.w3.org/2000/svg">
@@ -94,7 +96,7 @@
                   <input class="form-control" type="text" id="nombre" required maxlength="35" placeholder="Nombre" pattern="[A-Za-z]{2,}" title="Campo obligatorio">
                 </div>
                 <div class="form-group">
-                  <input class="form-control" type="email" id="email" required maxlength="35" placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+                  <input class="form-control" type="email" id="email" required maxlength="35" autocomplete="email" placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
                 </div>
                 <div class="form-group">
                   <input class="form-control" type="tel" id="telefono" required maxlength="15" placeholder="Teléfono" pattern="[0-9]{1,15}">
@@ -129,7 +131,7 @@
       <div class="container">
         <div class="card">
           <div class="card-header">
-            <a class="volver-inicio1" href="#inicio">
+            <a id="cerrar_btn1" href="#inicio">
               <svg
               width="28" height="16" viewBox="0 0 28 16" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -141,7 +143,7 @@
             <h3>Recupera tu contraseña</h3><br><br>
             <form id="form_recovery">
               <div class="form-group">
-                <input class="form-control" type="e-mail" id="e-mail" required placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
+                <input class="form-control" type="e-mail" id="e-mail" required autocomplete="email" placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$">
               </div>
               <button type="submit" class="btn btn-primary">Recuperar contraseña</button>
             </form>
@@ -175,15 +177,17 @@
         ocultarRegistro.style.display = 'none';
       });
 
-      const ocultarVista = document.querySelector('.volver-inicio'||'.volver-inicio1');
+      const ocultarVista = document.querySelector('#cerrar_btn');
       ocultarVista.addEventListener('click', function(){
         const cerrarRegistro = document.querySelector('#inicio');
         cerrarRegistro.style.display = 'unset';    
         const ocultarRegistro1 = document.querySelector('#registro');
         ocultarRegistro1.style.display = 'none';
+        const ocultarRegistro2 = document.querySelector('#password_request');
+        ocultarRegistro2.style.display = 'none';
       });
 
-      const ocultarVista1 = document.querySelector('.volver-inicio1');
+      const ocultarVista1 = document.querySelector('#cerrar_btn1');
       ocultarVista1.addEventListener('click', function(){
         const cerrarRegistro1 = document.querySelector('#inicio');
         cerrarRegistro1.style.display = 'unset';    
