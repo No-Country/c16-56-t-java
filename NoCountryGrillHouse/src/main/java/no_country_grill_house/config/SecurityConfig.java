@@ -1,10 +1,8 @@
 package no_country_grill_house.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -18,7 +16,6 @@ import org.springframework.security.web.util.matcher.RequestMatcher;
 
 import lombok.RequiredArgsConstructor;
 
-@Order(SecurityProperties.DEFAULT_FILTER_ORDER + 1)
 @Configuration
 @EnableWebSecurity
 @RequiredArgsConstructor
@@ -35,7 +32,8 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
 
         httpSecurity.csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth -> auth.requestMatchers(endPointsPublicos()).permitAll()
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(endPointsPublicos()).permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
@@ -46,7 +44,7 @@ public class SecurityConfig {
 
     private RequestMatcher endPointsPublicos() {
         return new OrRequestMatcher(
-                new AntPathRequestMatcher("/clientes/registrar"),
+                new AntPathRequestMatcher("/cliente/registrar"),
                 new AntPathRequestMatcher("/auth/login"),
                 new AntPathRequestMatcher("/"),
                 new AntPathRequestMatcher("/js/*"),
@@ -54,4 +52,5 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/images/favicon/*"),
                 new AntPathRequestMatcher("/images/Logo/*"));
     }
+
 }

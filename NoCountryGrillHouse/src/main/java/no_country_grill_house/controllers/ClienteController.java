@@ -3,6 +3,7 @@ package no_country_grill_house.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,12 +15,21 @@ import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.services.ClienteServiceImpl;
 
 @Controller
-@RequestMapping("/clientes")
+@RequestMapping("/cliente")
 
 public class ClienteController {
 
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
+
+    @Autowired
+    // private JwtService jwtService;
+
+    @PreAuthorize("hasAuthority('CLIENTE')")
+    @GetMapping({ "", "/" })
+    public String inicioCliente() {
+        return "Views/cliente.html";
+    }
 
     @GetMapping("/listar")
     public ResponseEntity<?> get() {
@@ -43,7 +53,6 @@ public class ClienteController {
                     .status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
         }
-
     }
 
     // @PostMapping("/registrar")
