@@ -3,15 +3,17 @@ package no_country_grill_house.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import no_country_grill_house.models.dtos.ClienteDto;
+import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.services.ClienteServiceImpl;
 
 @Controller
@@ -22,13 +24,20 @@ public class ClienteController {
     @Autowired
     private ClienteServiceImpl clienteServiceImpl;
 
-    @Autowired
-    // private JwtService jwtService;
-
-    @PreAuthorize("hasAuthority('CLIENTE')")
     @GetMapping({ "", "/" })
-    public String inicioCliente() {
-        return "Views/cliente.html";
+    public String inicioCliente(HttpServletRequest request) {
+        HttpSession session = request.getSession(false);
+
+        if (session != null) {
+            Rol rol = (Rol) session.getAttribute("rol");
+            if (rol != null && rol.equals(Rol.CLIENTE)) {
+                return "Views/cliente.html";
+            } else {
+                return "Acceso denegado";
+            }
+        } else {
+            return "Acceso denegado";
+        }
     }
 
     @GetMapping("/listar")
@@ -69,20 +78,16 @@ public class ClienteController {
     // }
     // }
 
-    // @PostMapping("/registrar")
-    // public String save(@ModelAttribute ClienteDireccionDto clienteDireccionDto,
-    // ModelMap model) {
+    // @PreAuthorize("hasAuthority('CLIENTE')")
+    // @GetMapping({ "", "/" })
+    // public String inicioCliente(HttpServletRequest request) {
+    // String token = request.getHeader("Authorization").substring(7);
+    // List<String> roles = jwtService.getRolesFromToken(token);
 
-    // try {
-    // clienteServiceImpl.create(clienteDireccionDto);
-    // model.put("clienteDireccionDto", clienteDireccionDto);
-    // model.put("exito", "Cliente registrado correctamente!");
-    // } catch (GrillHouseException ex) {
-    // model.put("clienteDireccionDto", clienteDireccionDto);
-    // model.put("error", ex.getMessage());
-    // return "thymeleaf.html";
+    // if (roles.contains("CLIENTE")) {
+    // return "Views/cliente.html";
+    // } else {
+    // return "Acceso denegado";
     // }
-    // return "thymeleaf.html";
     // }
-
 }

@@ -45,6 +45,7 @@ public class SecurityConfig {
     private RequestMatcher endPointsPublicos() {
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/cliente/registrar"),
+                new AntPathRequestMatcher("/cliente"),
                 new AntPathRequestMatcher("/auth/login"),
                 new AntPathRequestMatcher("/"),
                 new AntPathRequestMatcher("/js/*"),

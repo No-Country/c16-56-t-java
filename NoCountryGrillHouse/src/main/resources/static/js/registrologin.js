@@ -93,28 +93,7 @@ loginForm.addEventListener('submit', function (event) {
 
             localStorage.setItem('rol', data.rol);
 
-            const token = localStorage.getItem('token');
-
-            fetch('/cliente', {
-                method: 'GET',
-                headers: {
-                    'Authorization': `Bearer ${token}`
-                }
-            })
-                .then(response => {
-                    if (response.ok) {
-                        return response.text();
-                    }
-                    throw new Error('Error al obtener la página de inicio');
-                })
-                .then(html => {
-                    const nuevaPagina = document.open('text/html', 'replace');
-                    nuevaPagina.write(html);
-                    nuevaPagina.close();
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
+            window.location.href = '/cliente';
         },
         function (error) {
             mostrarMensaje(error.message, 'alert', 'alert-danger', 'error-login');
