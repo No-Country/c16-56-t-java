@@ -1,10 +1,12 @@
 package no_country_grill_house.controllers;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,35 +16,36 @@ import no_country_grill_house.services.CategoriaServiceImpl;
 
 @RestController
 @RequestMapping("/categorias")
-
 public class CategoriaController {
 
-    @Autowired
-    private CategoriaServiceImpl categoriaServiceImpl;
+    private final CategoriaServiceImpl categoriaService;
+
+    public CategoriaController(CategoriaServiceImpl categoriaService) {
+        this.categoriaService = categoriaService;
+    }
 
     @GetMapping("/listar")
-    public ResponseEntity<?> get() {
-        try {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(categoriaServiceImpl.findAll());
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
-        }
+    public ResponseEntity<List<CategoriaDto>> getAllCategorias() {
+        List<CategoriaDto> categorias = categoriaService.findAll();
+        return ResponseEntity.ok(categorias);
     }
 
-    @PostMapping("/registrar")
-    public ResponseEntity<?> save(@RequestBody CategoriaDto categoriaDto) {
-        try {
-            return ResponseEntity
-                    .ok()
-                    .body(categoriaServiceImpl.create(categoriaDto));
-        } catch (Exception e) {
-            return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
-                    .body(e.getMessage());
-        }
+    @GetMapping("/{id}")
+    public ResponseEntity<CategoriaDto> getCategoriaById(@PathVariable Long id) {
+        CategoriaDto categoria = categoriaService.findById(id);
+        return ResponseEntity.ok(categoria);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteCategoriaById(@PathVariable Long id) {
+        categoriaService.softDeleteById(id);
+        return ResponseEntity.ok("Categoria eliminada correctamente");
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CategoriaDto> updateCategoria(@PathVariable Long id, @RequestBody CategoriaDto categoriaDto) {
+        CategoriaDto updatedCategoria = categoriaService.update(id, categoriaDto);
+        return ResponseEntity.ok(updatedCategoria);
+    }
+
 }

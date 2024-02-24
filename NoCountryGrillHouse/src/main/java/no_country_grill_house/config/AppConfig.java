@@ -1,5 +1,6 @@
 package no_country_grill_house.config;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +19,7 @@ import no_country_grill_house.repositories.ClienteRepository;
 @RequiredArgsConstructor
 public class AppConfig {
 
+    @Autowired
     private final ClienteRepository clienteRepository;
 
     @Bean

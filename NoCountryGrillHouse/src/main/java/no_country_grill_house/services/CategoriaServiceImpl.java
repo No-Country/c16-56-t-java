@@ -25,16 +25,17 @@ public class CategoriaServiceImpl implements CategoriaService {
     @Transactional
     @Override
     public CategoriaDto create(CategoriaDto categoriaDto) {
+        categoriaDto.setAlta(true);
         Categoria categoria = repository.save(categoriaMapper.toCategoria(categoriaDto));
         return categoriaMapper.toCategoriaDto(categoria);
     }
 
     @Override
-    public Categoria findById(Long id) {
+    public CategoriaDto findById(Long id) {
         Categoria categoria = repository.findById(id).orElseThrow(() -> {
             throw new GrillHouseException("No existe la Categoria con el id: " + id);
         });
-        return categoria;
+        return categoriaMapper.toCategoriaDto(categoria);
     }
 
     @Override
@@ -52,6 +53,15 @@ public class CategoriaServiceImpl implements CategoriaService {
             throw new GrillHouseException("No existe la Categoria con el id: " + id);
         });
         repository.deleteById(id);
+    }
+
+    @Transactional
+    @Override
+    public void softDeleteById(Long id) {
+        Categoria categoria = repository.findById(id)
+                .orElseThrow(() -> new GrillHouseException("No existe la Categoria con el id: " + id));
+        categoria.setAlta(false);
+        repository.save(categoria);
     }
 
     @Transactional
