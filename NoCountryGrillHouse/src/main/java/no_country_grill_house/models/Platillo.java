@@ -12,7 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -27,15 +27,14 @@ import lombok.ToString;
 @Table(name = "platillo")
 public class Platillo implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "platillo_sequence")
-    @SequenceGenerator(name = "platillo_sequence", sequenceName = "platillo_sequence", allocationSize = 100)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "nombre", nullable = false)
     private String nombre;
     @Column(name = "descripcion", nullable = false)
     private StringBuilder descripcion;
     @Column(name = "precio", nullable = false)
-    private double precio;
+    private Double precio;
     @Column(name = "tiempo_estimado", nullable = false)
     private String tiempoEstimado;
     @Column(name = "alta", nullable = false)
@@ -45,5 +44,8 @@ public class Platillo implements Serializable {
     private Categoria categoria;
     @ManyToMany(mappedBy = "favoritos", cascade = CascadeType.REMOVE)
     private List<Cliente> clientes;
+    @OneToOne
+    @JoinColumn(name = "id_foto", referencedColumnName = "id")
+    private FotoPlatillo foto;
 
 }

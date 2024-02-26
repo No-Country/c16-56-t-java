@@ -12,26 +12,26 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
-import no_country_grill_house.models.dtos.ClienteDto;
+import no_country_grill_house.models.dtos.JefeCocinaDto;
 import no_country_grill_house.models.enums.Rol;
-import no_country_grill_house.services.ClienteServiceImpl;
+import no_country_grill_house.services.JefeCocinaServiceImpl;
 
 @Controller
-@RequestMapping("/cliente")
+@RequestMapping("/jefe_cocina")
 
-public class ClienteController {
+public class JefeCocinaController {
 
     @Autowired
-    private ClienteServiceImpl clienteServiceImpl;
+    private JefeCocinaServiceImpl jefeCocinaServiceImpl;
 
     @GetMapping({ "", "/" })
-    public String inicioCliente(HttpServletRequest request) {
+    public String inicioJefeCocina(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
-            if (rol != null && rol.equals(Rol.CLIENTE)) {
-                return "Views/cliente.html";
+            if (rol != null && rol.equals(Rol.JEFE_COCINA)) {
+                return "Views/cocina.html";
             } else {
                 return "Acceso denegado";
             }
@@ -45,7 +45,7 @@ public class ClienteController {
         try {
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(clienteServiceImpl.findAll());
+                    .body(jefeCocinaServiceImpl.findAll());
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -54,9 +54,9 @@ public class ClienteController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> save(@Valid @RequestBody ClienteDto clienteDto) {
+    public ResponseEntity<?> save(@Valid @RequestBody JefeCocinaDto jefeCocinaDto) {
         try {
-            return ResponseEntity.ok(clienteServiceImpl.create(clienteDto));
+            return ResponseEntity.ok(jefeCocinaServiceImpl.create(jefeCocinaDto));
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -67,8 +67,8 @@ public class ClienteController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            clienteServiceImpl.deleteById(id);
-            return ResponseEntity.ok("Cliente eliminado correctamente");
+            jefeCocinaServiceImpl.deleteById(id);
+            return ResponseEntity.ok("Jefe de Cocina eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
@@ -77,41 +77,14 @@ public class ClienteController {
     }
 
     @PostMapping("/actualizar")
-    public ResponseEntity<?> update(@Valid @RequestBody ClienteDto clienteDto) {
+    public ResponseEntity<?> update(@Valid @RequestBody JefeCocinaDto jefeCocinaDto) {
         try {
-            ClienteDto updatedCliente = clienteServiceImpl.update(clienteDto.getId(), clienteDto);
-            return ResponseEntity.ok(updatedCliente);
+            JefeCocinaDto updatedJefeCocina = jefeCocinaServiceImpl.update(jefeCocinaDto.getId(), jefeCocinaDto);
+            return ResponseEntity.ok(updatedJefeCocina);
         } catch (Exception e) {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
         }
     }
-
-    // @PostMapping("/registrar")
-    // public ResponseEntity<?> save(@RequestBody ClienteDireccionDto
-    // clienteDireccionDto) {
-    // try {
-    // return ResponseEntity
-    // .ok()
-    // .body(clienteServiceImpl.create(clienteDireccionDto));
-    // } catch (Exception e) {
-    // return ResponseEntity
-    // .status(HttpStatus.NOT_FOUND)
-    // .body(e.getMessage());
-    // }
-    // }
-
-    // @PreAuthorize("hasAuthority('CLIENTE')")
-    // @GetMapping({ "", "/" })
-    // public String inicioCliente(HttpServletRequest request) {
-    // String token = request.getHeader("Authorization").substring(7);
-    // List<String> roles = jwtService.getRolesFromToken(token);
-
-    // if (roles.contains("CLIENTE")) {
-    // return "Views/cliente.html";
-    // } else {
-    // return "Acceso denegado";
-    // }
-    // }
 }

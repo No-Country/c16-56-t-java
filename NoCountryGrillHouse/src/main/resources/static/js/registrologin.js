@@ -93,7 +93,15 @@ loginForm.addEventListener('submit', function (event) {
 
             localStorage.setItem('rol', data.rol);
 
-            window.location.href = '/cliente';
+            if (data.rol == 'CLIENTE') {
+                window.location.href = '/cliente';
+            } else if (data.rol == 'ADMIN') {
+                window.location.href = '/admin';
+            } else if (data.rol == 'JEFE_COCINA') {
+                window.location.href = '/jefe_cocina';
+            }
+
+
         },
         function (error) {
             mostrarMensaje(error.message, 'alert', 'alert-danger', 'error-login');

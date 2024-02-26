@@ -11,5 +11,6 @@ import no_country_grill_house.models.dtos.OrdenDto;
 @Component
 public interface OrdenMapper {
     Orden toOrden(OrdenDto ordenDto);
+
     OrdenDto tOrdenDto(Orden orden);
 }

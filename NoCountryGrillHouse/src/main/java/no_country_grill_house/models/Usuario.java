@@ -18,7 +18,6 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.OneToOne;
-import jakarta.persistence.SequenceGenerator;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,30 +29,29 @@ import no_country_grill_house.models.enums.Rol;
 @MappedSuperclass
 public abstract class Usuario implements UserDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sequence")
-    @SequenceGenerator(name = "usuario_sequence", sequenceName = "usuario_sequence", allocationSize = 100)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    protected Long id;
     @Column(name = "nombre", nullable = false)
-    private String nombre;
+    protected String nombre;
     @Column(name = "email", nullable = false)
-    private String email;
+    protected String email;
     @Column(name = "password", nullable = false)
-    private String password;
+    protected String password;
     @Column(name = "telefono", nullable = false)
-    private String telefono;
+    protected String telefono;
     @Column(name = "fecha_alta", nullable = false)
-    private LocalDateTime fechaAlta;
+    protected LocalDateTime fechaAlta;
     @Column(name = "alta", nullable = false)
-    private Boolean alta;
+    protected Boolean alta;
     @Enumerated(EnumType.STRING)
     @Column(name = "rol", nullable = false)
-    private Rol rol;
+    protected Rol rol;
     @ManyToOne
     @JoinColumn(name = "direccion", referencedColumnName = "id")
-    private Direccion direccion;
+    protected Direccion direccion;
     @OneToOne
     @JoinColumn(name = "id_foto", referencedColumnName = "id")
-    private FotoUsuario foto;
+    protected FotoUsuario foto;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

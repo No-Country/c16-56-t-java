@@ -4,13 +4,15 @@ import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
 import org.springframework.stereotype.Component;
 
-import no_country_grill_house.models.Reserva;
-import no_country_grill_house.models.dtos.ReservaDto;
+import no_country_grill_house.models.Platillo;
+import no_country_grill_house.models.dtos.PlatilloDto;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 @Component
-public interface ReservaMapper {
-    Reserva toReserva(ReservaDto reservaDto);
+public interface PlatilloMapper {
 
-    ReservaDto toReservaDto(Reserva reserva);
+    Platillo toPlatillo(PlatilloDto platilloDto);
+
+    PlatilloDto toPlatilloDto(Platillo platillo);
+
 }

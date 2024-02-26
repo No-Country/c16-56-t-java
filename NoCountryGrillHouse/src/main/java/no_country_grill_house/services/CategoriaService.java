@@ -16,6 +16,8 @@ public interface CategoriaService {
 
     void softDeleteById(Long id);
 
+    void alta(Long id);
+
     CategoriaDto update(Long id, CategoriaDto categoriaDto);
 
 }

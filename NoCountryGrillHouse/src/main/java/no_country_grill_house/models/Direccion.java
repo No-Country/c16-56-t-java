@@ -7,7 +7,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -23,8 +22,7 @@ import lombok.ToString;
 @Table(name = "direccion")
 public class Direccion implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "direccion_sequence")
-    @SequenceGenerator(name = "direccion_sequence", sequenceName = "direccion_sequence", allocationSize = 100)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "calle", nullable = false)
     @NotBlank

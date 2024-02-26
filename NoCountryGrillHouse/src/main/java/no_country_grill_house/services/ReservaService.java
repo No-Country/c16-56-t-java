@@ -1,17 +1,18 @@
 package no_country_grill_house.services;
 
-import no_country_grill_house.models.Reserva;
-import no_country_grill_house.models.dtos.ReservaDto;
-
 import java.util.List;
+
+import no_country_grill_house.models.dtos.ReservaDto;
 
 public interface ReservaService {
     ReservaDto create(ReservaDto reservaDto);
 
-    Reserva findById(long id);
+    ReservaDto findById(long id);
 
     List<ReservaDto> findAll();
 
     ReservaDto updateStatus(Long id, String status);
+
+    ReservaDto update(Long id, ReservaDto reservaDto);
 
 }

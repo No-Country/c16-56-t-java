@@ -2,10 +2,8 @@ package no_country_grill_house.controllers;
 
 import java.util.Map;
 
-import javax.servlet.http.HttpSession;
-
-import org.apache.http.HttpStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -15,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import no_country_grill_house.models.dtos.FotoPlatilloDto;
+import no_country_grill_house.models.dtos.PlatilloDto;
 import no_country_grill_house.services.CloudinaryService;
 import no_country_grill_house.services.FotoPlatilloServiceImpl;
+import no_country_grill_house.services.PlatilloServiceImpl;
 
 @RequestMapping("/imagenes/platillos")
 @CrossOrigin
@@ -29,11 +29,11 @@ public class FotoPlatilloController {
     @Autowired
     private FotoPlatilloServiceImpl fotoPlatilloServiceImpl;
 
-    // @Autowired
-    // private PlatilloServiceImpl platilloServiceImpl;
+    @Autowired
+    private PlatilloServiceImpl platilloServiceImpl;
 
     @PostMapping("/upload")
-    public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile, HttpSession session) {
+    public ResponseEntity<?> upload(@RequestParam MultipartFile multipartFile, PlatilloDto platilloDto) {
 
         // BufferedImage entry = ImageIO.read(multipartFile.getInputStream());
 
@@ -48,12 +48,13 @@ public class FotoPlatilloController {
 
             fotoPlatilloDto = fotoPlatilloServiceImpl.create(fotoPlatilloDto);
 
-            // Completar la Lógica para asociar la imagen al platillo cuando esten creados
-            // los servicios para el platillo
+            if (platilloDto != null) {
+                platilloServiceImpl.guardarFotoPerfil(platilloDto.getId(), fotoPlatilloDto);
+            }
 
             return ResponseEntity.ok("Imagen cargada exitosamente!");
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.SC_INTERNAL_SERVER_ERROR)
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error al cargar la imagen: " + e.getMessage());
         }
     }
