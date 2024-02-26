@@ -94,8 +94,6 @@
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-<<<<<<< HEAD
-=======
 		<dependency>
 			<groupId>io.jsonwebtoken</groupId>
 			<artifactId>jjwt-api</artifactId>
@@ -111,7 +109,6 @@
 			<artifactId>jjwt-jackson</artifactId>
 			<version>0.11.5</version>
 		</dependency>
->>>>>>> 0b7d0021cd8f6762cc5cc94feec036d407234f27
 	</dependencies>
 
 	<build>

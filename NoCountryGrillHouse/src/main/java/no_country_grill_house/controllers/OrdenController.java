@@ -56,7 +56,7 @@ public class OrdenController {
      * @PutMapping()
      * public ResponseEntity<?> update(@RequestBody Dto dto) {
      * try {
-     * //TODO Implement Your Logic To Update Data And Return Result Through
+     * 
      * ResponseEntity
      * return new ResponseEntity<>("Update Result", HttpStatus.OK);
      * } catch (Exception e) {
@@ -67,7 +67,7 @@ public class OrdenController {
      * @DeleteMapping("/{id}")
      * public ResponseEntity<?> delete(@PathVariable Integer id) {
      * try {
-     * //TODO Implement Your Logic To Destroy Data And Return Result Through
+     * 
      * ResponseEntity
      * return new ResponseEntity<>("Destroy Result", HttpStatus.OK);
      * } catch (Exception e) {
