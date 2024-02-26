@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import jakarta.validation.Valid;
 import no_country_grill_house.models.dtos.DireccionDto;
 import no_country_grill_house.services.DireccionServiceImpl;
 
@@ -34,7 +35,7 @@ public class DireccionController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> save(@RequestBody DireccionDto direccionDto) {
+    public ResponseEntity<?> save(@RequestBody @Valid DireccionDto direccionDto) {
         try {
             return ResponseEntity
                     .ok()

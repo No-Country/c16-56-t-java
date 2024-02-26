@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import no_country_grill_house.models.dtos.ClienteDireccionDto;
+import jakarta.validation.Valid;
+import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.services.ClienteServiceImpl;
 
 @Controller
@@ -34,17 +35,30 @@ public class ClienteController {
     }
 
     @PostMapping("/registrar")
-    public ResponseEntity<?> save(@RequestBody ClienteDireccionDto clienteDireccionDto) {
+    public ResponseEntity<?> save(@Valid @RequestBody ClienteDto clienteDto) {
         try {
-            return ResponseEntity
-                    .ok()
-                    .body(clienteServiceImpl.create(clienteDireccionDto));
+            return ResponseEntity.ok(clienteServiceImpl.create(clienteDto));
         } catch (Exception e) {
             return ResponseEntity
-                    .status(HttpStatus.NOT_FOUND)
+                    .status(HttpStatus.BAD_REQUEST)
                     .body(e.getMessage());
         }
+
     }
+
+    // @PostMapping("/registrar")
+    // public ResponseEntity<?> save(@RequestBody ClienteDireccionDto
+    // clienteDireccionDto) {
+    // try {
+    // return ResponseEntity
+    // .ok()
+    // .body(clienteServiceImpl.create(clienteDireccionDto));
+    // } catch (Exception e) {
+    // return ResponseEntity
+    // .status(HttpStatus.NOT_FOUND)
+    // .body(e.getMessage());
+    // }
+    // }
 
     // @PostMapping("/registrar")
     // public String save(@ModelAttribute ClienteDireccionDto clienteDireccionDto,
@@ -61,4 +75,5 @@ public class ClienteController {
     // }
     // return "thymeleaf.html";
     // }
+
 }

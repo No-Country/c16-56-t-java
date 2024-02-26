@@ -17,6 +17,6 @@ public class PortalController {
 
     @GetMapping("/")
     public String home() {
-        return "fetch.html";
+        return "Views/home.html";
     }
 }
