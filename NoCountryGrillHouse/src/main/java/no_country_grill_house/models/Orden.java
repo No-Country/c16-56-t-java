@@ -1,5 +1,6 @@
 package no_country_grill_house.models;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
@@ -14,16 +15,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
-
-@ToString
 @Entity
 @Table(name = "orden")
-public class Orden {
+public class Orden implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numeroOrden;
@@ -47,6 +45,17 @@ public class Orden {
     private LocalDateTime fechaAlta;
     @Column(name = "alta", nullable = false)
     private Boolean alta;
+
+    /*
+     * @ManyToMany
+     * 
+     * @JoinTable(name = "detalle_orden",
+     * joinColumns = @JoinColumn(name = "orden_id", referencedColumnName =
+     * "numeroOrden"),
+     * inverseJoinColumns = @JoinColumn(name = "platillo_id", referencedColumnName =
+     * "id")
+     * private List<Platillo> platillos;
+     */
 
     private boolean status;
 

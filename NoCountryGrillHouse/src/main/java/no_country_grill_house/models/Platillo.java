@@ -47,5 +47,4 @@ public class Platillo implements Serializable {
     @OneToOne
     @JoinColumn(name = "id_foto", referencedColumnName = "id")
     private FotoPlatillo foto;
-
 }
