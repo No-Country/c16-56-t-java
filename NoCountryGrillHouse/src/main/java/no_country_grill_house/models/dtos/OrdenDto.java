@@ -1,6 +1,6 @@
 package no_country_grill_house.models.dtos;
 
-import com.google.cloud.Date;
+import java.util.Date;
 import lombok.*;
 import no_country_grill_house.models.Cliente;
 import no_country_grill_house.models.Reserva;

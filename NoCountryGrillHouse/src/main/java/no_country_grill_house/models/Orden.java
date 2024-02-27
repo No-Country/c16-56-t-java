@@ -1,7 +1,6 @@
 package no_country_grill_house.models;
 
-import com.google.cloud.Date;
-import java.util.List;
+import java.util.Date;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
