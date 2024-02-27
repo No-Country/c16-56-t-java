@@ -1,14 +1,22 @@
 package no_country_grill_house.models;
 
-import jakarta.persistence.*;
+import java.time.LocalDateTime;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import no_country_grill_house.models.enums.Estado_Reserva;
-
-import java.time.LocalTime;
-import java.util.Date;
+import no_country_grill_house.models.enums.EstadoReserva;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +26,7 @@ import java.util.Date;
 @Table(name = "reserva")
 public class Reserva {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserv_seq")
-    @SequenceGenerator(name = "reserv_seq", sequenceName = "reserv_seq", allocationSize = 100)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     @ManyToOne
@@ -27,12 +34,15 @@ public class Reserva {
     private Cliente cliente;
 
     @Column(name = "fechaHora", nullable = false)
-    private LocalTime fechaHora;
+    private LocalDateTime fechaHora;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
-    private Estado_Reserva estado_reserva;
-    
+    private EstadoReserva estadoReserva;
+
     @Column(name = "fechaWeb", nullable = false)
-    private Date fechaWeb;    
+    private LocalDateTime fechaWeb;
+
+    @Column(name = "alta", nullable = false)
+    private Boolean alta;
 }

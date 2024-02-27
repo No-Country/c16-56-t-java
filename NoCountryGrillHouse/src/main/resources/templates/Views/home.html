@@ -34,38 +34,26 @@
 
   <!-- Inicio de sesión -->  
 
-      <div class="login-form">
-        <form>
-          <label for="email">Inicia sesión</label>
-          <div class="form-group">
-          <input
-              type="email"
-              name="email"
-              class="form-control"
-              id="loginEmail"
-              aria-describedby="emailHelp"
-              maxlength="35"
-              placeholder="Correo electrónico"
-              pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-              autocomplete="email"
-          />
-          </div>
-          <div class="form-group">
-            <input
-              type="password"
-              class="form-control"
-              id="loginContraseña"
-              placeholder="Contraseña"
-            />
-          </div>
-          <div class="form-btn">
-            <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
-            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-          </div>
-        </form>
-      </div>
-  
-      <div class="separador"><div class="line"></div>o<div class="line"></div></div>
+    <div class="login-form">
+      <form id="login_form">
+        <label>Inicia sesión</label>
+        <div class="form-group">
+          <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" maxlength="35"
+            placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
+        </div>
+        <div class="form-group">
+          <input type="password" class="form-control" id="loginContrasenia" placeholder="Contraseña" />
+        </div>
+        <div class="form-btn">
+          <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
+          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="separador">
+      <div class="line"></div>o<div class="line"></div>
+    </div>
 
       <div class="abrir-cuenta">
         <p>¿No tienes cuenta?</p>
@@ -219,7 +207,8 @@
 
     <!-- javascript para el Login y Registro de usuarios -->
 
-    <script src="js/registrologin.js"></script>
+  <script type="module" src="js/registrologin.js"></script>
+  <script src="js/main.js" defer></script>
 
   </body>
 </html>

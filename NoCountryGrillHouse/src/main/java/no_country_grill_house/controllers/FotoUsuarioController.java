@@ -51,7 +51,7 @@ public class FotoUsuarioController {
 
             fotoUsuarioDto = fotoUsuarioServiceImpl.create(fotoUsuarioDto);
 
-            Usuario usuario = (Usuario) session.getAttribute("usuariosession");
+            Usuario usuario = (Usuario) session.getAttribute("session");
 
             if (usuario != null) {
                 if (usuario.getRol() == Rol.CLIENTE) {

@@ -26,24 +26,24 @@ import no_country_grill_house.validations.UniqueEmail;
 public class ClienteDto {
 
   private Long id;
-  @NotBlank(message = "No puede ser nulo o estar vacío")
-  @Length(max = 35, message = "No puede superar los 35 caracteres")
+  @NotBlank(message = "El nombre no puede ser nulo o estar vacío")
+  @Length(max = 35, message = "El nombre no puede superar los 35 caracteres")
   private String nombre;
-  @NotBlank(message = "No puede ser nulo o estar vacío")
-  @Length(max = 35, message = "No puede superar los 35 caracteres")
+  @NotBlank(message = "El email no puede ser nulo o estar vacío")
+  @Length(max = 35, message = "El email no puede superar los 35 caracteres")
   @Email(message = "Debe ser un email válido")
   private String email;
-  @NotBlank(message = "No puede ser nulo o estar vacío")
+  @NotBlank(message = "La contraeña no puede ser nula o estar vacía")
   @Pattern(regexp = "\\S+", message = "La contraseña no puede contener espacios en blanco")
   @Length(min = 8, max = 20, message = "La contraseña debe tener un mínimo de 8 caracteres y un máximo de 20 caracteres")
   private String password;
-  @NotBlank(message = "No puede ser nulo o estar vacío")
+  @NotBlank(message = "La contraseña no puede ser nula o estar vacía")
   @Pattern(regexp = "\\S+", message = "La contraseña no puede contener espacios en blanco")
   @Length(min = 8, max = 20, message = "La contraseña debe tener un mínimo de 8 caracteres y un máximo de 20 caracteres")
   private String password2;
-  @NotBlank(message = "No puede ser nulo o estar vacío")
-  @Pattern(regexp = "^\\+?[0-9]*$", message = "Solo puede contener dígitos y opcionalmente un signo de más (+)")
-  @Length(min = 7, max = 15, message = "Debe tener entre 7 y 15 dígitos")
+  @NotBlank(message = "El teléfono no puede ser nulo o estar vacío")
+  @Pattern(regexp = "^\\+?[0-9]*$", message = "El teléfono solo puede contener dígitos y opcionalmente un signo de más (+)")
+  @Length(min = 7, max = 15, message = "El teléfono debe tener entre 7 y 15 dígitos")
   private String telefono;
   private LocalDateTime fechaAlta;
   private Boolean alta;

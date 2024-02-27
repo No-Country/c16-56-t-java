@@ -1,40 +1,133 @@
 import { enviarFetch } from './fetch.js';
 
-var registroForm = document.getElementById('registro_form');
+let registroForm = document.getElementById('registro_form');
 
 registroForm.addEventListener('submit', function (event) {
     event.preventDefault();
 
-    var clienteData = {
-        nombre: document.getElementById('nombre').value,
-        email: document.getElementById('email').value,
-        password: document.getElementById('password').value,
-        password2: document.getElementById('password_confirm').value,
-        telefono: document.getElementById('telefono').value
+    let nombre = document.getElementById('nombre').value;
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    let password2 = document.getElementById('password_confirm').value;
+    let telefono = document.getElementById('telefono').value;
+
+    let clienteData = {
+        nombre: nombre,
+        email: email,
+        password: password,
+        password2: password2,
+        telefono: telefono
     }
 
 
-    enviarFetch('/clientes/registrar', 'POST', clienteData,
+    enviarFetch('/cliente/registrar', 'POST', clienteData,
         function (data) {
-            console.log(data);
-            mostrarMensaje(data, 'success');
+            mostrarMensaje(data, true, 'alert', 'alert-success', 'exito-registro');
         },
         function (error) {
-            console.log(error);
-            mostrarMensaje(error, 'error');
+            mostrarMensaje(error.message, false, 'alert', 'alert-danger', 'error-registro');
         }
     )
 
-    function mostrarMensaje(mensaje, tipo) {
-        var mensajeDiv = document.getElementById('mensaje');
+    function mostrarMensaje(mensaje, esExito, ...clases) {
+        let mensajeDiv = document.getElementById('mensaje');
         if (!mensajeDiv) {
             mensajeDiv = document.createElement('div');
             mensajeDiv.id = 'mensaje';
-            document.body.appendChild(mensajeDiv);
         }
-        mensajeDiv.textContent = mensaje.body;
-        mensajeDiv.className = tipo; // Clase CSS para estilo de mensaje (por ejemplo, 'success' o 'error')
+
+        mensajeDiv.role = 'alert';
+        mensajeDiv.className = '';
+
+        clases.forEach(clase => {
+            mensajeDiv.classList.add(clase);
+        });
+
+        if (esExito) {
+            limpiarCampos();
+            const cerrarRegistro = document.querySelector('#inicio');
+            cerrarRegistro.style.display = 'unset';
+            const ocultarRegistro1 = document.querySelector('#registro');
+            ocultarRegistro1.style.display = 'none';
+            mensajeDiv.textContent = 'Se ha registrado correctamente!';
+            document.body.insertBefore(mensajeDiv, document.body.firstChild);
+            setTimeout(function () {
+                mensajeDiv.style.display = 'none';
+            }, 4000);
+        } else {
+            mensajeDiv.textContent = mensaje;
+            const primerElemento = registroForm.firstElementChild;
+            if (primerElemento) {
+                registroForm.insertBefore(mensajeDiv, primerElemento);
+            }
+        }
     }
+
 });
 
+function limpiarCampos() {
+    document.getElementById('nombre').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('password').value = '';
+    document.getElementById('password_confirm').value = '';
+    document.getElementById('telefono').value = '';
+}
 
+let loginForm = document.getElementById('login_form');
+
+loginForm.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    let email = document.getElementById('loginEmail').value;
+    let password = document.getElementById('loginContrasenia').value;
+
+    let loginData = {
+        email: email,
+        password: password,
+    }
+
+
+    enviarFetch('/auth/login', 'POST', loginData,
+        function (data) {
+            localStorage.setItem('token', data.token);
+
+            localStorage.setItem('rol', data.rol);
+
+            if (data.rol == 'CLIENTE') {
+                window.location.href = '/cliente';
+            } else if (data.rol == 'ADMIN') {
+                window.location.href = '/admin';
+            } else if (data.rol == 'JEFE_COCINA') {
+                window.location.href = '/jefe_cocina';
+            }
+
+
+        },
+        function (error) {
+            mostrarMensaje(error.message, 'alert', 'alert-danger', 'error-login');
+        }
+    )
+
+    function mostrarMensaje(mensaje, ...clases) {
+        let mensajeDiv = document.getElementById('mensaje');
+        if (!mensajeDiv) {
+            mensajeDiv = document.createElement('div');
+            mensajeDiv.id = 'mensaje';
+        }
+
+        mensajeDiv.role = 'alert';
+        mensajeDiv.className = '';
+        mensajeDiv.textContent = mensaje;
+
+        clases.forEach(clase => {
+            mensajeDiv.classList.add(clase);
+        });
+
+        const primerElemento = loginForm.firstElementChild;
+        if (primerElemento) {
+            loginForm.insertBefore(mensajeDiv, primerElemento);
+        }
+
+    }
+
+});

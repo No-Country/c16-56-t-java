@@ -1,5 +1,8 @@
 package no_country_grill_house.services;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,9 +12,6 @@ import no_country_grill_house.mappers.OrdenMapper;
 import no_country_grill_house.models.Orden;
 import no_country_grill_house.models.dtos.OrdenDto;
 import no_country_grill_house.repositories.OrdenRepository;
-
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Service
 
@@ -24,16 +24,17 @@ public class OrdenServiceImpl implements OrdenService {
     @Transactional
     @Override
     public OrdenDto create(OrdenDto ordenDto) {
+        ordenDto.setAlta(true);
         Orden orden = repository.save(ordenMapper.toOrden(ordenDto));
         return ordenMapper.tOrdenDto(orden);
     }
 
     @Override
-    public Orden findById(Long id) {
+    public OrdenDto findById(Long id) {
         Orden orden = repository.findById(id).orElseThrow(() -> {
             throw new GrillHouseException("No existe una orden con ID: " + id);
         });
-        return orden;
+        return ordenMapper.tOrdenDto(orden);
     }
 
     @Override
