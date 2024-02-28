@@ -10,7 +10,6 @@ import no_country_grill_house.models.dtos.DetalleOrdenDto;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 @Component
 public interface DetalleOrdenMapper {
-    DetalleOrden tDetalleOrden(DetalleOrdenDto detalleOrdenDto);
-
-    DetalleOrdenDto tDetalleOrdenDto(DetalleOrden detalleOrden);
+    DetalleOrden toDetalleOrden(DetalleOrdenDto detalleOrdenDto);
+    DetalleOrdenDto toDetalleOrdenDto(DetalleOrden detalleOrden);
 }
