@@ -1,10 +1,13 @@
 package no_country_grill_house.config;
 
 import java.security.Key;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.logging.Logger;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -18,17 +21,23 @@ import io.jsonwebtoken.security.Keys;
 @Service
 public class JwtService {
 
-    private static final String SECRET_KEY = "5DDD453F501511AB17897F337726A114463CA50E705C26CBDA60F7A7041854AC3A223F79A340D57C48EE31AABBF5DEE9427572CE2982C27947697A22500F72BBBB4D357EDD9F2ACC6A0284A72F2EC69245194D4BFB461FEA744B84A9446771678AB65E47E477EB0EC11ABADA3565DD008CB2B36CB1261D6E91025EA6E457703D";
+    private static final String SECRET_KEY = "Gwf+dmh9TZLCw2jLYha8lx+cfli/i58EjwtXfWCy1UQ=";
+
+    private static final Logger logger = Logger.getLogger(JwtService.class.getName());
 
     public String generateToken(UserDetails userDetails) {
-        return generateToken(new HashMap<>(), userDetails);
+        Map<String, Object> claims = new HashMap<>();
+        claims.put("sub", userDetails.getUsername());
+        claims.put("iat", new Date());
+        claims.put("exp", new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24));
+        claims.put("roles", userDetails.getAuthorities());
+
+        return generateToken(claims);
     }
 
-    public String generateToken(Map<String, Object> extraClaims, UserDetails userDetails) {
-        return Jwts.builder().setClaims(extraClaims)
-                .setSubject(userDetails.getUsername())
-                .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 24))
+    public String generateToken(Map<String, Object> claims) {
+        return Jwts.builder()
+                .setClaims(claims)
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
@@ -45,6 +54,29 @@ public class JwtService {
     public boolean validateToken(String token, UserDetails userDetails) {
         final String username = getUserName(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
+    }
+
+    public List<String> getRolesFromToken(String token) {
+        Claims claims = Jwts.parserBuilder().setSigningKey(getSignInKey()).build().parseClaimsJws(token).getBody();
+        Object rolesObject = claims.get("roles");
+
+        List<String> roles = new ArrayList<>();
+        if (rolesObject instanceof List<?>) {
+            List<?> rawRoles = (List<?>) rolesObject;
+            for (Object rawRole : rawRoles) {
+                if (rawRole instanceof Map<?, ?>) {
+                    Map<?, ?> roleMap = (Map<?, ?>) rawRole;
+                    Object authority = roleMap.get("authority");
+                    if (authority != null) {
+                        roles.add(authority.toString());
+                    }
+                }
+            }
+        }
+
+        logger.info("Roles obtenidos del token: " + roles);
+
+        return roles;
     }
 
     private boolean isTokenExpired(String token) {
@@ -69,4 +101,5 @@ public class JwtService {
 
         return Keys.hmacShaKeyFor(keyBytes);
     }
+
 }

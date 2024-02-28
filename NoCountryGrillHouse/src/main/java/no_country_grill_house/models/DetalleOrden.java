@@ -1,7 +1,17 @@
 package no_country_grill_house.models;
 
 import java.io.Serializable;
-import jakarta.persistence.*;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,10 +26,9 @@ import no_country_grill_house.models.enums.Estado_Platillo;
 @Table(name = "detalleorden")
 public class DetalleOrden implements Serializable {
     @Id
-    @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="detalleorden_sequence")
-    @SequenceGenerator(name="detalleorden_sequence", sequenceName="detalleorden_sequence", allocationSize=100)   
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDetalle;
-    
+
     private int cantidad;
 
     @Enumerated(EnumType.STRING)
@@ -27,11 +36,11 @@ public class DetalleOrden implements Serializable {
     private Estado_Platillo estado_Platillo;
 
     @ManyToOne
-    @JoinColumn(name = "id_orden",referencedColumnName = "numeroOrden")
+    @JoinColumn(name = "id_orden", referencedColumnName = "numeroOrden")
     private Orden orden;
 
     @ManyToOne
-    @JoinColumn(name = "id_platillo",referencedColumnName = "id")
+    @JoinColumn(name = "id_platillo", referencedColumnName = "id")
     private Platillo platillo;
-    
+
 }

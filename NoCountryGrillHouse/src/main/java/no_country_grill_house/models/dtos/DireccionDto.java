@@ -11,11 +11,11 @@ import lombok.NoArgsConstructor;
 public class DireccionDto {
 
     private Long id;
-    @NotBlank
+    @NotBlank(message = "La calle no puede ser nula o estar vacía")
     private String calle;
-    @NotBlank
+    @NotBlank(message = "El número no puede ser nulo o estar vacío")
     private String numero;
-    @NotBlank
+    @NotBlank(message = "La ciudad no puede ser nula o estar vacía")
     private String ciudad;
     private Boolean alta;
 

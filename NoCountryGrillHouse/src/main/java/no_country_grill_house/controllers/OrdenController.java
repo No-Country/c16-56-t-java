@@ -1,12 +1,16 @@
 package no_country_grill_house.controllers;
 
-import no_country_grill_house.models.dtos.OrdenDto;
-import no_country_grill_house.services.OrdenServiceImpl;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import no_country_grill_house.models.dtos.OrdenDto;
+import no_country_grill_house.services.OrdenServiceImpl;
 
 @RestController
 @RequestMapping("/orden")
@@ -28,14 +32,16 @@ public class OrdenController {
         }
     }
 
-   /*  @GetMapping("/{id}")
-    public ResponseEntity<?> find(@PathVariable Integer id) {
-        try {
-            return new ResponseEntity<>("GetOne Result", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }*/
+    /*
+     * @GetMapping("/{id}")
+     * public ResponseEntity<?> find(@PathVariable Integer id) {
+     * try {
+     * return new ResponseEntity<>("GetOne Result", HttpStatus.OK);
+     * } catch (Exception e) {
+     * return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+     * }
+     * }
+     */
 
     @PostMapping("/registrar")
     public ResponseEntity<?> create(@RequestBody OrdenDto ordenDto) {
@@ -56,7 +62,6 @@ public class OrdenController {
      * @PutMapping()
      * public ResponseEntity<?> update(@RequestBody Dto dto) {
      * try {
-     * 
      * ResponseEntity
      * return new ResponseEntity<>("Update Result", HttpStatus.OK);
      * } catch (Exception e) {
@@ -67,7 +72,6 @@ public class OrdenController {
      * @DeleteMapping("/{id}")
      * public ResponseEntity<?> delete(@PathVariable Integer id) {
      * try {
-     * 
      * ResponseEntity
      * return new ResponseEntity<>("Destroy Result", HttpStatus.OK);
      * } catch (Exception e) {

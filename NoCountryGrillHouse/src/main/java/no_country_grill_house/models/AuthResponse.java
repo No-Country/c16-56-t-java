@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import no_country_grill_house.models.enums.Rol;
 
 @Data
 @NoArgsConstructor
@@ -12,5 +13,6 @@ import lombok.NoArgsConstructor;
 public class AuthResponse {
 
     private String token;
+    private Rol rol;
 
 }

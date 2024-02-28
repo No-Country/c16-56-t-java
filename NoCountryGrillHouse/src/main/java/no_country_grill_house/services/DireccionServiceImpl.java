@@ -31,11 +31,11 @@ public class DireccionServiceImpl implements DireccionService {
     }
 
     @Override
-    public Direccion findById(Long id) {
+    public DireccionDto findById(Long id) {
         Direccion direccion = repository.findById(id).orElseThrow(() -> {
             throw new GrillHouseException("No existe la Direccion con el id: " + id);
         });
-        return direccion;
+        return direccionMapper.toDireccionDto(direccion);
     }
 
     @Override
@@ -57,16 +57,32 @@ public class DireccionServiceImpl implements DireccionService {
 
     @Transactional
     @Override
+    public void softDeleteById(Long id) {
+        Direccion direccion = direccionMapper.toDireccion(findById(id));
+        direccion.setAlta(false);
+        repository.save(direccion);
+    }
+
+    @Transactional
+    @Override
+    public void alta(Long id) {
+        Direccion direccion = direccionMapper.toDireccion(findById(id));
+        direccion.setAlta(true);
+        repository.save(direccion);
+    }
+
+    @Transactional
+    @Override
     public DireccionDto update(Long id, DireccionDto direccionDto) {
         Direccion direccion = repository.findById(id).orElseThrow(() -> {
             throw new GrillHouseException("No existe la Direccion con el id: " + id);
         });
 
-        if (direccion.getNumero() != null)
+        if (direccionDto.getNumero() != null)
             direccion.setNumero(direccionDto.getNumero());
-        if (direccion.getCalle() != null)
+        if (direccionDto.getCalle() != null)
             direccion.setCalle(direccionDto.getCalle());
-        if (direccion.getCiudad() != null)
+        if (direccionDto.getCiudad() != null)
             direccion.setCiudad(direccionDto.getCiudad());
 
         repository.save(direccion);

@@ -60,11 +60,11 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
-    public Cliente findById(Long id) {
+    public ClienteDto findById(Long id) {
         Cliente cliente = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe el Cliente con el id: " + id);
+            throw new GrillHouseException("No existe el cliente con el id: " + id);
         });
-        return cliente;
+        return clienteMapper.toClienteDto(cliente);
     }
 
     @Override
@@ -79,9 +79,25 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public void deleteById(Long id) {
         repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe el Cliente con el id: " + id);
+            throw new GrillHouseException("No existe el cliente con el id: " + id);
         });
         repository.deleteById(id);
+    }
+
+    @Transactional
+    @Override
+    public void softDeleteById(Long id) {
+        Cliente cliente = clienteMapper.toCliente(findById(id));
+        cliente.setAlta(false);
+        repository.save(cliente);
+    }
+
+    @Transactional
+    @Override
+    public void alta(Long id) {
+        Cliente cliente = clienteMapper.toCliente(findById(id));
+        cliente.setAlta(true);
+        repository.save(cliente);
     }
 
     @Transactional
@@ -91,43 +107,23 @@ public class ClienteServiceImpl implements ClienteService {
             throw new GrillHouseException("No existe el Cliente con el id: " + id);
         });
 
-        if (cliente.getNombre() != null)
+        if (clienteDto.getNombre() != null)
             cliente.setNombre(clienteDto.getNombre());
-        if (cliente.getEmail() != null)
+        if (clienteDto.getEmail() != null)
             cliente.setEmail(clienteDto.getEmail());
-        if (cliente.getPassword() != null)
+        if (clienteDto.getPassword() != null)
             cliente.setPassword(clienteDto.getPassword());
-        if (cliente.getTelefono() != null)
+        if (clienteDto.getTelefono() != null)
             cliente.setTelefono(clienteDto.getTelefono());
-        // if (cliente.getDireccion() != null)
-        // cliente.setDireccion(direccionMapper.toDireccion(clienteDto.getDireccionDto()));
 
         repository.save(cliente);
         return clienteMapper.toClienteDto(cliente);
     }
 
     public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {
-        Cliente cliente = findById(id);
+        Cliente cliente = clienteMapper.toCliente(findById(id));
         cliente.setFoto(fotoUsuarioMapper.toFotoUsuario(fotoUsuarioDto));
         repository.save(cliente);
     }
 
-    // private void validar(ClienteDto clienteDto) {
-
-    // if (clienteDto.getNombre() == null || clienteDto.getNombre().trim() == "")
-    // throw new GrillHouseException("Debe ingresar un nombre válido y sin
-    // espacios");
-    // if (clienteDto.getEmail() == null || clienteDto.getEmail().trim() == "")
-    // throw new GrillHouseException("Debe ingresar un email válido y sin
-    // espacios");
-    // if (clienteDto.getPassword() == null || clienteDto.getPassword().trim() ==
-    // "")
-    // throw new GrillHouseException("Debe ingresar un password válido y sin
-    // espacios");
-    // if (clienteDto.getTelefono() == null || clienteDto.getTelefono().trim() ==
-    // "")
-    // throw new GrillHouseException("Debe ingresar un teléfono válido y sin
-    // espacios");
-
-    // }
 }

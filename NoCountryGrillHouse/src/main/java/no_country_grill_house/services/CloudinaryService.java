@@ -22,9 +22,9 @@ public class CloudinaryService {
 
     // Configuracion Cloudinary
     public CloudinaryService() {
-        valores.put("cloud_name", "dte154gnk");
-        valores.put("api_key", "146417589721878");
-        valores.put("api_secret", "EkVGVIZIYgosXmm8QHFbR2x_jgE");
+        valores.put("cloud_name", "dh9olmpwr");
+        valores.put("api_key", "195857911337526");
+        valores.put("api_secret", "RqBXQI-Ewny_4dzBD7-Kgp8uPiY");
         cloudinary = new Cloudinary(valores);
     }
 

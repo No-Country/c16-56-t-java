@@ -1,5 +1,8 @@
 package no_country_grill_house.config;
 
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -12,13 +15,23 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import lombok.RequiredArgsConstructor;
+import no_country_grill_house.models.Usuario;
+import no_country_grill_house.repositories.AdminRepository;
 import no_country_grill_house.repositories.ClienteRepository;
+import no_country_grill_house.repositories.JefeCocinaRepository;
 
 @Configuration
 @RequiredArgsConstructor
 public class AppConfig {
 
+    @Autowired
     private final ClienteRepository clienteRepository;
+
+    @Autowired
+    private final AdminRepository adminRepository;
+
+    @Autowired
+    private final JefeCocinaRepository jefeCocinaRepository;
 
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
@@ -27,8 +40,24 @@ public class AppConfig {
 
     @Bean
     UserDetailsService userDetailsService() {
-        return email -> clienteRepository.findClienteByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("cliente no encontrado"));
+        return email -> {
+            Optional<? extends Usuario> cliente = clienteRepository.findClienteByEmail(email);
+            if (cliente.isPresent()) {
+                return cliente.get();
+            }
+
+            Optional<? extends Usuario> admin = adminRepository.findAdminByEmail(email);
+            if (admin.isPresent()) {
+                return admin.get();
+            }
+
+            Optional<? extends Usuario> jefeCocina = jefeCocinaRepository.findJefeCocinaByEmail(email);
+            if (jefeCocina.isPresent()) {
+                return jefeCocina.get();
+            }
+
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        };
     }
 
     @Bean
