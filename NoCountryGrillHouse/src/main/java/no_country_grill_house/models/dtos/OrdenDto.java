@@ -1,16 +1,11 @@
 package no_country_grill_house.models.dtos;
 
-<<<<<<< HEAD
-import java.util.Date;
-import lombok.*;
-=======
 import java.time.LocalDateTime;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
->>>>>>> 2b1acdc0e17baae69ecf9bfa390ad9562dc0cb2b
 import no_country_grill_house.models.Cliente;
 import no_country_grill_house.models.Reserva;
 

@@ -12,11 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
-<<<<<<< HEAD
-import jakarta.persistence.SequenceGenerator;
-=======
 import jakarta.persistence.OneToOne;
->>>>>>> 2b1acdc0e17baae69ecf9bfa390ad9562dc0cb2b
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;

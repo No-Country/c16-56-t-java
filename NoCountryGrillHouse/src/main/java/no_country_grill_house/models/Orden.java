@@ -1,9 +1,5 @@
 package no_country_grill_house.models;
 
-<<<<<<< HEAD
-import java.util.Date;
-=======
->>>>>>> 2b1acdc0e17baae69ecf9bfa390ad9562dc0cb2b
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
