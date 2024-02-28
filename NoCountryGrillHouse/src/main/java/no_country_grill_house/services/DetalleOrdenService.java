@@ -1,10 +1,13 @@
-package no_country_grill_house.repositories;
+package no_country_grill_house.services;
 
-import org.springframework.stereotype.Service;
-import javax.transaction.Transactional;
+import java.util.List;
 
-@Service
-@Transactional
+import no_country_grill_house.models.DetalleOrden;
+import no_country_grill_house.models.dtos.DetalleOrdenDto;
+
 public interface DetalleOrdenService {
-    
+    DetalleOrdenDto create(DetalleOrdenDto detalleOrdenDto);
+    DetalleOrden findById(Long id);
+    List<DetalleOrdenDto> findAll();
+    void updateStatus(DetalleOrdenDto detalleOrden, Long id);
 }

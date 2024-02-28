@@ -47,17 +47,13 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Transactional
     @Override
-    public ReservaDto updateStatus(Long id, String status) {
-        if (EstadoReserva.valueOf(status) == null) {
-            throw new GrillHouseException("No existe un Estado de Reserva " + status);
-        }
-
+    public ReservaDto updateStatus(Long id, ReservaDto reservaDto) {
         Reserva reserva = repository.findById(id).orElseThrow(() -> {
             throw new GrillHouseException("No existe reserva con ID: " + id);
         });
 
-        if (reserva.getEstadoReserva().toString() != status) {
-            reserva.setEstadoReserva(EstadoReserva.valueOf(status));
+        if (reserva.getEstado_reserva() != reservaDto.getEstado_reserva()) {
+            reserva.setEstado_reserva(reservaDto.getEstado_reserva());
         }
         repository.save(reserva);
         return reservaMapper.toReservaDto(reserva);

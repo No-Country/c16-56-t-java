@@ -11,7 +11,7 @@ public interface ReservaService {
 
     List<ReservaDto> findAll();
 
-    ReservaDto updateStatus(Long id, String status);
+    ReservaDto updateStatus(Long id, ReservaDto reservaDto);
 
     ReservaDto update(Long id, ReservaDto reservaDto);
 
