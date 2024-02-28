@@ -52,8 +52,8 @@ public class ReservaServiceImpl implements ReservaService {
             throw new GrillHouseException("No existe reserva con ID: " + id);
         });
 
-        if (reserva.getEstado_reserva() != reservaDto.getEstado_reserva()) {
-            reserva.setEstado_reserva(reservaDto.getEstado_reserva());
+        if (reserva.getEstadoReserva() != reservaDto.getEstadoReserva()) {
+            reserva.setEstadoReserva(reservaDto.getEstadoReserva());
         }
         repository.save(reserva);
         return reservaMapper.toReservaDto(reserva);
