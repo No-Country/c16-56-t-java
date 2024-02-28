@@ -1,0 +1,30 @@
+<div id="platillos_admin" class="platillos-admin" style="height: 100vh; display: none;">
+  <th:header th:replace="fragments/header.html :: header"></th:header>
+  
+  <div class="buscador">
+    <form class="d-flex align-items-center" role="search">
+      <button class="btn btn-inline-success" type="submit"><i class="bi bi-search"></i></button>
+      <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Search">
+    </form>
+  </div>
+  <div class="navbar btn-group">
+      <button class="btn btn-primary">Todos</button>
+      <button class="btn"><img src="images/burguer 1.png" alt=""></button>
+      <button class="btn"><img src="images/cupcake.png" alt=""></button>
+      <button class="btn"><img src="images/bebida.png" alt=""></button>
+      <button id="nuevo_platillo" class="btn"><img src="images/bebidacubierto.png" alt=""></button>
+  </div>
+  
+  <script>
+    const abrirRegistroPlatillo1 = document.querySelector('#nuevo_platillo');
+    abrirRegistroPlatillo1.addEventListener('click', function() {
+      const mostrarRegistroPlatillo1 = document.querySelector('#registro_platillos');
+      mostrarRegistroPlatillo1.style.display = 'block';
+      const ocultarPlatilloAdmin1 = document.querySelector('#platillos_admin');
+      ocultarPlatilloAdmin1.style.display = 'none';
+      const ocultarMenu5 = document.querySelector('.menu');
+      ocultarMenu5.style.display = 'none';
+    });
+  </script>
+
+</div>

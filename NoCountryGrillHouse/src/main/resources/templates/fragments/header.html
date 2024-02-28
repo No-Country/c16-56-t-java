@@ -1,21 +1,13 @@
 <header>
     <div class="logo-img">
-        <svg width="28" height="34" viewBox="0 0 28 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M23.2163 33.131C23.1125 29.2451 20.6222 28.7854 20.7781 26.0752C20.882 22.752 23.2163 21.0136 23.2163 21.0136C23.2163 21.0136 17.5612 21.5253 16.4717 28.5297C16.4717 28.5297 15.849 22.6497 14.2409 19.9398C12.6324 17.4347 12.0097 17.9461 12.0097 17.9461C12.0097 17.9461 13.4108 19.6842 10.5054 24.0814C7.44449 28.8364 10.0383 30.9325 10.0383 30.9325C10.0383 30.9325 5.47276 29.9611 4.85036 24.8995C4.85036 24.8995 4.74651 25.2062 4.59091 25.4618C3.86501 27.0466 4.53916 30.6768 4.64266 34C-3.86565 28.785 1.89293 21.2693 2.04853 15.3379C2.25622 7.25975 0.0771343 4.39658 0.0771343 4.39658C0.0771343 4.39658 6.7179 10.1229 8.37809 12.7817C8.0148 5.62434 11.5946 2.04512 16.6273 0C14.708 2.96551 15.0706 5.522 15.5378 7.9758C16.264 11.9127 18.4431 14.0092 18.4431 14.0092C18.4431 14.0092 20.3627 12.1174 21.2449 9.91892C22.6974 6.2377 22.438 4.60161 22.438 4.60161C25.6028 6.74907 32.7624 26.8422 23.2163 33.131Z" fill="url(#paint0_linear_314_1281)"/>
-        <defs>
-        <linearGradient id="paint0_linear_314_1281" x1="14" y1="0" x2="14" y2="34" gradientUnits="userSpaceOnUse">
-        <stop stop-color="#E70808"/>
-        <stop offset="1" stop-color="#800C1B"/>
-        </linearGradient>
-        </defs>
-        </svg>
+        <img src="images/logo/Logo.png" alt="">
     </div>
     <div class="perfil-link">
         <a id="perfil_btn" href="#perfil_usuario">Nombre usuario  <img src="images/userdefult/perfiluser.png" alt="imagen_default_usuario"></a>
         <script >
             const abrirPerfil = document.querySelector('#perfil_btn');
             abrirPerfil.addEventListener('click', function(){
-                const verPerfil = document.querySelector('.row');
+                const verPerfil = document.querySelector('#perfil_usuario');
                 verPerfil.style.display = 'block';
                 const ocultarVista = document.querySelector('.vista');
                 ocultarVista.style.display = 'none';

@@ -1,4 +1,4 @@
-<div id="perfil_usuario" class="row perfil">
+<div id="perfil_usuario" class="ocultar perfil" style="display: none;">
     <a id="btn_volver" class="volver" href="#vista">
         <svg
         width="28" height="16" viewBox="0 0 28 16" fill="none"
@@ -9,19 +9,22 @@
         </svg>
       </a>
       <h2>Mi perfil</h2>
-    <div class="img-usuario">
-        <img class="foto-perfil" src="images/userdefult/perfiluser.png" alt="">
+    <div class="login-form">
+        <img class="foto-perfil" id="imgPreview" src="images/userdefult/perfiluser.png" alt="">
         <button type="button" class="btn foto-btn"><img src="images/Lapiz.png" alt=""></button>
+        <input type="file" name="foto_subir" id="foto_subir"  onchange="javascript:previewImage(event, '#imgPreview')" style="display: none;"> 
+        <button class="btn" id="logo_subir"><img src="images/Lapiz.png" alt=""></button>
+        
     </div>
 
     <ul class="user-info">
-        <li class="info">Nombre<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Correo electrónico<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Dirección<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn">></button></li>
+        <li class="info">Nombre<button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button></li>
+        <li class="info">Correo electrónico</li>
+        <li class="info">Dirección</li>
+        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i class="bi bi-pencil-square"></i></button></li>
     </ul>
 
-    <th:div th:replace="fragments/editarPerfil.html :: div"></th:div>
+    
 
    
 
@@ -31,20 +34,60 @@
     
 
     <script>
+        // $("#logo-subir").click(function(){
+        //     var subirBtn = document.getElementById("foto_subir");
+        //     subirBtn.click();
+        // });
+
+        // function previewImage(event, querySelector){
+        //     const input = event.target;
+
+        //     //Recuperamos la etiqueta img donde cargaremos la imagen
+        //     $imgPreview = document.querySelector(querySelector);
+
+        //     // Verificamos si existe una imagen seleccionada
+        //     if(!input.files.length) return
+
+        //     //Recuperamos el archivo subido
+        //     file = input.files[0];
+
+        //     //Creamos la url
+        //     objectURL = URL.createObjectURL(file);
+
+        //     //Modificamos el atributo src de la etiqueta img
+        //     $imgPreview.src = objectURL;
+                        
+        //     };
+
         const btnVolver = document.querySelector('#btn_volver');
         btnVolver.addEventListener('click', function(){
-            const ocultarRow = document.querySelector('.row');
+            const ocultarRow = document.querySelector('.perfil');
             ocultarRow.style.display = 'none';
             const mostrarVista = document.querySelector('.vista');
             mostrarVista.style.display = 'block';
+            
         });
 
-        const btnEditinfo = document.querySelectorAll('#editar_perfil');
+        const btnEditinfo = document.querySelector('#editar_btn');
         btnEditinfo.addEventListener('click', function(){
             const ocultarPerfil = document.querySelector('.perfil');
             ocultarPerfil.style.display = 'none';
             const mostrarEdicion = document.querySelector('.editar-perfil');
-            mostrarEdicion.style.display = 'block'
-        })
+            mostrarEdicion.style.display = 'block';
+            const ocultarMenu = document.querySelector('.menu');
+            ocultarMenu.style.display = 'none';
+        });
+
+        const btnEditPassword = document.querySelector('#cambiar_contraseña');
+        btnEditPassword.addEventListener('click', function(){
+            const ocultarPerfil3 = document.querySelector('.perfil');
+            ocultarPerfil3.style.display = 'none';
+            const mostrarPasswordEdit = document.querySelector('#editar_password');
+            mostrarPasswordEdit.style.display = 'block';
+            const ocultarMenu3 = document.querySelector('.menu');
+            ocultarMenu3.style.display = 'none';
+        });
+
+        
     </script>
 </div>

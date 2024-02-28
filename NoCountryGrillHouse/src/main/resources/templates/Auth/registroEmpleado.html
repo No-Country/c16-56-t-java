@@ -1,0 +1,45 @@
+<div id="registro_roles" class="ocultar registro-roles"  style="display: none;">
+    <a id="btn_volver3" class="volver" href="#vista">
+        <svg
+        width="28" height="16" viewBox="0 0 28 16" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+        d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+        fill="#252525"/>
+        </svg>
+      </a>
+      <h2>Nuevo usuario</h2>
+      <div class="empleado-form">
+        <form id="registro_empleado" action="">
+            <label for="name">Nombre y apellido</label>
+            <input class="form-control" type="text" name="name" placeholder="Nombre y apellido">
+            <label for="rol">Rol de empleado 
+                <select id="roles" class="form-control" name="rol">
+                    <option value="">(seleccionar un rol)</option>
+                    <option value="1">Cocina</option>
+                    <option value="2">Mesero</option>
+                    <option value="3">Cliente</option>
+                </select>
+            </label>          
+            <label for="email">Correo electrónico</label>
+            <input class="form-control" type="email" name="email" placeholder="Correo electrónico">
+            <label for="password">Contraseña</label>
+            <input class="form-control" type="password" name="password" placeholder="Contraseña">
+            <butto class="btn btn-primary">Crear usuario</butto>
+        </form>
+      </div>
+      <div class="large-line"></div>
+      <script>
+        const btnVolver4 = document.querySelector('#btn_volver3');
+        btnVolver4.addEventListener('click', function(){
+            const ocultarRow1 = document.querySelector('.registro-roles');
+            ocultarRow1.style.display = 'none';
+            const mostrarVista5 = document.querySelector('.vista');
+            mostrarVista5.style.display = 'block';
+            const mostrarMenuFlot3 = document.querySelector('.menu');
+            mostrarMenuFlot3.style.display = 'block';
+            
+        });
+      </script>
+
+</div>
