@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mysql.cj.protocol.x.Ok;
+
 import no_country_grill_house.models.dtos.OrdenDto;
 import no_country_grill_house.services.OrdenServiceImpl;
 
@@ -47,7 +49,7 @@ public class OrdenController {
     public ResponseEntity<?> create(@RequestBody OrdenDto ordenDto) {
         try {
             return ResponseEntity
-                    .ok()
+                    .status(HttpStatus.OK)
                     .body(ordenServiceImpl.create(ordenDto));
 
         } catch (Exception e) {
