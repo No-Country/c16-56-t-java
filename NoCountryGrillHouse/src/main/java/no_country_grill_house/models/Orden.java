@@ -45,18 +45,6 @@ public class Orden implements Serializable {
     private LocalDateTime fechaAlta;
     @Column(name = "alta", nullable = false)
     private Boolean alta;
-
-    /*
-     * @ManyToMany
-     * 
-     * @JoinTable(name = "detalle_orden",
-     * joinColumns = @JoinColumn(name = "orden_id", referencedColumnName =
-     * "numeroOrden"),
-     * inverseJoinColumns = @JoinColumn(name = "platillo_id", referencedColumnName =
-     * "id")
-     * private List<Platillo> platillos;
-     */
-
     private boolean status;
 
 }

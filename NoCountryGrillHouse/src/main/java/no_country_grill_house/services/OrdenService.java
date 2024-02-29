@@ -10,4 +10,8 @@ public interface OrdenService {
     OrdenDto findById(Long id);
 
     List<OrdenDto> findAll();
+
+    void softDeleteById(Long id);
+    
+    void deleteById(Long id);
 }

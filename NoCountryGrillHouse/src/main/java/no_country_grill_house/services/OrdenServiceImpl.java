@@ -45,4 +45,22 @@ public class OrdenServiceImpl implements OrdenService {
                 .collect(Collectors.toList());
     }
 
+    @Transactional
+    @Override
+    public void softDeleteById(Long id) {
+        Orden orden = repository.findById(id).orElseThrow(() -> {
+            throw new GrillHouseException("No existe una orden con ID: " + id);
+        });
+        orden.setAlta(false);
+    }
+
+    @Transactional
+    @Override
+    public void deleteById(Long id) {
+        repository.findById(id).orElseThrow(() -> {
+            throw new GrillHouseException("No existe una orden con ID: " + id);
+        });
+        repository.deleteById(id);
+    }
+
 }
