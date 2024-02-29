@@ -31,7 +31,7 @@ public class ReservaController {
     public ResponseEntity<?> save(@RequestBody ReservaDto reservaDto) {
         try {
             return ResponseEntity
-                    .ok()
+                    .status(HttpStatus.SC_OK)
                     .body(reservaServiceIml.create(reservaDto));
 
         } catch (Exception e) {
@@ -61,6 +61,5 @@ public class ReservaController {
         }
 
     }
-   
 
 }
