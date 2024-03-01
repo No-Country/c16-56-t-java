@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import no_country_grill_house.models.Cliente;
+import no_country_grill_house.models.Mesa;
 import no_country_grill_house.models.Reserva;
 
 @AllArgsConstructor
@@ -16,7 +17,7 @@ import no_country_grill_house.models.Reserva;
 public class OrdenDto {
 
     private Long numeroOrden;
-    // private Mesa mesa;
+    private Mesa mesa;
     private Cliente cliente;
     private Reserva reserva;
     private LocalDateTime fechaAlta;

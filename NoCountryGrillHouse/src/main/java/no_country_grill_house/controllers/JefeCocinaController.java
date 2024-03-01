@@ -67,7 +67,7 @@ public class JefeCocinaController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            jefeCocinaServiceImpl.deleteById(id);
+            jefeCocinaServiceImpl.softDeleteById(id);
             return ResponseEntity.ok("Jefe de Cocina eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity

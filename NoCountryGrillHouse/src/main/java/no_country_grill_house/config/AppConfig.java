@@ -19,6 +19,7 @@ import no_country_grill_house.models.Usuario;
 import no_country_grill_house.repositories.AdminRepository;
 import no_country_grill_house.repositories.ClienteRepository;
 import no_country_grill_house.repositories.JefeCocinaRepository;
+import no_country_grill_house.repositories.MeseroRepository;
 
 @Configuration
 @RequiredArgsConstructor
@@ -32,6 +33,9 @@ public class AppConfig {
 
     @Autowired
     private final JefeCocinaRepository jefeCocinaRepository;
+
+    @Autowired
+    private final MeseroRepository meseroRepository;
 
     @Bean
     AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
@@ -54,6 +58,11 @@ public class AppConfig {
             Optional<? extends Usuario> jefeCocina = jefeCocinaRepository.findJefeCocinaByEmail(email);
             if (jefeCocina.isPresent()) {
                 return jefeCocina.get();
+            }
+
+            Optional<? extends Usuario> mesero = meseroRepository.findMeseroByEmail(email);
+            if (mesero.isPresent()) {
+                return mesero.get();
             }
 
             throw new UsernameNotFoundException("Usuario no encontrado");

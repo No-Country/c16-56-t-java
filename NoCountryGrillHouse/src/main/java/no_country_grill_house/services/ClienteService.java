@@ -21,4 +21,6 @@ public interface ClienteService {
 
     ClienteDto update(Long id, ClienteDto clienteDto);
 
+    ClienteDto findByEmail(String email);
+
 }

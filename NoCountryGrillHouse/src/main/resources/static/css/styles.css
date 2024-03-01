@@ -1,5 +1,5 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
 
 
 /* Base reset */
@@ -8,18 +8,19 @@
     padding: 0;
     box-sizing: border-box;
     scroll-behavior: smooth;
-      
+
 }
 
 body {
-    margin-left: 10px;
-    margin-right: 10px;
+
     font-family: "Nunito", sans-serif;
     font-size: 18px;
     font-weight: 700;
     line-height: 24px;
     letter-spacing: 0em;
 }
+
+
 
 a {
     text-decoration: none;
@@ -60,8 +61,8 @@ h2 {
 }
 
 input:invalid {
-    background-color: pink;
-  }
+    border-color: red;
+}
 
 .volver {
     position: absolute;
@@ -72,6 +73,8 @@ input:invalid {
 .btn {
     background-color: inherit;
     border: none;
+    display: flex;
+    align-items: center;
 }
 
 li {
@@ -84,6 +87,13 @@ ul {
     list-style: none;
 }
 
+.ocultar {
+    height: 100%;
+    background-color: white;
+
+    padding-top: 20px;
+}
+
 /* menu Flotante Styles */
 
 .menu {
@@ -93,19 +103,19 @@ ul {
 }
 
 .menu-flotante {
-    position: fixed;
+    position: absolute;
+    bottom: 40px;
     width: 90%;
     height: 83px;
-    bottom: 50px;
+    margin-bottom: 50px;
     z-index: 4;
-    margin: 0 2vh 0 20px;
-    padding: 22px 30px 21px 30px;
+    padding: 22px 30px 22px 30px;
     border-radius: 50px;
     background: linear-gradient(180deg, #E70808 0%, #800C1B 100%);
     min-width: 300px;
     max-width: 500px;
     color: white;
-    
+
 }
 
 .menu-card {
@@ -113,10 +123,58 @@ ul {
     justify-content: space-between;
 }
 
+input {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
+    width: 85%;
+    height: 50px;
+    border-radius: 50px;
+}
+
+/*Registro de empleados estilos*/
+
+.empleado-form {
+    margin: 30% 8% 0 8%;
+}
+
+.registro-roles {
+    width: 90%;
+}
+
+.empleado-form {
+    width: 80%;
+}
+
+select {
+    width: 70%;
+}
+
+/* Admin styles */
+
+.buscador {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.form-control {
+    width: 85%;
+    height: 50px;
+    border-radius: 50px;
+    min-width: 350px;
+}
+
+.form-control::placeholder {
+    color: rgba(113, 113, 113, 1);
+    font-size: 16px;
+    line-height: 20px;
+}
+
+
 
 /* Header styles */
 
-header{
+header {
     padding-top: 45px;
     margin: 0 15px 0px 15px;
     display: flex;
@@ -124,7 +182,7 @@ header{
     font-size: 16px;
 }
 
-.perfil-link img{
+.perfil-link img {
     width: 36px;
     height: 36px;
 }
@@ -138,14 +196,14 @@ header{
     width: 90%;
     height: 38px;
     border-bottom: solid 1px rgba(231, 8, 32, 1);
-    
+
 }
 
 /* Perfil de usuario Styles */
 
 .img-usuario {
     padding: 50px;
-    display:flex;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -154,11 +212,16 @@ header{
     position: absolute;
     top: 180px;
     left: 155px;
-} 
+}
 
 .foto-perfil {
     width: 150px;
     height: 150px;
+    border-radius: 50%;
+}
+
+.perfil-form {
+    margin: 30% 10% 0 10%;
 }
 
 /* home view styles */
@@ -198,7 +261,7 @@ header{
     line-height: 20px;
     letter-spacing: 0em;
     text-align: left;
-    
+
 }
 
 .separador {
@@ -214,7 +277,7 @@ header{
     background-color: #9E090F;
     border: solid 1px;
     border-color: #9E090F;
-    border-radius: 18%;    
+    border-radius: 18%;
 }
 
 .large-line {
@@ -252,8 +315,9 @@ header{
 }
 
 .form-group input {
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.1);
     width: 85%;
-    height: 50px;    
+    height: 50px;
     border-radius: 50px;
 }
 
@@ -265,7 +329,7 @@ header{
     justify-content: center;
 }
 
-.abrir-cuenta p{
+.abrir-cuenta p {
     margin: 0 10px;
 }
 
@@ -273,9 +337,256 @@ header{
     color: rgba(231, 8, 32, 1);
 }
 
+.alerta-exito {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    border-radius: 10px;
+}
 
+.alerta-error {
+    width: 85%;
+    height: 50px;
+    border-radius: 50px;
+    min-width: 350px;
+}
 
+.hidden-content {
+    display: none;
+}
 
+.visible {
+    display: block;
+}
 
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+        "Source Han Sans CN", sans-serif;
+}
 
+.main-container {
+    overflow: hidden;
+}
 
+.main-container,
+.main-container * {
+    box-sizing: border-box;
+}
+
+.main-container input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+
+.main-container {
+    position: relative;
+    width: 370px;
+    height: 110px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 35px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.main-container.visible {
+    height: 318px;
+}
+
+.flex-row-e {
+    position: relative;
+    width: 332px;
+    height: 78px;
+    margin: 16px 0 0 16px;
+    z-index: 3;
+}
+
+.fernando-andrade-unsplash {
+    position: absolute;
+    width: 78px;
+    height: 78px;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    border-radius: 50px;
+}
+
+.icon-arrow {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 6px;
+    left: 302px;
+    background: url(/images/icono_flecha.png) no-repeat center;
+    background-size: cover;
+    z-index: 3;
+}
+
+.mario-ruiz {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 16px;
+    left: 97px;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.chef {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 20px;
+    top: 42px;
+    left: 97px;
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.line {
+    position: relative;
+    width: 334px;
+    height: 1px;
+    margin: 15px 0 0 16px;
+    background: url(/images/line.png) no-repeat center;
+    background-size: cover;
+    z-index: 4;
+}
+
+.flex-row-ecc {
+    position: relative;
+    width: 332px;
+    height: 30px;
+    margin: 16px 0 0 16px;
+    z-index: 11;
+}
+
+.correo-electronico {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 0;
+    left: 0;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.icono-editar {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 0;
+    left: 302px;
+    background: url(/images/icono_editar.png) no-repeat center;
+    background-size: cover;
+    z-index: 11;
+}
+
+.user-email {
+    display: block;
+    position: relative;
+    height: 20px;
+    margin: 0 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.5;
+    z-index: 6;
+}
+
+.password {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 8;
+}
+
+.hidden-text {
+    display: block;
+    position: relative;
+    height: 20px;
+    margin: 6px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.5;
+    z-index: 7;
+}
+
+.mobile-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    position: relative;
+    width: 214px;
+    margin: 16px 0 0 78px;
+    padding: 12px 20px 12px 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #e70820, #800c1b);
+    border: none;
+    z-index: 9;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.delete-account {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 20px;
+    color: #ffffff;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 10;
+}

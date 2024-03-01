@@ -65,6 +65,14 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.toAdminDto(admin);
     }
 
+    @Override
+    public AdminDto findByEmail(String email) {
+        Admin admin = repository.findAdminByEmail(email).orElseThrow(() -> {
+            throw new GrillHouseException("No existe el admin con el email: " + email);
+        });
+        return adminMapper.toAdminDto(admin);
+    }
+
     @Transactional
     @Override
     public AdminDto update(Long id, AdminDto adminDto) {
@@ -80,6 +88,9 @@ public class AdminServiceImpl implements AdminService {
             admin.setPassword(adminDto.getPassword());
         if (adminDto.getTelefono() != null)
             admin.setTelefono(adminDto.getTelefono());
+        if (adminDto.getFoto() != null) {
+            admin.setFoto(adminDto.getFoto());
+        }
 
         repository.save(admin);
         return adminMapper.toAdminDto(admin);

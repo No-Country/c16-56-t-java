@@ -68,6 +68,14 @@ public class ClienteServiceImpl implements ClienteService {
     }
 
     @Override
+    public ClienteDto findByEmail(String email) {
+        Cliente cliente = repository.findClienteByEmail(email).orElseThrow(() -> {
+            throw new GrillHouseException("No existe el cliente con el email: " + email);
+        });
+        return clienteMapper.toClienteDto(cliente);
+    }
+
+    @Override
     public List<ClienteDto> findAll() {
         return repository.findAll()
                 .stream()
@@ -115,6 +123,9 @@ public class ClienteServiceImpl implements ClienteService {
             cliente.setPassword(clienteDto.getPassword());
         if (clienteDto.getTelefono() != null)
             cliente.setTelefono(clienteDto.getTelefono());
+        if (clienteDto.getFoto() != null) {
+            cliente.setFoto(clienteDto.getFoto());
+        }
 
         repository.save(cliente);
         return clienteMapper.toClienteDto(cliente);

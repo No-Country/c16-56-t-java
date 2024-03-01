@@ -16,10 +16,12 @@ import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.Cliente;
 import no_country_grill_house.models.JefeCocina;
 import no_country_grill_house.models.LoginRequest;
+import no_country_grill_house.models.Mesero;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.repositories.AdminRepository;
 import no_country_grill_house.repositories.ClienteRepository;
 import no_country_grill_house.repositories.JefeCocinaRepository;
+import no_country_grill_house.repositories.MeseroRepository;
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -32,6 +34,9 @@ public class LoginServiceImpl implements LoginService {
 
     @Autowired
     private JefeCocinaRepository jefeCocinaRepository;
+
+    @Autowired
+    private MeseroRepository meseroRepository;
 
     @Autowired
     private JwtService jwtService;
@@ -49,6 +54,7 @@ public class LoginServiceImpl implements LoginService {
             var jwtToken = "";
 
             Optional<Cliente> cliente = clienteRepository.findClienteByEmail(loginRequest.getEmail());
+            Optional<Mesero> mesero = meseroRepository.findMeseroByEmail(loginRequest.getEmail());
             Optional<Admin> admin = adminRepository.findAdminByEmail(loginRequest.getEmail());
             Optional<JefeCocina> jefeCocina = jefeCocinaRepository.findJefeCocinaByEmail(
                     loginRequest.getEmail());
@@ -67,6 +73,12 @@ public class LoginServiceImpl implements LoginService {
                         rol = jefeCocina.get().getRol();
 
                         jwtToken = jwtService.generateToken(jefeCocina.get());
+                    } else {
+                        if (mesero.isPresent()) {
+                            rol = mesero.get().getRol();
+
+                            jwtToken = jwtService.generateToken(mesero.get());
+                        }
                     }
                 }
             }

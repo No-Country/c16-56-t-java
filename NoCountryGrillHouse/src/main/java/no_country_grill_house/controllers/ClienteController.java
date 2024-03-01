@@ -67,7 +67,7 @@ public class ClienteController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            clienteServiceImpl.deleteById(id);
+            clienteServiceImpl.softDeleteById(id);
             return ResponseEntity.ok("Cliente eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity

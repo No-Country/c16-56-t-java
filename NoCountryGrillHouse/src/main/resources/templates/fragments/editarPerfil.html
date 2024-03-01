@@ -1,5 +1,5 @@
-<div id="editar_perfil" class="row editar-perfil">
-    <a id="btn_volver" class="volver" href="#vista">
+<div id="editar_info" class="ocultar editar-perfil" style="display: none;">
+    <a id="btn_perfil" class="volver" href="#perfil_usuario">
         <svg
         width="28" height="16" viewBox="0 0 28 16" fill="none"
         xmlns="http://www.w3.org/2000/svg">
@@ -8,20 +8,21 @@
         fill="#252525"/>
         </svg>
     </a>
-      <h2>Editar perfil</h2>
-        <form id="editar_form">
+        <h2>Editar perfil</h2>
+        <div class="perfil-form">
+            <form id="editar_form">
             <div class="form-group">
                 <input class="form-control" type="text" id="nombre" placeholder="Nombre">
             </div>
             <div class="form-group">
-                <input class="form-control" type="email" id="email" autocomplete="email" placeholder="Correo electrónico">
+                <input class="form-control" type="email" id="email"  placeholder="Correo electrónico">
             </div>
             <div class="form-group">
-                <input class="form-control" type="tel" id="telefono" placeholder="Teléfono" autocomplete="tel">
+                <input class="form-control" type="tel" id="telefono" placeholder="Teléfono" >
             </div>
             <div class="form-group">
                 <label for="calle">Direccion</label>
-                <input class="form-control" type="text" id="calle" placeholder="Calle">
+                <input class="form-control" type="text" id="calle" name="calle" placeholder="Calle">
             </div>
             <div class="form-group">
                 <input class="form-control" type="text" id="numero" placeholder="Número">
@@ -30,10 +31,20 @@
                 <input class="form-control" type="text" id="ciudad" placeholder="Ciudad">
             </div>
             <button type="submit" class="btn btn-primary">Editar</button>
-        </form>
-        
-        
-      
-     
+            </form>
+        </div>
+          
     <div class="large-line"></div>
+
+    <script>
+         const btnVolverPerfil = document.querySelector('#btn_perfil');
+            btnVolverPerfil.addEventListener('click', function(){
+            const mostrarPerfilVista = document.querySelector('#perfil_usuario');
+            mostrarPerfilVista.style.display = 'block';
+            const ocultarEdicion = document.querySelector('.editar-perfil');
+            ocultarEdicion.style.display = 'none';
+            const mostrarMenuFlot = document.querySelector('.menu');
+            mostrarMenuFlot.style.display = 'block';
+        });
+    </script>
 </div>

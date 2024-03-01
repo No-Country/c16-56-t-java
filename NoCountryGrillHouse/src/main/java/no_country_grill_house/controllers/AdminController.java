@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,12 +26,16 @@ public class AdminController {
     private AdminServiceImpl adminServiceImpl;
 
     @GetMapping({ "", "/" })
-    public String inicioAdmin(HttpServletRequest request) {
+    public String inicioAdmin(HttpServletRequest request, ModelMap model) {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
             if (rol != null && rol.equals(Rol.ADMIN)) {
+                String email = (String) session.getAttribute("username");
+                AdminDto adminDto = adminServiceImpl.findByEmail(email);
+                model.addAttribute("nombre", adminDto.getNombre());
+                model.addAttribute("foto", adminDto.getFoto());
                 return "Views/admin.html";
             } else {
                 return "Acceso denegado";

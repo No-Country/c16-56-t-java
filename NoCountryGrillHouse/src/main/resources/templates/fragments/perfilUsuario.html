@@ -1,50 +1,142 @@
-<div id="perfil_usuario" class="row perfil">
+<div id="perfil_usuario" class="ocultar perfil" style="display: none;">
     <a id="btn_volver" class="volver" href="#vista">
-        <svg
-        width="28" height="16" viewBox="0 0 28 16" fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-        d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
-        fill="#252525"/>
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525" />
         </svg>
-      </a>
-      <h2>Mi perfil</h2>
-    <div class="img-usuario">
-        <img class="foto-perfil" src="images/userdefult/perfiluser.png" alt="">
-        <button type="button" class="btn foto-btn"><img src="images/Lapiz.png" alt=""></button>
+    </a>
+    <h2>Mi perfil</h2>
+    <div class="login-form">
+        <img id="imgPreview" th:src="${foto != null ? foto.url : 'images/userdefult/perfiluser.png'}"
+            alt="imagen_default_usuario">
+        <label for="foto_subir" class="btn foto-btn">
+            <img src="images/Lapiz.png" alt="">
+        </label>
+        <input type="file" name="foto_subir" id="foto_subir" style="display: none;">
     </div>
 
+
     <ul class="user-info">
-        <li class="info">Nombre<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Correo electrónico<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Dirección<button id="editar_perfil" class="btn">></button></li>
-        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn">></button></li>
+        <li class="info">Nombre<button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button></li>
+        <li class="info">Correo electrónico</li>
+        <li class="info">Dirección</li>
+        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i
+                    class="bi bi-pencil-square"></i></button></li>
     </ul>
 
-    <th:div th:replace="fragments/editarPerfil.html :: div"></th:div>
 
-   
 
-    <button class= "btn btn-primary" style="width: 80%; margin: 20px;">Cerrar sesión</button>
 
-    
-    
+
+    <button class="btn btn-primary" style="width: 80%; margin: 20px;">Cerrar sesión</button>
+
+
+
 
     <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputFoto = document.getElementById('foto_subir');
+            const imgPreview = document.getElementById('imgPreview');
+            const labelFoto = document.querySelector('.foto-btn');
+
+            labelFoto.addEventListener('click', function (event) {
+                event.preventDefault();
+                inputFoto.click();
+            });
+
+            inputFoto.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    previewImage(file);
+                    uploadImage(file);
+                }
+            });
+
+            function previewImage(file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function uploadImage(file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                fetch('/foto/upload/usuario', {
+                    method: 'POST',
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al cargar la imagen: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        imgPreview.src = data.imageUrl;
+                        document.getElementById('imagenHeader').src = data.imageUrl;
+                        mostrarMensaje("Imagen cargada con éxito!", 'alert', 'alert-success', 'alerta-exito');
+                    })
+                    .catch(error => {
+                        mostrarMensaje(error, 'alert', 'alert-danger', 'alerta-error');
+                    });
+            }
+
+            function mostrarMensaje(mensaje, ...clases) {
+                let mensajeDiv = document.getElementById('mensaje');
+                if (!mensajeDiv) {
+                    mensajeDiv = document.createElement('div');
+                    mensajeDiv.id = 'mensaje';
+                }
+
+                mensajeDiv.textContent = mensaje;
+                mensajeDiv.role = 'alert';
+                mensajeDiv.className = '';
+
+                clases.forEach(clase => {
+                    mensajeDiv.classList.add(clase);
+                });
+
+                document.body.insertBefore(mensajeDiv, document.body.firstChild);
+                setTimeout(function () {
+                    mensajeDiv.style.display = 'none';
+                }, 4000);
+            }
+        });
+
+
         const btnVolver = document.querySelector('#btn_volver');
-        btnVolver.addEventListener('click', function(){
-            const ocultarRow = document.querySelector('.row');
+        btnVolver.addEventListener('click', function () {
+            const ocultarRow = document.querySelector('.perfil');
             ocultarRow.style.display = 'none';
             const mostrarVista = document.querySelector('.vista');
             mostrarVista.style.display = 'block';
+
         });
 
-        const btnEditinfo = document.querySelectorAll('#editar_perfil');
-        btnEditinfo.addEventListener('click', function(){
+        const btnEditinfo = document.querySelector('#editar_btn');
+        btnEditinfo.addEventListener('click', function () {
             const ocultarPerfil = document.querySelector('.perfil');
             ocultarPerfil.style.display = 'none';
             const mostrarEdicion = document.querySelector('.editar-perfil');
-            mostrarEdicion.style.display = 'block'
-        })
+            mostrarEdicion.style.display = 'block';
+            const ocultarMenu = document.querySelector('.menu');
+            ocultarMenu.style.display = 'none';
+        });
+
+        const btnEditPassword = document.querySelector('#cambiar_contraseña');
+        btnEditPassword.addEventListener('click', function () {
+            const ocultarPerfil3 = document.querySelector('.perfil');
+            ocultarPerfil3.style.display = 'none';
+            const mostrarPasswordEdit = document.querySelector('#editar_password');
+            mostrarPasswordEdit.style.display = 'block';
+            const ocultarMenu3 = document.querySelector('.menu');
+            ocultarMenu3.style.display = 'none';
+        });
+
+
     </script>
 </div>

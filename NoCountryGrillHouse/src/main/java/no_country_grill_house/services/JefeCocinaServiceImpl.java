@@ -68,6 +68,14 @@ public class JefeCocinaServiceImpl implements JefeCocinaService {
     }
 
     @Override
+    public JefeCocinaDto findByEmail(String email) {
+        JefeCocina jefeCocina = repository.findJefeCocinaByEmail(email).orElseThrow(() -> {
+            throw new GrillHouseException("No existe el jefe de cocina con el email: " + email);
+        });
+        return jefeCocinaMapper.toJefeCocinaDto(jefeCocina);
+    }
+
+    @Override
     public List<JefeCocinaDto> findAll() {
         return repository.findAll()
                 .stream()
@@ -115,6 +123,9 @@ public class JefeCocinaServiceImpl implements JefeCocinaService {
             jefeCocina.setPassword(jefeCocinaDto.getPassword());
         if (jefeCocinaDto.getTelefono() != null)
             jefeCocina.setTelefono(jefeCocinaDto.getTelefono());
+        if (jefeCocinaDto.getFoto() != null) {
+            jefeCocina.setFoto(jefeCocinaDto.getFoto());
+        }
 
         repository.save(jefeCocina);
         return jefeCocinaMapper.toJefeCocinaDto(jefeCocina);

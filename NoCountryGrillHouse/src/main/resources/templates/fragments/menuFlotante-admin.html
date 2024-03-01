@@ -5,7 +5,7 @@
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M19.0895 1.33866L27.4263 7.49656C29.033 8.65934 29.989 10.5185 30 12.5018V23.6492C29.8967 27.2236 26.9277 30.0446 23.3526 29.965H6.66316C3.08199 30.0534 0.103246 27.23 0 23.6492V12.5018C0.0109889 10.5185 0.966978 8.65934 2.57368 7.49656L10.9105 1.33866C13.3447 -0.446221 16.6553 -0.446221 19.0895 1.33866ZM7.89474 23.286H22.1053C22.7593 23.286 23.2895 22.7558 23.2895 22.1018C23.2895 21.4478 22.7593 20.9176 22.1053 20.9176H7.89474C7.24072 20.9176 6.71053 21.4478 6.71053 22.1018C6.71053 22.7558 7.24072 23.286 7.89474 23.286Z" fill="white"/>
                 </svg></a>
             </li>
-            <li class="menu-icon"><a href=""><svg width="36" height="30" viewBox="0 0 36 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <li id="icon_menu" class="menu-icon"><a href="#platillos_admin"><svg width="36" height="30" viewBox="0 0 36 30" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.45001 0H10.2833C12.3544 0 14.0333 1.67893 14.0333 3.75V9.58333C14.0333 11.6544 12.3544 13.3333 10.2833 13.3333H4.45001C2.37894 13.3333 0.700012 11.6544 0.700012 9.58333V3.75C0.700012 1.67893 2.37894 0 4.45001 0ZM10.2833 10.8333C10.9737 10.8333 11.5333 10.2737 11.5333 9.58333V3.75C11.5333 3.05964 10.9737 2.5 10.2833 2.5H4.45001C3.76341 2.50898 3.20899 3.0634 3.20001 3.75V9.58333C3.20899 10.2699 3.76341 10.8244 4.45001 10.8333H10.2833Z" fill="#F5F5F5" fill-opacity="0.6"/>
                 <path d="M20.7 6.25H29.0333C29.7237 6.25 30.2833 5.69036 30.2833 5C30.2833 4.30964 29.7237 3.75 29.0333 3.75H20.7C20.0097 3.75 19.45 4.30964 19.45 5C19.45 5.69036 20.0097 6.25 20.7 6.25Z" fill="#F5F5F5" fill-opacity="0.6"/>
                 <path d="M20.7 11.25H34.0333C34.7237 11.25 35.2833 10.6904 35.2833 10C35.2833 9.30964 34.7237 8.75 34.0333 8.75H20.7C20.0097 8.75 19.45 9.30964 19.45 10C19.45 10.6904 20.0097 11.25 20.7 11.25Z" fill="#F5F5F5" fill-opacity="0.6"/>
@@ -25,10 +25,24 @@
     <script>
         const btnHome = document.querySelector('#icon_home');
         btnHome.addEventListener('click', function(){
-            const ocultarRow = document.querySelector('.row');
-            ocultarRow.style.display = 'none';
-            const mostrarVista = document.querySelector('.vista');
-            mostrarVista.style.display = 'block';
+            const ocultarVistas = document.querySelector('.ocultar');
+            ocultarVistas.style.display = 'none';
+            const mostrarVistaAdministrador = document.querySelector('.vista');
+            mostrarVistaAdministrador.style.display = 'block';
+            const ocultarPlatillos = document.querySelector('.platillos-admin');
+            ocultarPlatillos.style.display = 'none';
         });
+
+        const btnMenu = document.querySelector('#icon_menu');
+        btnMenu.addEventListener('click', function(){
+            const ocultarVistas1 = document.querySelector('.ocultar');
+            ocultarVistas1.style.display = 'none';
+            const mostrarPlatillosVista = document.querySelector('.platillos-admin');
+            mostrarPlatillosVista.style.display = 'block';
+            const ocultarRow2 = document.querySelector('.vista');
+            ocultarRow2.style.display = 'none';
+        });
+
+     
     </script>
 </div>

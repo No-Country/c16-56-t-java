@@ -1,0 +1,46 @@
+<div id="registro_platillos" class="registro-platillos ocultar" style="display: none;">
+    <a id="btn_volver5" class="volver" href="#vista">
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525" />
+        </svg>
+    </a>
+    <h2>Nuevo platillo</h2>
+    <div class="empleado-form">
+        <form action="">
+            <label for="nombre">Nombre</label>
+            <input class="form-control" type="text" name="nombre" placeholder="Nombre">
+            <label for="categoria">Categoria
+                <select class="form-control" name="categoria" id="categoria">
+                    <option value="">Seleccionar categoria</option>
+                    <option value="1">Comida</option>
+                    <option value="2">Postre</option>
+                    <option value="3">Bebida</option>
+                </select>
+            </label>
+            <label for="precio">Precio</label>
+            <input class="form-control" type="number" name="precio" placeholder="0.01" step="0.01" min="0" max="10">
+            <label for="tiempo">Tiempo estimado (min)</label>
+            <input class="form-control" type="number" name="tiempo" placeholder="20">
+            <label for="descripcion">Descripción</label>
+            <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
+            <label for="imagen">Subir imagen</label>
+            <input class="form-control" type="file" name="imagen" placeholder="Cargar archivo">
+            <button class="btn btn-primary">Crear platillo</button>
+        </form>
+    </div>
+
+    <script>
+        const btnVolver5 = document.querySelector('#btn_volver5');
+        btnVolver5.addEventListener('click', function () {
+            const ocultarRow5 = document.querySelector('.registro-platillos');
+            ocultarRow5.style.display = 'none';
+            const mostrarVista5 = document.querySelector('.platillos-admin');
+            mostrarVista5.style.display = 'block';
+            const ocultarMenu5 = document.querySelector('.menu');
+            ocultarMenu5.style.display = 'block';
+
+        });
+    </script>
+</div>

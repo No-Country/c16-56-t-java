@@ -11,4 +11,5 @@ public interface AdminService {
 
     AdminDto update(Long id, AdminDto adminDto);
 
+    AdminDto findByEmail(String email);
 }

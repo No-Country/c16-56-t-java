@@ -21,4 +21,6 @@ public interface JefeCocinaService {
 
     JefeCocinaDto update(Long id, JefeCocinaDto jefeCocinaDto);
 
+    JefeCocinaDto findByEmail(String email);
+
 }

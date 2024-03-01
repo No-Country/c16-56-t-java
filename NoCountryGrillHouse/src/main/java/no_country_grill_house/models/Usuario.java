@@ -37,7 +37,7 @@ public abstract class Usuario implements UserDetails {
     protected String email;
     @Column(name = "password", nullable = false)
     protected String password;
-    @Column(name = "telefono", nullable = false)
+    @Column(name = "telefono")
     protected String telefono;
     @Column(name = "fecha_alta", nullable = false)
     protected LocalDateTime fechaAlta;
