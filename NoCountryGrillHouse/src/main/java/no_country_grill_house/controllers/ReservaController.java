@@ -31,7 +31,7 @@ public class ReservaController {
     public ResponseEntity<?> save(@RequestBody ReservaDto reservaDto) {
         try {
             return ResponseEntity
-                    .ok()
+                    .status(HttpStatus.SC_OK)
                     .body(reservaServiceIml.create(reservaDto));
 
         } catch (Exception e) {
@@ -41,8 +41,25 @@ public class ReservaController {
 
         }
     }
-    /*@PostMapping("/updateStatus")
-    public ResponseEntity<?> update(@RequestBody Long id, String status){
 
-    }*/
+    @DeleteMapping("/borrar")
+    public ResponseEntity<String> deleteCategoriaById(@RequestBody Long id) {
+        reservaServiceIml.deleteById(id);
+        return ResponseEntity.ok("Reseva eliminada correctamente");
+    }
+
+    @PostMapping("/updateStatus")
+    public ResponseEntity<?> update(@RequestBody ReservaDto reservaDto) {
+        try {
+            return ResponseEntity
+                    .status(HttpStatus.SC_OK)
+                    .body(reservaServiceIml.updateStatus(reservaDto));
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.SC_NOT_FOUND)
+                    .body(e.getMessage());
+        }
+
+    }
+
 }
