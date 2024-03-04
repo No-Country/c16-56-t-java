@@ -361,7 +361,7 @@ button {
   height: calc(235 * var(--rpx));
   background: #ffffff;
   z-index: 27;
-  overflow: scroll;
+  overflow: hidden;
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
@@ -756,11 +756,14 @@ button {
 }
 .barra-navegacion-cliente {
   position: fixed;
+  bottom: 10%;
+  /* right: 10%; */
+  
   width: calc(370 * var(--rpx));
   height: calc(83 * var(--rpx));
   margin: calc(90 * var(--rpx)) 0 0 0;
   background: linear-gradient(180deg, #e70808, #800c1b);
-  z-index: 137;
+  z-index: 140;
   overflow: scroll;
   border-radius: calc(50 * var(--rpx));
 }
