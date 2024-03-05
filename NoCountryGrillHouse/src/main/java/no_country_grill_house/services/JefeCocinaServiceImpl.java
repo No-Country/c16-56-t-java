@@ -134,15 +134,17 @@ public class JefeCocinaServiceImpl implements JefeCocinaService {
         if (jefeCocinaDto.getFoto() != null) {
             jefeCocina.setFoto(jefeCocinaDto.getFoto());
         }
-        if (jefeCocina.getDireccion() == null) {
-            if (jefeCocinaDto.getDireccion().getCalle() != null && jefeCocinaDto.getDireccion().getNumero() != null
-                    && jefeCocinaDto.getDireccion().getCiudad() != null) {
-                jefeCocina.setDireccion(direccionMapper.toDireccion(
-                        direccionServiceImpl.create(direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()))));
+        if (jefeCocinaDto.getDireccion() != null) {
+            if (jefeCocina.getDireccion() == null) {
+                if (jefeCocinaDto.getDireccion().getCalle() != null && jefeCocinaDto.getDireccion().getNumero() != null
+                        && jefeCocinaDto.getDireccion().getCiudad() != null) {
+                    jefeCocina.setDireccion(direccionMapper.toDireccion(
+                            direccionServiceImpl.create(direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()))));
+                }
+            } else {
+                direccionServiceImpl.update(jefeCocina.getDireccion().getId(),
+                        direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()));
             }
-        } else {
-            direccionServiceImpl.update(jefeCocina.getDireccion().getId(),
-                    direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()));
         }
 
         repository.save(jefeCocina);

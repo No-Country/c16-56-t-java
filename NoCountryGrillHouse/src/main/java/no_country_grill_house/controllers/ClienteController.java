@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,12 +32,17 @@ public class ClienteController {
     private ClienteServiceImpl clienteServiceImpl;
 
     @GetMapping({ "", "/" })
-    public String inicioCliente(HttpServletRequest request) {
+    public String inicioCliente(HttpServletRequest request, ModelMap model) {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
             if (rol != null && rol.equals(Rol.CLIENTE)) {
+                String email = (String) session.getAttribute("username");
+                ClienteDto clienteDto = clienteServiceImpl.findByEmail(email);
+                model.addAttribute("nombre", clienteDto.getNombre());
+                model.addAttribute("foto", clienteDto.getFoto());
+                model.addAttribute("email", clienteDto.getEmail());
                 return "Views/cliente.html";
             } else {
                 return "Acceso denegado";
@@ -137,6 +143,17 @@ public class ClienteController {
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
                     .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/obtenerPorEmail")
+    public ResponseEntity<?> getUserByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+        ClienteDto clienteDto = clienteServiceImpl.findByEmail(email);
+        if (clienteDto != null) {
+            return ResponseEntity.ok(clienteDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
         }
     }
 

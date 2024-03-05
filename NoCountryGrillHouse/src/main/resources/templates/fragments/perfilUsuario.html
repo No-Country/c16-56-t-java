@@ -123,8 +123,17 @@
                 const formData = new FormData();
                 formData.append('file', file);
 
+                const token = localStorage.getItem('token');
+
+                const headers = {};
+
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
                 fetch('/foto/upload/usuario', {
                     method: 'POST',
+                    headers,
                     body: formData
                 })
                     .then(response => {

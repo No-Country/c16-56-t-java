@@ -99,15 +99,17 @@ public class AdminServiceImpl implements AdminService {
         if (adminDto.getFoto() != null) {
             admin.setFoto(adminDto.getFoto());
         }
-        if (admin.getDireccion() == null) {
-            if (adminDto.getDireccion().getCalle() != null && adminDto.getDireccion().getNumero() != null
-                    && adminDto.getDireccion().getCiudad() != null) {
-                admin.setDireccion(direccionMapper.toDireccion(
-                        direccionServiceImpl.create(direccionMapper.toDireccionDto(adminDto.getDireccion()))));
+        if (adminDto.getDireccion() != null) {
+            if (admin.getDireccion() == null) {
+                if (adminDto.getDireccion().getCalle() != null && adminDto.getDireccion().getNumero() != null
+                        && adminDto.getDireccion().getCiudad() != null) {
+                    admin.setDireccion(direccionMapper.toDireccion(
+                            direccionServiceImpl.create(direccionMapper.toDireccionDto(adminDto.getDireccion()))));
+                }
+            } else {
+                direccionServiceImpl.update(admin.getDireccion().getId(),
+                        direccionMapper.toDireccionDto(adminDto.getDireccion()));
             }
-        } else {
-            direccionServiceImpl.update(admin.getDireccion().getId(),
-                    direccionMapper.toDireccionDto(adminDto.getDireccion()));
         }
 
         repository.save(admin);

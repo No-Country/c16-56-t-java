@@ -134,15 +134,17 @@ public class ClienteServiceImpl implements ClienteService {
         if (clienteDto.getFoto() != null) {
             cliente.setFoto(clienteDto.getFoto());
         }
-        if (cliente.getDireccion() == null) {
-            if (clienteDto.getDireccion().getCalle() != null && clienteDto.getDireccion().getNumero() != null
-                    && clienteDto.getDireccion().getCiudad() != null) {
-                cliente.setDireccion(direccionMapper.toDireccion(
-                        direccionServiceImpl.create(direccionMapper.toDireccionDto(clienteDto.getDireccion()))));
+        if (clienteDto.getDireccion() != null) {
+            if (cliente.getDireccion() == null) {
+                if (clienteDto.getDireccion().getCalle() != null && clienteDto.getDireccion().getNumero() != null
+                        && clienteDto.getDireccion().getCiudad() != null) {
+                    cliente.setDireccion(direccionMapper.toDireccion(
+                            direccionServiceImpl.create(direccionMapper.toDireccionDto(clienteDto.getDireccion()))));
+                }
+            } else {
+                direccionServiceImpl.update(cliente.getDireccion().getId(),
+                        direccionMapper.toDireccionDto(clienteDto.getDireccion()));
             }
-        } else {
-            direccionServiceImpl.update(cliente.getDireccion().getId(),
-                    direccionMapper.toDireccionDto(clienteDto.getDireccion()));
         }
 
         repository.save(cliente);

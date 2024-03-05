@@ -41,6 +41,7 @@ public class S3Controller {
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
             String email = (String) session.getAttribute("username");
+            System.out.println(rol);
             if (rol != null && email != null) {
                 try {
                     String imageUrl = s3ServiceImpl.uploadFileUsuario(file, email, rol);

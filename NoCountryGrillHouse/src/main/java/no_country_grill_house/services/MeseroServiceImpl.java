@@ -134,15 +134,17 @@ public class MeseroServiceImpl implements MeseroService {
         if (meseroDto.getFoto() != null) {
             mesero.setFoto(meseroDto.getFoto());
         }
-        if (mesero.getDireccion() == null) {
-            if (meseroDto.getDireccion().getCalle() != null && meseroDto.getDireccion().getNumero() != null
-                    && meseroDto.getDireccion().getCiudad() != null) {
-                mesero.setDireccion(direccionMapper.toDireccion(
-                        direccionServiceImpl.create(direccionMapper.toDireccionDto(meseroDto.getDireccion()))));
+        if (meseroDto.getDireccion() != null) {
+            if (mesero.getDireccion() == null) {
+                if (meseroDto.getDireccion().getCalle() != null && meseroDto.getDireccion().getNumero() != null
+                        && meseroDto.getDireccion().getCiudad() != null) {
+                    mesero.setDireccion(direccionMapper.toDireccion(
+                            direccionServiceImpl.create(direccionMapper.toDireccionDto(meseroDto.getDireccion()))));
+                }
+            } else {
+                direccionServiceImpl.update(mesero.getDireccion().getId(),
+                        direccionMapper.toDireccionDto(meseroDto.getDireccion()));
             }
-        } else {
-            direccionServiceImpl.update(mesero.getDireccion().getId(),
-                    direccionMapper.toDireccionDto(meseroDto.getDireccion()));
         }
 
         repository.save(mesero);
