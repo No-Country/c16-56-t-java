@@ -442,7 +442,7 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 33;
 }
-.icon {
+.icon-carritocero {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
@@ -557,7 +557,7 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 41;
 }
-.icon-9 {
+.icon-carritocero-9 {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(20.9375 * var(--rpx));

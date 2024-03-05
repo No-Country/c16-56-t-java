@@ -1,0 +1,301 @@
+
+.flex-row-c-detalle {
+    position: relative;
+    width: calc(369.800048828125 * var(--rpx));
+    height: calc(34 * var(--rpx));
+    margin: calc(26 * var(--rpx)) 0 0 calc(30.199951171875 * var(--rpx));
+    z-index: 27;
+  }
+  .icono-corazon-detalle {
+    position: absolute;
+    width: calc(34 * var(--rpx));
+    height: calc(34 * var(--rpx));
+    top: 0;
+    left: calc(335.800048828125 * var(--rpx));
+    background: url(../images/icons/Corazon.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 10;
+  }
+
+  .postre-detalle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(24 * var(--rpx));
+    top: calc(5 * var(--rpx));
+    left: calc(50% - calc(26.1 * var(--rpx)));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 400;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 27;
+  }
+  .fernando-andrade-unsplash-detalle {
+    position: relative;
+    width: calc(229 * var(--rpx));
+    height: calc(229 * var(--rpx));
+    margin: calc(11 * var(--rpx)) 0 0 calc(101 * var(--rpx));
+    background: url(../images/fotos/Hamburguesa.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 11;
+    overflow: visible auto;
+  }
+  .ellipse-detalle {
+    position: relative;
+    width: calc(198 * var(--rpx));
+    height: calc(201 * var(--rpx));
+    margin: calc(13 * var(--rpx)) 0 0 calc(15 * var(--rpx));
+    background: url(..//images/fotos/MenuImagen.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 1;
+  }
+  .cupcake-de-fresa-detalle {
+    position: relative;
+    width: calc(196 * var(--rpx));
+    height: calc(32 * var(--rpx));
+    margin: calc(70 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(24 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(32 * var(--rpx));
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    z-index: 12;
+  }
+  .text-3-detalle {
+    position: relative;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(24 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(32 * var(--rpx));
+    text-align: left;
+  }
+  .text-4-detalle {
+    position: relative;
+    color: #e70820;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(24 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(32 * var(--rpx));
+    text-align: left;
+  }
+  .box-detalle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(84 * var(--rpx));
+    margin: calc(20 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    z-index: 19;
+  }
+  .group-2-detalle {
+    flex-shrink: 0;
+    position: relative;
+    width: calc(177 * var(--rpx));
+    height: calc(84 * var(--rpx));
+    font-size: 0px;
+    background: #ffffff;
+    z-index: 14;
+    overflow: hidden;
+    border-radius: calc(20 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .text-5-detalle {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(15 * var(--rpx)) 0 0 calc(31 * var(--rpx));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(14 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 15;
+  }
+  .wrapper-2-detalle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: calc(105 * var(--rpx));
+    height: calc(24 * var(--rpx));
+    margin: calc(10 * var(--rpx)) 0 0 calc(36 * var(--rpx));
+    z-index: 17;
+  }
+  .group-3-detalle {
+    flex-shrink: 0;
+    position: relative;
+    width: calc(24 * var(--rpx));
+    height: calc(24 * var(--rpx));
+    z-index: 17;
+  }
+  .icon-1-detalle {
+    position: relative;
+    width: calc(19.343505859375 * var(--rpx));
+    height: calc(20.3564453125 * var(--rpx));
+    margin: calc(2 * var(--rpx)) 0 0 calc(2 * var(--rpx));
+    background: url(../images/icons/Icono\ Alarma.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 18;
+  }
+  .mins-detalle {
+    flex-shrink: 0;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 16;
+  }
+  .precio-detalle {
+    flex-shrink: 0;
+    position: relative;
+    width: calc(177 * var(--rpx));
+    height: calc(84 * var(--rpx));
+    font-size: 0px;
+    background: #ffffff;
+    z-index: 19;
+    overflow: hidden;
+    border-radius: calc(20 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .precio-2-detalle {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(15 * var(--rpx)) 0 0 calc(68 * var(--rpx));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(14 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 20;
+  }
+  .price-detalle {
+    display: block;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    margin: calc(10 * var(--rpx)) 0 0 calc(59 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 21;
+  }
+  .description-detalle {
+    display: block;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    margin: calc(30 * var(--rpx)) 0 0 calc(29 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 13;
+  }
+  .delicious-dessert-detalle {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(72 * var(--rpx));
+    margin: calc(15 * var(--rpx)) 0 0 calc(29 * var(--rpx));
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 400;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    z-index: 22;
+  }
+  .mobile-button-detalle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(370 * var(--rpx));
+    margin: calc(50 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx))
+      calc(24 * var(--rpx));
+    cursor: pointer;
+    background: transparent;
+    border: calc(1 * var(--rpx)) solid #e70820;
+    z-index: 25;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .add-to-cart-button-detalle {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 26;
+  }
+  .mobile-button-3-detalle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(370 * var(--rpx));
+    margin: calc(15 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx))
+      calc(24 * var(--rpx));
+    cursor: pointer;
+    background: linear-gradient(90deg, #e70820, #800c1b);
+    border: none;
+    z-index: 23;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .buy-button-detalle {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #ffffff;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 24;
+  }
+  

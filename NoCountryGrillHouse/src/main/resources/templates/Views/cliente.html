@@ -5,11 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grill House</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@600&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
     <link rel="stylesheet" th:href="|/css/cliente.css|" />
     <link rel="stylesheet" th:href="|/css/carrito.css|" />
     <link rel="stylesheet" th:href="|/css/metodosPagos.css|" />
+    <link rel="stylesheet" th:href="|/css/comprobantes.css|" />
+    <link rel="stylesheet" th:href="|/css/misPedidos.css|" />
+    <link rel="stylesheet" th:href="|/css/seguimiento.css|" />
+    <link rel="stylesheet" th:href="|/css/detallePedido.css|" />
     <link rel="icon" href="/images/favicon/favicon.png" type="image/png" />
 </head>
 
@@ -51,8 +56,8 @@
           </div>
           <span class="hamburguesa-3">Hamburguesa</span>
           <div class="icono-corazon"></div>
-          <div class="hamburguesa-4"></div>
-          <div class="icono-carrito"><div class="icon"></div></div>
+          <div id="btn_detalle" class="hamburguesa-4"></div>
+          <div class="icono-carrito"><div class="icon-carritocero"></div></div>
           <span class="precio">$12.50</span>
         </div>
         <div class="carta-plato">
@@ -63,7 +68,7 @@
           <span class="postre">Postre</span>
           <div class="icono-corazon-6"></div>
           <div class="cupcake-7"></div>
-          <div class="icono-carrito-8"><div class="icon-9"></div></div>
+          <div class="icono-carrito-8"><div class="icon-carritocero-9"></div></div>
           <span class="precio-a">$12.50</span>
         </div>
         <div class="carta-plato-b">
@@ -86,7 +91,7 @@
         <div id="btn_carrito" class="icono-carrito-navbar"><div class="icon-16"></div></div>
         <div class="icono-fuego"><div class="icon-17"></div></div>
         <div class="icono-usuario"><div class="icon-18"></div></div>
-        <div class="icono-compra"><div class="icon-19"></div></div>
+        <div id="btn_mispedidos" class="icono-compra"><div class="icon-19"></div></div>
       </div>
       <div class="flex-row-d">
      
@@ -210,6 +215,10 @@
 
   <th:div th:replace="components/carrito.html :: div"></th:div>
   <th:div th:replace="components/metodos-pago.html :: div"></th:div>
+  <th:div th:replace="components/comprobantes.html :: div"></th:div>
+  <th:div th:replace="components/misPedidos.html :: div"></th:div>
+  <th:div th:replace="components/seguimiento.html :: div"></th:div>
+  <th:div th:replace="components/detallePedido.html :: div"></th:div>
 
   <script src="js/cliente.js"></script>
 

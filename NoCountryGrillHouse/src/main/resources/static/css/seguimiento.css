@@ -1,0 +1,368 @@
+
+.detalle-orden-1-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(32 * var(--rpx));
+    margin: calc(24.75 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(24 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(32 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 6;
+  }
+  .productos-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 17;
+  }
+  .card-seguimiento {
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(110 * var(--rpx));
+    margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    background: #ffffff;
+    z-index: 9;
+    overflow: hidden;
+    border-radius: calc(35 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .fernando-andrade-unsplash-seguimiento {
+    position: absolute;
+    width: calc(78 * var(--rpx));
+    height: calc(78 * var(--rpx));
+    top: calc(16 * var(--rpx));
+    left: calc(16 * var(--rpx));
+    background: url(../images/fotos/Cupcake\ \(1\).png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 10;
+  }
+  .flex-column-ee-seguimiento {
+    position: absolute;
+    width: calc(147 * var(--rpx));
+    height: calc(62 * var(--rpx));
+    top: calc(24 * var(--rpx));
+    left: calc(113 * var(--rpx));
+    z-index: 12;
+  }
+  .cupcake-de-fresa-seguimiento {
+    position: relative;
+    width: calc(147 * var(--rpx));
+    height: calc(24 * var(--rpx));
+    margin: 0 0 0 0;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    z-index: 11;
+  }
+  .cupcake-de-seguimiento {
+    position: relative;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+  }
+  .fresa-seguimiento {
+    position: relative;
+    color: #e70820;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+  }
+  .dollar-sign-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(28 * var(--rpx));
+    margin: calc(10 * var(--rpx)) 0 0 0;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(20 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(28 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 12;
+  }
+  .card-2-seguimiento {
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(110 * var(--rpx));
+    margin: calc(10 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    background: #ffffff;
+    z-index: 13;
+    overflow: hidden;
+    border-radius: calc(35 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .fernando-andrade-unsplash-3-seguimiento {
+    position: absolute;
+    width: calc(78 * var(--rpx));
+    height: calc(78 * var(--rpx));
+    top: calc(16 * var(--rpx));
+    left: calc(16 * var(--rpx));
+    background: url(../images/fotos/Cupcake\ \(1\).png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 14;
+  }
+  .flex-column-seguimiento {
+    position: absolute;
+    width: calc(147 * var(--rpx));
+    height: calc(62 * var(--rpx));
+    top: calc(24 * var(--rpx));
+    left: calc(113 * var(--rpx));
+    z-index: 16;
+  }
+  .cupcake-de-fresa-4-seguimiento {
+    position: relative;
+    width: calc(147 * var(--rpx));
+    height: calc(24 * var(--rpx));
+    margin: 0 0 0 0;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    z-index: 15;
+  }
+  .cupcake-seguimiento {
+    position: relative;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+  }
+  .fresa-5-seguimiento {
+    position: relative;
+    color: #e70820;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+  }
+  .dollar-sign-6-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(28 * var(--rpx));
+    margin: calc(10 * var(--rpx)) 0 0 0;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(20 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(28 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 16;
+  }
+  .card-seguimiento-seguimiento {
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(330 * var(--rpx));
+    margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    font-size: 0px;
+    background: #ffffff;
+    z-index: 22;
+    overflow: hidden;
+    border-radius: calc(20 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .seguimiento-pedido-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    margin: calc(26 * var(--rpx)) 0 0 calc(16 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 24;
+  }
+  .pedido-tomado-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(24 * var(--rpx)) 0 0 calc(65 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 27;
+  }
+  .arrow-seguimiento {
+    position: relative;
+    width: calc(0.0000030597971090173814 * var(--rpx));
+    height: calc(70 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(24.99999694020289 * var(--rpx));
+    background: url(..//images/icons/Arrow\ 1.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 26;
+  }
+  .en-proceso-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(65 * var(--rpx));
+    color: #e70820;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 28;
+  }
+  .arrow-7-seguimiento {
+    position: relative;
+    width: calc(0.0000030597971090173814 * var(--rpx));
+    height: calc(70 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(24.99999694020289 * var(--rpx));
+    background: url(../images/icons/Arrow\ 2.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 25;
+  }
+  .terminado-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(65 * var(--rpx));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 29;
+  }
+  .arrow-8-seguimiento {
+    position: relative;
+    width: calc(0.0000030597971090173814 * var(--rpx));
+    height: calc(70 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(24.99999694020289 * var(--rpx));
+    background: url(../images/icons/Arrow\ 3.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 23;
+  }
+  .entregado-seguimiento {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(-10 * var(--rpx)) 0 0 calc(65 * var(--rpx));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 30;
+  }
+  .flex-row-seguimiento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(44 * var(--rpx));
+    margin: calc(22 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    z-index: 20;
+  }
+  .botones-mobile-seguimiento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(177 * var(--rpx));
+    padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx))
+      calc(20 * var(--rpx));
+    cursor: pointer;
+    background: transparent;
+    border: calc(1 * var(--rpx)) solid #e70820;
+    z-index: 20;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .cancelar-pedido-seguimiento {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 21;
+  }
+  .botones-mobile-9-seguimiento {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(177 * var(--rpx));
+    padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx))
+      calc(20 * var(--rpx));
+    cursor: pointer;
+    background: linear-gradient(90deg, #e70820, #800c1b);
+    border: none;
+    z-index: 18;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .comprobante-seguimiento {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    color: #ffffff;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(16 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 19;
+  }
+  
