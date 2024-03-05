@@ -1,5 +1,8 @@
 package no_country_grill_house.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import no_country_grill_house.models.Direccion;
 import no_country_grill_house.models.dtos.JefeCocinaDto;
+import no_country_grill_house.models.dtos.PasswordDto;
+import no_country_grill_house.models.dtos.UpdateRequestDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.services.JefeCocinaServiceImpl;
 
@@ -67,7 +73,7 @@ public class JefeCocinaController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            jefeCocinaServiceImpl.softDeleteById(id);
+            jefeCocinaServiceImpl.deleteById(id);
             return ResponseEntity.ok("Jefe de Cocina eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity
@@ -77,14 +83,60 @@ public class JefeCocinaController {
     }
 
     @PostMapping("/actualizar")
-    public ResponseEntity<?> update(@Valid @RequestBody JefeCocinaDto jefeCocinaDto) {
+    public ResponseEntity<?> update(@RequestBody UpdateRequestDto updateRequestDto) {
         try {
-            JefeCocinaDto updatedJefeCocina = jefeCocinaServiceImpl.update(jefeCocinaDto.getId(), jefeCocinaDto);
-            return ResponseEntity.ok(updatedJefeCocina);
+            String email = updateRequestDto.getEmail();
+            String nombre = updateRequestDto.getNombre();
+            String telefono = updateRequestDto.getTelefono();
+            String calle = updateRequestDto.getCalle();
+            String numero = updateRequestDto.getNumero();
+            String ciudad = updateRequestDto.getCiudad();
+            Long id = updateRequestDto.getId();
+            JefeCocinaDto jefeCocinaDto = new JefeCocinaDto();
+            jefeCocinaDto.setNombre(nombre);
+            jefeCocinaDto.setTelefono(telefono);
+            jefeCocinaDto.setEmail(email);
+            jefeCocinaDto.setId(id);
+            Direccion direccion = new Direccion();
+            if (calle != null) {
+                direccion.setCalle(calle);
+            }
+            if (numero != null) {
+                direccion.setNumero(numero);
+            }
+            if (ciudad != null) {
+                direccion.setCiudad(ciudad);
+            }
+            jefeCocinaDto.setDireccion(direccion);
+            JefeCocinaDto updateJefeCocina = jefeCocinaServiceImpl.update(jefeCocinaDto.getId(), jefeCocinaDto);
+            return ResponseEntity.ok(updateJefeCocina);
         } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/actualizar/password")
+    public ResponseEntity<?> updatePassword(@Valid @RequestBody PasswordDto passwordDto) {
+        try {
+            jefeCocinaServiceImpl.modificarPassword(passwordDto);
+            String exitoMessage = "El password se actualizó correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity.ok(exitoResponse);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
         }
     }
 }

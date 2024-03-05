@@ -2,6 +2,7 @@ package no_country_grill_house.services;
 
 import java.util.List;
 
+import no_country_grill_house.models.Categoria;
 import no_country_grill_house.models.dtos.PlatilloDto;
 
 public interface PlatilloService {
@@ -19,5 +20,7 @@ public interface PlatilloService {
     void alta(Long id);
 
     PlatilloDto update(Long id, PlatilloDto platilloDto);
+
+    List<PlatilloDto> findByCategoria(Categoria categoria);
 
 }

@@ -11,12 +11,14 @@ import org.springframework.stereotype.Service;
 import jakarta.transaction.Transactional;
 import no_country_grill_house.config.JwtService;
 import no_country_grill_house.exceptions.GrillHouseException;
+import no_country_grill_house.mappers.DireccionMapper;
 import no_country_grill_house.mappers.FotoUsuarioMapper;
 import no_country_grill_house.mappers.JefeCocinaMapper;
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.JefeCocina;
 import no_country_grill_house.models.dtos.FotoUsuarioDto;
 import no_country_grill_house.models.dtos.JefeCocinaDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.repositories.JefeCocinaRepository;
 
@@ -31,6 +33,12 @@ public class JefeCocinaServiceImpl implements JefeCocinaService {
 
     @Autowired
     private FotoUsuarioMapper fotoUsuarioMapper;
+
+    @Autowired
+    private DireccionServiceImpl direccionServiceImpl;
+
+    @Autowired
+    private DireccionMapper direccionMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -126,9 +134,35 @@ public class JefeCocinaServiceImpl implements JefeCocinaService {
         if (jefeCocinaDto.getFoto() != null) {
             jefeCocina.setFoto(jefeCocinaDto.getFoto());
         }
+        if (jefeCocina.getDireccion() == null) {
+            if (jefeCocinaDto.getDireccion().getCalle() != null && jefeCocinaDto.getDireccion().getNumero() != null
+                    && jefeCocinaDto.getDireccion().getCiudad() != null) {
+                jefeCocina.setDireccion(direccionMapper.toDireccion(
+                        direccionServiceImpl.create(direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()))));
+            }
+        } else {
+            direccionServiceImpl.update(jefeCocina.getDireccion().getId(),
+                    direccionMapper.toDireccionDto(jefeCocinaDto.getDireccion()));
+        }
 
         repository.save(jefeCocina);
         return jefeCocinaMapper.toJefeCocinaDto(jefeCocina);
+    }
+
+    @Override
+    public void modificarPassword(PasswordDto passwordDto) {
+        JefeCocina jefeCocina = jefeCocinaMapper.toJefeCocina(findByEmail(passwordDto.getEmail()));
+
+        if (!passwordEncoder.matches(passwordDto.getPasswordActual(), jefeCocina.getPassword())) {
+            throw new GrillHouseException("La contraseña actual no coincide con la ingresada");
+        }
+
+        if (!passwordDto.getPassword1().equals(passwordDto.getPassword2())) {
+            throw new GrillHouseException("Las contraseñas nuevas no coinciden");
+        }
+        jefeCocina.setPassword(passwordEncoder.encode(passwordDto.getPassword1()));
+        repository.save(jefeCocina);
+
     }
 
     public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {

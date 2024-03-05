@@ -8,4 +8,6 @@ import no_country_grill_house.models.Categoria;
 @Repository
 public interface CategoriaRepository extends JpaRepository<Categoria, Long> {
 
+    Categoria findByNombre(String nombre);
+
 }

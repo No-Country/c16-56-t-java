@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.FotoPlatilloMapper;
 import no_country_grill_house.mappers.PlatilloMapper;
+import no_country_grill_house.models.Categoria;
 import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.FotoPlatilloDto;
 import no_country_grill_house.models.dtos.PlatilloDto;
@@ -46,6 +47,14 @@ public class PlatilloServiceImpl implements PlatilloService {
     @Override
     public List<PlatilloDto> findAll() {
         return repository.findAll()
+                .stream()
+                .map(platilloMapper::toPlatilloDto)
+                .collect(Collectors.toList());
+    }
+
+    @Override
+    public List<PlatilloDto> findByCategoria(Categoria categoria) {
+        return repository.findByCategoria(categoria)
                 .stream()
                 .map(platilloMapper::toPlatilloDto)
                 .collect(Collectors.toList());

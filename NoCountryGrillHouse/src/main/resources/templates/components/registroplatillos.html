@@ -8,30 +8,30 @@
     </a>
     <h2>Nuevo platillo</h2>
     <div class="empleado-form">
-        <form action="">
+        <form id="platillo-form" enctype="multipart/form-data">
             <label for="nombre">Nombre</label>
-            <input class="form-control" type="text" name="nombre" placeholder="Nombre">
+            <input class="form-control" type="text" name="nombre-platillo" id="nombre-platillo" placeholder="Nombre">
             <label for="categoria">Categoria
                 <select class="form-control" name="categoria" id="categoria">
-                    <option value="">Seleccionar categoria</option>
-                    <option value="1">Comida</option>
-                    <option value="2">Postre</option>
-                    <option value="3">Bebida</option>
+                    <option value="0">Seleccionar categoria</option>
                 </select>
             </label>
             <label for="precio">Precio</label>
-            <input class="form-control" type="number" name="precio" placeholder="0.01" step="0.01" min="0" max="10">
+            <input class="form-control" type="number" name="precio" id="precio" placeholder="0.01" step="0.01" min="0"
+                max="10">
             <label for="tiempo">Tiempo estimado (min)</label>
-            <input class="form-control" type="number" name="tiempo" placeholder="20">
+            <input class="form-control" type="number" name="tiempo" id="tiempo" placeholder="20">
             <label for="descripcion">Descripción</label>
-            <input class="form-control" type="text" name="descripcion" placeholder="Descripción">
+            <input class="form-control" type="text" name="descripcion" id="descripcion" placeholder="Descripción">
             <label for="imagen">Subir imagen</label>
-            <input class="form-control" type="file" name="imagen" placeholder="Cargar archivo">
+            <input class="form-control" type="file" name="imagen" id="imagen" placeholder="Cargar archivo">
             <button class="btn btn-primary">Crear platillo</button>
         </form>
     </div>
 
-    <script>
+    <script type="module" th:inline="javascript">
+        import { enviarFetch } from '../../js/fetch.js';
+
         const btnVolver5 = document.querySelector('#btn_volver5');
         btnVolver5.addEventListener('click', function () {
             const ocultarRow5 = document.querySelector('.registro-platillos');
@@ -40,6 +40,138 @@
             mostrarVista5.style.display = 'block';
             const ocultarMenu5 = document.querySelector('.menu');
             ocultarMenu5.style.display = 'block';
+
+        });
+
+        let platilloForm = document.getElementById('platillo-form');
+        const token = localStorage.getItem('token');
+
+        platilloForm.addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const formData = new FormData();
+            formData.append('nombre', document.getElementById('nombre-platillo').value);
+            formData.append('categoria', document.getElementById('categoria').value);
+            formData.append('precio', document.getElementById('precio').value);
+            formData.append('tiempo', document.getElementById('tiempo').value);
+            formData.append('descripcion', document.getElementById('descripcion').value);
+            formData.append('imagen', document.getElementById('imagen').files[0]);
+
+            const headers = {};
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            if (formData.categoria === "0") {
+                mostrarMensaje('Debe seleccionar una categoría', false, 'alert', 'alert-danger', 'alerta-error');
+            } else {
+                fetch('/platillo/registrar', {
+                    method: 'POST',
+                    headers: headers,
+                    body: formData
+                })
+                    .then(function (response) {
+                        if (response.ok) {
+                            return response.json();
+                        } else {
+                            return response.json().then(errorData => {
+                                const nombrePropiedad = Object.keys(errorData)[0];
+                                const mensajeError = errorData[nombrePropiedad];
+                                throw new Error(mensajeError || 'Error en el servidor');
+                            });
+                        }
+                    })
+                    .then(function (data) {
+                        mostrarMensaje(data, true, 'alert', 'alert-success', 'alerta-exito');
+                    })
+                    .catch(function (error) {
+                        mostrarMensaje(error.message, false, 'alert', 'alert-danger', 'alerta-error');
+                    });
+            }
+
+            function mostrarMensaje(mensaje, esExito, ...clases) {
+                let mensajeDiv = document.getElementById('mensaje');
+                if (!mensajeDiv) {
+                    mensajeDiv = document.createElement('div');
+                    mensajeDiv.id = 'mensaje';
+                }
+
+                mensajeDiv.role = 'alert';
+                mensajeDiv.className = '';
+
+                clases.forEach(clase => {
+                    mensajeDiv.classList.add(clase);
+                });
+
+                if (esExito) {
+                    limpiarCampos();
+                    const ocultarRow5 = document.querySelector('.registro-platillos');
+                    ocultarRow5.style.display = 'none';
+                    const mostrarVista5 = document.querySelector('.platillos-admin');
+                    mostrarVista5.style.display = 'block';
+                    const ocultarMenu5 = document.querySelector('.menu');
+                    ocultarMenu5.style.display = 'block';
+                    // if (document.getElementById('categoria').value == 'Comida') {
+                    //     var contenedorPlatillos = document.getElementById('contenedor-platillos');
+                    //     contenedorTarjetas.innerHTML = '';
+                    //     listaPlatillos('/platillo/listar/categoria', 'Comida');
+                    // } else if (document.getElementById('categoria').value == 'Postre') {
+                    //     var contenedorPlatillos = document.getElementById('contenedor-platillos');
+                    //     contenedorTarjetas.innerHTML = '';
+                    //     listaPlatillos('/platillo/listar/categoria', 'Postre');
+                    // } else if (document.getElementById('categoria').value == 'Bebida') {
+                    //     var contenedorPlatillos = document.getElementById('contenedor-platillos');
+                    //     contenedorTarjetas.innerHTML = '';
+                    //     listaPlatillos('/platillo/listar/categoria', 'Bebida');
+                    // }
+                    mensajeDiv.textContent = 'Se ha registrado correctamente!';
+                    document.body.insertBefore(mensajeDiv, document.body.firstChild);
+                    setTimeout(function () {
+                        mensajeDiv.style.display = 'none';
+                    }, 4000);
+                } else {
+                    mensajeDiv.textContent = mensaje;
+                    const primerElemento = platilloForm.firstElementChild;
+                    if (primerElemento) {
+                        platilloForm.insertBefore(mensajeDiv, primerElemento);
+                    }
+                }
+            }
+
+            function limpiarCampos() {
+                document.getElementById('nombre-platillo').value = '';
+                document.getElementById('categoria').value = "0";
+                document.getElementById('precio').value = '';
+                document.getElementById('tiempo').value = '';
+                document.getElementById('descripcion').value = '';
+                document.getElementById('imagen').value = '';
+            }
+        })
+
+        document.addEventListener('DOMContentLoaded', function () {
+            const headers = {};
+
+            if (token) {
+                headers['Authorization'] = `Bearer ${token}`;
+            }
+
+            fetch('/categoria/listar', {
+                method: 'GET',
+                headers: headers
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const selectCategoria = document.getElementById('categoria');
+
+                    data.forEach(categoria => {
+                        const option = document.createElement('option');
+                        option.value = categoria.nombre;
+                        option.textContent = categoria.nombre;
+                        selectCategoria.appendChild(option);
+                    });
+                })
+                .catch(error => console.error('Error al obtener las categorías:', error));
 
         });
     </script>

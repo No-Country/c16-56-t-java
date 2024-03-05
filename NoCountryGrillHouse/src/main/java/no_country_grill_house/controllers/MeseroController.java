@@ -1,5 +1,8 @@
 package no_country_grill_house.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import no_country_grill_house.models.Direccion;
 import no_country_grill_house.models.dtos.MeseroDto;
+import no_country_grill_house.models.dtos.PasswordDto;
+import no_country_grill_house.models.dtos.UpdateRequestDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.services.MeseroServiceImpl;
 
@@ -67,7 +73,7 @@ public class MeseroController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            meseroServiceImpl.softDeleteById(id);
+            meseroServiceImpl.deleteById(id);
             return ResponseEntity.ok("Mesero eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity
@@ -77,14 +83,60 @@ public class MeseroController {
     }
 
     @PostMapping("/actualizar")
-    public ResponseEntity<?> update(@Valid @RequestBody MeseroDto meseroDto) {
+    public ResponseEntity<?> update(@RequestBody UpdateRequestDto updateRequestDto) {
         try {
-            MeseroDto updatedMesero = meseroServiceImpl.update(meseroDto.getId(), meseroDto);
-            return ResponseEntity.ok(updatedMesero);
+            String email = updateRequestDto.getEmail();
+            String nombre = updateRequestDto.getNombre();
+            String telefono = updateRequestDto.getTelefono();
+            String calle = updateRequestDto.getCalle();
+            String numero = updateRequestDto.getNumero();
+            String ciudad = updateRequestDto.getCiudad();
+            Long id = updateRequestDto.getId();
+            MeseroDto meseroDto = new MeseroDto();
+            meseroDto.setNombre(nombre);
+            meseroDto.setTelefono(telefono);
+            meseroDto.setEmail(email);
+            meseroDto.setId(id);
+            Direccion direccion = new Direccion();
+            if (calle != null) {
+                direccion.setCalle(calle);
+            }
+            if (numero != null) {
+                direccion.setNumero(numero);
+            }
+            if (ciudad != null) {
+                direccion.setCiudad(ciudad);
+            }
+            meseroDto.setDireccion(direccion);
+            MeseroDto updateMesero = meseroServiceImpl.update(meseroDto.getId(), meseroDto);
+            return ResponseEntity.ok(updateMesero);
         } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/actualizar/password")
+    public ResponseEntity<?> updatePassword(@Valid @RequestBody PasswordDto passwordDto) {
+        try {
+            meseroServiceImpl.modificarPassword(passwordDto);
+            String exitoMessage = "El password se actualizó correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity.ok(exitoResponse);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
         }
     }
 

@@ -1,5 +1,8 @@
 package no_country_grill_house.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import no_country_grill_house.models.Direccion;
 import no_country_grill_house.models.dtos.ClienteDto;
+import no_country_grill_house.models.dtos.PasswordDto;
+import no_country_grill_house.models.dtos.UpdateRequestDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.services.ClienteServiceImpl;
 
@@ -67,7 +73,7 @@ public class ClienteController {
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
-            clienteServiceImpl.softDeleteById(id);
+            clienteServiceImpl.deleteById(id);
             return ResponseEntity.ok("Cliente eliminado correctamente");
         } catch (Exception e) {
             return ResponseEntity
@@ -77,14 +83,60 @@ public class ClienteController {
     }
 
     @PostMapping("/actualizar")
-    public ResponseEntity<?> update(@Valid @RequestBody ClienteDto clienteDto) {
+    public ResponseEntity<?> update(@RequestBody UpdateRequestDto updateRequestDto) {
         try {
-            ClienteDto updatedCliente = clienteServiceImpl.update(clienteDto.getId(), clienteDto);
-            return ResponseEntity.ok(updatedCliente);
+            String email = updateRequestDto.getEmail();
+            String nombre = updateRequestDto.getNombre();
+            String telefono = updateRequestDto.getTelefono();
+            String calle = updateRequestDto.getCalle();
+            String numero = updateRequestDto.getNumero();
+            String ciudad = updateRequestDto.getCiudad();
+            Long id = updateRequestDto.getId();
+            ClienteDto clienteDto = new ClienteDto();
+            clienteDto.setNombre(nombre);
+            clienteDto.setTelefono(telefono);
+            clienteDto.setEmail(email);
+            clienteDto.setId(id);
+            Direccion direccion = new Direccion();
+            if (calle != null) {
+                direccion.setCalle(calle);
+            }
+            if (numero != null) {
+                direccion.setNumero(numero);
+            }
+            if (ciudad != null) {
+                direccion.setCiudad(ciudad);
+            }
+            clienteDto.setDireccion(direccion);
+            ClienteDto updateCliente = clienteServiceImpl.update(clienteDto.getId(), clienteDto);
+            return ResponseEntity.ok(updateCliente);
         } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
             return ResponseEntity
                     .status(HttpStatus.BAD_REQUEST)
-                    .body(e.getMessage());
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/actualizar/password")
+    public ResponseEntity<?> updatePassword(@Valid @RequestBody PasswordDto passwordDto) {
+        try {
+            clienteServiceImpl.modificarPassword(passwordDto);
+            String exitoMessage = "El password se actualizó correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity.ok(exitoResponse);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
         }
     }
 

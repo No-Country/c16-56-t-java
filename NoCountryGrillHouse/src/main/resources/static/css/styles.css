@@ -590,3 +590,279 @@ button {
     white-space: nowrap;
     z-index: 10;
 }
+
+
+
+
+:root {
+    --default-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Ubuntu, "Helvetica Neue", Helvetica, Arial, "PingFang SC",
+        "Hiragino Sans GB", "Microsoft Yahei UI", "Microsoft Yahei",
+        "Source Han Sans CN", sans-serif;
+}
+
+.hidden-elements {
+    display: none;
+}
+
+.visible2 {
+    display: block;
+}
+
+.main-container2,
+.main-container2 * {
+    box-sizing: border-box;
+}
+
+.main-container2 {
+    overflow: hidden;
+}
+
+.main-container2 input,
+select,
+textarea,
+button {
+    outline: 0;
+}
+
+.main-container2 {
+    position: relative;
+    width: 370px;
+    height: 110px;
+    margin: 0 auto;
+    background: #ffffff;
+    overflow: hidden;
+    border-radius: 35px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.1);
+}
+
+.main-container2.visible2 {
+    height: 460px;
+}
+
+.line2 {
+    position: relative;
+    width: 334px;
+    height: 1px;
+    margin: 109px 0 0 16px;
+    background: url(/images/line.png) no-repeat center;
+    background-size: cover;
+    z-index: 4;
+}
+
+.dollar-amount2 {
+    display: block;
+    position: relative;
+    height: 20px;
+    margin: 46px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.5;
+    z-index: 6;
+}
+
+.time2 {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 9;
+}
+
+.mins2 {
+    display: block;
+    position: relative;
+    height: 20px;
+    margin: 6px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    opacity: 0.5;
+    z-index: 7;
+}
+
+.descripcion2 {
+    display: block;
+    position: relative;
+    height: 24px;
+    margin: 16px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.delicioso-postre2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    width: 328px;
+    height: 96px;
+    margin: 6px 0 0 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    opacity: 0.5;
+    z-index: 8;
+}
+
+.botones-mobile2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: 10px;
+    position: relative;
+    width: 214px;
+    margin: 16px 0 0 78px;
+    padding: 12px 20px 12px 20px;
+    cursor: pointer;
+    background: linear-gradient(90deg, #e70820, #800c1b);
+    border: none;
+    z-index: 11;
+    overflow: hidden;
+    border-radius: 50px;
+}
+
+.eliminar-platillo2 {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: 20px;
+    color: #ffffff;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 12;
+}
+
+.fernando-andrade2 {
+    position: absolute;
+    width: 78px;
+    height: 78px;
+    top: 16px;
+    left: 16px;
+    background-size: cover;
+    border-radius: 50px;
+}
+
+.icon-arrow2 {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 22px;
+    left: 318px;
+    background: url(/images/icono_flecha.png) no-repeat center;
+    background-size: cover;
+    z-index: 3;
+}
+
+.strawberry-cupcake2 {
+    position: absolute;
+    width: 147px;
+    height: 24px;
+    top: 32px;
+    left: 113px;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    text-overflow: initial;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+.cupcake2 {
+    position: relative;
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+}
+
+.strawberry2 {
+    position: relative;
+    color: #e70820;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+}
+
+.dessert2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 20px;
+    top: 58px;
+    left: 113px;
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 2;
+}
+
+.precio2 {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: 24px;
+    top: 126px;
+    left: 16px;
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 24px;
+    text-align: left;
+    white-space: nowrap;
+    z-index: 5;
+}
+
+.icon2 {
+    position: absolute;
+    width: 23.843px;
+    height: 23.788px;
+    top: 129.612px;
+    left: 320.6px;
+    background: url(/images/icono_editar.png) no-repeat center;
+    background-size: 100% 100%;
+    z-index: 14;
+}

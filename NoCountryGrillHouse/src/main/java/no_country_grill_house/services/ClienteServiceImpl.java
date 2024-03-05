@@ -12,11 +12,13 @@ import jakarta.transaction.Transactional;
 import no_country_grill_house.config.JwtService;
 import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.ClienteMapper;
+import no_country_grill_house.mappers.DireccionMapper;
 import no_country_grill_house.mappers.FotoUsuarioMapper;
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.Cliente;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.FotoUsuarioDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.repositories.ClienteRepository;
 
@@ -31,6 +33,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private FotoUsuarioMapper fotoUsuarioMapper;
+
+    @Autowired
+    private DireccionServiceImpl direccionServiceImpl;
+
+    @Autowired
+    private DireccionMapper direccionMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -126,9 +134,35 @@ public class ClienteServiceImpl implements ClienteService {
         if (clienteDto.getFoto() != null) {
             cliente.setFoto(clienteDto.getFoto());
         }
+        if (cliente.getDireccion() == null) {
+            if (clienteDto.getDireccion().getCalle() != null && clienteDto.getDireccion().getNumero() != null
+                    && clienteDto.getDireccion().getCiudad() != null) {
+                cliente.setDireccion(direccionMapper.toDireccion(
+                        direccionServiceImpl.create(direccionMapper.toDireccionDto(clienteDto.getDireccion()))));
+            }
+        } else {
+            direccionServiceImpl.update(cliente.getDireccion().getId(),
+                    direccionMapper.toDireccionDto(clienteDto.getDireccion()));
+        }
 
         repository.save(cliente);
         return clienteMapper.toClienteDto(cliente);
+    }
+
+    @Override
+    public void modificarPassword(PasswordDto passwordDto) {
+        Cliente cliente = clienteMapper.toCliente(findByEmail(passwordDto.getEmail()));
+
+        if (!passwordEncoder.matches(passwordDto.getPasswordActual(), cliente.getPassword())) {
+            throw new GrillHouseException("La contraseña actual no coincide con la ingresada");
+        }
+
+        if (!passwordDto.getPassword1().equals(passwordDto.getPassword2())) {
+            throw new GrillHouseException("Las contraseñas nuevas no coinciden");
+        }
+        cliente.setPassword(passwordEncoder.encode(passwordDto.getPassword1()));
+        repository.save(cliente);
+
     }
 
     public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {

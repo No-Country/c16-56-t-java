@@ -64,6 +64,12 @@ public class CategoriaServiceImpl implements CategoriaService {
         repository.save(categoria);
     }
 
+    @Override
+    public CategoriaDto findByNombre(String nombre) {
+        Categoria categoria = repository.findByNombre(nombre);
+        return categoriaMapper.toCategoriaDto(categoria);
+    }
+
     @Transactional
     @Override
     public void alta(Long id) {

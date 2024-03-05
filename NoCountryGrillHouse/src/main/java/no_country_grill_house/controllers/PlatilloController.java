@@ -2,23 +2,43 @@ package no_country_grill_house.controllers;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.validation.Valid;
+import no_country_grill_house.mappers.CategoriaMapper;
+import no_country_grill_house.mappers.FotoPlatilloMapper;
+import no_country_grill_house.models.Categoria;
+import no_country_grill_house.models.dtos.CategoriaDto;
+import no_country_grill_house.models.dtos.FotoPlatilloDto;
 import no_country_grill_house.models.dtos.PlatilloDto;
+import no_country_grill_house.services.CategoriaServiceImpl;
 import no_country_grill_house.services.PlatilloServiceImpl;
+import no_country_grill_house.services.S3ServiceImpl;
 
 @RestController
 @RequestMapping("/platillo")
 public class PlatilloController {
+
+    @Autowired
+    private S3ServiceImpl s3ServiceImpl;
+
+    @Autowired
+    private FotoPlatilloMapper fotoPlatilloMapper;
+
+    @Autowired
+    private CategoriaServiceImpl categoriaServiceImpl;
+
+    @Autowired
+    private CategoriaMapper categoriaMapper;
 
     private final PlatilloServiceImpl platilloServiceImpl;
 
@@ -32,9 +52,29 @@ public class PlatilloController {
         return ResponseEntity.ok(platillos);
     }
 
+    @GetMapping("/listar/categoria")
+    public ResponseEntity<List<PlatilloDto>> getByCategoria(@RequestParam String nombre) {
+        CategoriaDto categoriaDto = categoriaServiceImpl.findByNombre(nombre);
+        List<PlatilloDto> platillos = platilloServiceImpl.findByCategoria(categoriaMapper.toCategoria(categoriaDto));
+        return ResponseEntity.ok(platillos);
+    }
+
     @PostMapping("/registrar")
-    public ResponseEntity<?> save(@RequestBody @Valid PlatilloDto platilloDto) {
+    public ResponseEntity<?> save(@RequestParam("imagen") MultipartFile imagen, @RequestParam("nombre") String nombre,
+            @RequestParam("categoria") String categoria, @RequestParam("precio") Double precio,
+            @RequestParam("tiempo") String tiempo, @RequestParam("descripcion") String descripcion) {
         try {
+            FotoPlatilloDto fotoPlatilloDto = s3ServiceImpl.uploadFilePlatillo(imagen);
+            Categoria getCategoria = categoriaMapper.toCategoria(categoriaServiceImpl.findByNombre(categoria));
+
+            PlatilloDto platilloDto = new PlatilloDto();
+            platilloDto.setNombre(nombre);
+            platilloDto.setDescripcion(descripcion);
+            platilloDto.setTiempoEstimado(tiempo);
+            platilloDto.setPrecio(precio);
+            platilloDto.setFoto(fotoPlatilloMapper.toFotoPlatillo(fotoPlatilloDto));
+            platilloDto.setCategoria(getCategoria);
+
             return ResponseEntity
                     .ok()
                     .body(platilloServiceImpl.create(platilloDto));
@@ -51,10 +91,16 @@ public class PlatilloController {
         return ResponseEntity.ok(platillo);
     }
 
-    @DeleteMapping("/borrar")
-    public ResponseEntity<String> deletePlatilloById(@RequestBody Long id) {
-        platilloServiceImpl.softDeleteById(id);
-        return ResponseEntity.ok("Platillo eliminado correctamente");
+    @PostMapping("/borrar")
+    public ResponseEntity<?> delete(@RequestBody Long id) {
+        try {
+            platilloServiceImpl.deleteById(id);
+            return ResponseEntity.ok("Platillo eliminado correctamente");
+        } catch (Exception e) {
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(e.getMessage());
+        }
     }
 
     @PutMapping("/actualizar")

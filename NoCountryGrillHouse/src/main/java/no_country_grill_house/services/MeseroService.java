@@ -4,6 +4,7 @@ import java.util.List;
 
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.dtos.MeseroDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 
 public interface MeseroService {
 
@@ -22,5 +23,7 @@ public interface MeseroService {
     MeseroDto update(Long id, MeseroDto meseroDto);
 
     MeseroDto findByEmail(String email);
+
+    void modificarPassword(PasswordDto passwordDto);
 
 }

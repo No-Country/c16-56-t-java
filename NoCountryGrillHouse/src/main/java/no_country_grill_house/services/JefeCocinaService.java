@@ -4,6 +4,7 @@ import java.util.List;
 
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.dtos.JefeCocinaDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 
 public interface JefeCocinaService {
 
@@ -23,4 +24,5 @@ public interface JefeCocinaService {
 
     JefeCocinaDto findByEmail(String email);
 
+    void modificarPassword(PasswordDto passwordDto);
 }

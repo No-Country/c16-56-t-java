@@ -18,9 +18,10 @@
 
 
     <ul class="user-info">
-        <li class="info">Nombre<button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button></li>
-        <li class="info">Correo electrónico</li>
-        <li class="info">Dirección</li>
+        <li class="info">Nombre<span id="nombre-perfil"></span><button id="editar_btn" class="btn"><i
+                    class="bi bi-pencil-square"></i></button></li>
+        <li class="info">Correo electrónico<span id="email-perfil"></span></li>
+        <li class="info">Dirección<span id="direccion-perfil"></span></li>
         <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i
                     class="bi bi-pencil-square"></i></button></li>
     </ul>
@@ -29,16 +30,73 @@
 
 
 
-    <button class="btn btn-primary" style="width: 80%; margin: 20px;">Cerrar sesión</button>
+    <button class="btn btn-primary" id="cerrar-sesion" style="width: 80%; margin: 20px;">Cerrar sesión</button>
 
 
 
 
-    <script>
+    <script type="module" th:inline="javascript">
+        import { enviarFetch } from '../../js/fetch.js';
+
+        function obtenerUsuario() {
+            return new Promise((resolve, reject) => {
+                const token = localStorage.getItem('token');
+                const rol = localStorage.getItem('rol');
+                let url = '';
+                let email = /*[[${email}]]*/ '';
+
+                if (rol == 'CLIENTE') {
+                    url = '/cliente/obtenerPorEmail';
+                } else if (rol == 'ADMIN') {
+                    url = '/admin/obtenerPorEmail';
+                } else if (rol == 'JEFE_COCINA') {
+                    url = '/jefe_cocina/obtenerPorEmail';
+                } else if (rol == 'MESERO') {
+                    url = '/mesero/obtenerPorEmail';
+                }
+
+                let userData = {
+                    email: email
+                }
+
+                enviarFetch(url, 'POST', userData,
+                    function (data) {
+                        resolve(data);
+                    },
+                    function (error) {
+                        reject(error);
+                    },
+                    token
+                );
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function () {
+
+            let usuario = {};
             const inputFoto = document.getElementById('foto_subir');
             const imgPreview = document.getElementById('imgPreview');
             const labelFoto = document.querySelector('.foto-btn');
+            const perfil = document.querySelector('#perfil_btn');
+            perfil.addEventListener('click', function () {
+                obtenerUsuario()
+                    .then(data => {
+                        usuario = data;
+                        let inputNombre = document.getElementById('nombre-perfil');
+                        let inputEmail = document.getElementById('email-perfil');
+                        let inputDireccion = document.getElementById('direccion-perfil');
+
+                        inputNombre.textContent = usuario.nombre;
+                        inputEmail.textContent = usuario.email;
+                        if (usuario.direccion != null) {
+                            let direccion = `${usuario.direccion.ciudad}, ${usuario.direccion.calle} ${usuario.direccion.numero}`;
+                            inputDireccion.textContent = direccion;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
 
             labelFoto.addEventListener('click', function (event) {
                 event.preventDefault();
@@ -137,6 +195,16 @@
             ocultarMenu3.style.display = 'none';
         });
 
+        const btnCerrarSesion = document.querySelector('#cerrar-sesion');
+        btnCerrarSesion.addEventListener('click', function () {
+            fetch('/logout', {
+                method: 'POST'
+            }).then(response => {
+                window.location.href = '/';
+            }).catch(error => {
+                console.error('Error al cerrar sesión:', error);
+            });
+        });
 
     </script>
 </div>

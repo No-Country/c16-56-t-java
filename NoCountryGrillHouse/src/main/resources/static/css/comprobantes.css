@@ -1,0 +1,214 @@
+.icon-comprobante {
+    position: relative;
+    width: calc(22.5 * var(--rpx));
+    height: calc(22.5 * var(--rpx));
+    margin: calc(33.75 * var(--rpx)) 0 0 calc(33.75 * var(--rpx));
+    background: url(../images/icons/Icono\ Cerrar.png)
+      no-repeat center;
+    background-size: 100% 100%;
+    z-index: 13;
+  }
+  .comprobante {
+    display: block;
+    position: relative;
+    height: calc(32 * var(--rpx));
+    margin: calc(24.75 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(24 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(32 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 6;
+  }
+  .card-comprobante {
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(110 * var(--rpx));
+    margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    cursor: pointer;
+    background: #ffffff;
+    border: none;
+    z-index: 14;
+    overflow: hidden;
+    border-radius: calc(35 * var(--rpx));
+    box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
+  }
+  .code-number-comprobante {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: absolute;
+    height: calc(36 * var(--rpx));
+    top: calc(50% - calc(18 * var(--rpx)));
+    left: calc(50% - calc(75 * var(--rpx)));
+    color: #000000;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(28 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(36 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 15;
+  }
+  .code-instructions-comprobante {
+    display: block;
+    position: relative;
+    height: calc(20 * var(--rpx));
+    margin: calc(12 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    color: #717171;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(14 * var(--rpx));
+    font-weight: 400;
+    line-height: calc(20 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 16;
+  }
+  .flex-row-comprobante {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(24 * var(--rpx));
+    margin: calc(26 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    z-index: 9;
+  }
+  .subtotal-text-comprobante {
+    flex-shrink: 0;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 7;
+  }
+  .subtotal-amount-comprobante {
+    flex-shrink: 0;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 9;
+  }
+  .line-comprobante {
+    position: relative;
+    width: calc(370.002685546875 * var(--rpx));
+    height: calc(2 * var(--rpx));
+    margin: calc(15 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    background: url(../images/icons/Line\ 16.png)
+      no-repeat center;
+    background-size: cover;
+    z-index: 11;
+  }
+  .flex-row-ff-comprobante {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    width: calc(370 * var(--rpx));
+    height: calc(28 * var(--rpx));
+    margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    z-index: 10;
+  }
+  .total-comprobante {
+    flex-shrink: 0;
+    position: relative;
+    height: calc(28 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(20 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(28 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 8;
+  }
+  .dollar-comprobante {
+    flex-shrink: 0;
+    position: relative;
+    height: calc(28 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(20 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(28 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 10;
+  }
+  .mobile-buttons-comprobante {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(370 * var(--rpx));
+    margin: calc(50 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx))
+      calc(24 * var(--rpx));
+    cursor: pointer;
+    background: transparent;
+    border: calc(1 * var(--rpx)) solid #e70820;
+    z-index: 19;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .ir-al-inicio-comprobante {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #252525;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 20;
+  }
+  .botones-mobile-comprobante {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    gap: calc(10 * var(--rpx));
+    position: relative;
+    width: calc(370 * var(--rpx));
+    margin: calc(26 * var(--rpx)) 0 0 calc(30 * var(--rpx));
+    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx))
+      calc(24 * var(--rpx));
+    cursor: pointer;
+    background: linear-gradient(90deg, #e70820, #800c1b);
+    border: none;
+    z-index: 17;
+    overflow: hidden;
+    border-radius: calc(50 * var(--rpx));
+  }
+  .ver-seguimiento-pedido-comprobante {
+    flex-shrink: 0;
+    flex-basis: auto;
+    position: relative;
+    height: calc(24 * var(--rpx));
+    color: #ffffff;
+    font-family: Nunito, var(--default-font-family);
+    font-size: calc(18 * var(--rpx));
+    font-weight: 700;
+    line-height: calc(24 * var(--rpx));
+    text-align: left;
+    white-space: nowrap;
+    z-index: 18;
+  }
