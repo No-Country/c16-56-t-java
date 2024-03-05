@@ -4,6 +4,7 @@ import java.util.List;
 
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.dtos.ClienteDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 
 public interface ClienteService {
 
@@ -20,5 +21,9 @@ public interface ClienteService {
     void alta(Long id);
 
     ClienteDto update(Long id, ClienteDto clienteDto);
+
+    ClienteDto findByEmail(String email);
+
+    void modificarPassword(PasswordDto passwordDto);
 
 }

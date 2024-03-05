@@ -22,10 +22,10 @@ registroForm.addEventListener('submit', function (event) {
 
     enviarFetch('/cliente/registrar', 'POST', clienteData,
         function (data) {
-            mostrarMensaje(data, true, 'alert', 'alert-success', 'exito-registro');
+            mostrarMensaje(data, true, 'alert', 'alert-success', 'alerta-exito');
         },
         function (error) {
-            mostrarMensaje(error.message, false, 'alert', 'alert-danger', 'error-registro');
+            mostrarMensaje(error.message, false, 'alert', 'alert-danger', 'alerta-error');
         }
     )
 
@@ -104,7 +104,7 @@ loginForm.addEventListener('submit', function (event) {
 
         },
         function (error) {
-            mostrarMensaje(error.message, 'alert', 'alert-danger', 'error-login');
+            mostrarMensaje(error.message, 'alert', 'alert-danger', 'alerta-error');
         }
     )
 

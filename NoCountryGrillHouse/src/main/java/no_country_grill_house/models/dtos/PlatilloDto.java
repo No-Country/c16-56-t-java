@@ -16,7 +16,7 @@ public class PlatilloDto {
 
     private Long id;
     private String nombre;
-    private StringBuilder descripcion;
+    private String descripcion;
     private Double precio;
     private String tiempoEstimado;
     private Boolean alta;

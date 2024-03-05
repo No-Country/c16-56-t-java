@@ -8,6 +8,7 @@ import no_country_grill_house.exceptions.DuplicateEmailException;
 import no_country_grill_house.models.dtos.AdminDto;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.JefeCocinaDto;
+import no_country_grill_house.models.dtos.MeseroDto;
 import no_country_grill_house.services.EmailVerificationService;
 
 public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, Object> {
@@ -34,6 +35,11 @@ public class UniqueEmailValidator implements ConstraintValidator<UniqueEmail, Ob
         } else if (obj instanceof JefeCocinaDto) {
             JefeCocinaDto jefeCocinaDto = (JefeCocinaDto) obj;
             if (!emailVerificationService.isEmailUnique(jefeCocinaDto.getEmail())) {
+                throw new DuplicateEmailException("El correo electrónico ya está registrado");
+            }
+        } else if (obj instanceof MeseroDto) {
+            MeseroDto meseroDto = (MeseroDto) obj;
+            if (!emailVerificationService.isEmailUnique(meseroDto.getEmail())) {
                 throw new DuplicateEmailException("El correo electrónico ya está registrado");
             }
         }

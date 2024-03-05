@@ -20,4 +20,6 @@ public interface CategoriaService {
 
     CategoriaDto update(Long id, CategoriaDto categoriaDto);
 
+    CategoriaDto findByNombre(String nombre);
+
 }

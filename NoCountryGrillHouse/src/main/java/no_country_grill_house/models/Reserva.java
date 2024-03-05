@@ -45,4 +45,8 @@ public class Reserva {
 
     @Column(name = "alta", nullable = false)
     private Boolean alta;
+
+    @ManyToOne
+    @JoinColumn(name = "id_mesa", referencedColumnName = "id")
+    private Mesa mesa;
 }

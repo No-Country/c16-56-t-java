@@ -1,75 +1,191 @@
 <div id="perfil_usuario" class="ocultar perfil" style="display: none;">
     <a id="btn_volver" class="volver" href="#vista">
-        <svg
-        width="28" height="16" viewBox="0 0 28 16" fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-        d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
-        fill="#252525"/>
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525" />
         </svg>
-      </a>
-      <h2>Mi perfil</h2>
+    </a>
+    <h2>Mi perfil</h2>
     <div class="login-form">
-        <img class="foto-perfil" id="imgPreview" src="images/userdefult/perfiluser.png" alt="">
-        <button type="button" class="btn foto-btn"><img src="images/Lapiz.png" alt=""></button>
-        <input type="file" name="foto_subir" id="foto_subir"  onchange="javascript:previewImage(event, '#imgPreview')" style="display: none;"> 
-        <button class="btn" id="logo_subir"><img src="images/Lapiz.png" alt=""></button>
-        
+        <img id="imgPreview" th:src="${foto != null ? foto.url : 'images/userdefult/perfiluser.png'}"
+            alt="imagen_default_usuario">
+        <label for="foto_subir" class="btn foto-btn">
+            <img src="images/Lapiz.png" alt="">
+        </label>
+        <input type="file" name="foto_subir" id="foto_subir" style="display: none;">
     </div>
 
+
     <ul class="user-info">
-        <li class="info">Nombre<button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button></li>
-        <li class="info">Correo electrónico</li>
-        <li class="info">Dirección</li>
-        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i class="bi bi-pencil-square"></i></button></li>
+        <li class="info">Nombre<span id="nombre-perfil"></span><button id="editar_btn" class="btn"><i
+                    class="bi bi-pencil-square"></i></button></li>
+        <li class="info">Correo electrónico<span id="email-perfil"></span></li>
+        <li class="info">Dirección<span id="direccion-perfil"></span></li>
+        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i
+                    class="bi bi-pencil-square"></i></button></li>
     </ul>
 
-    
 
-   
 
-    <button class= "btn btn-primary" style="width: 80%; margin: 20px;">Cerrar sesión</button>
 
-    
-    
 
-    <script>
-        // $("#logo-subir").click(function(){
-        //     var subirBtn = document.getElementById("foto_subir");
-        //     subirBtn.click();
-        // });
+    <button class="btn btn-primary" id="cerrar-sesion" style="width: 80%; margin: 20px;">Cerrar sesión</button>
 
-        // function previewImage(event, querySelector){
-        //     const input = event.target;
 
-        //     //Recuperamos la etiqueta img donde cargaremos la imagen
-        //     $imgPreview = document.querySelector(querySelector);
 
-        //     // Verificamos si existe una imagen seleccionada
-        //     if(!input.files.length) return
 
-        //     //Recuperamos el archivo subido
-        //     file = input.files[0];
+    <script type="module" th:inline="javascript">
+        import { enviarFetch } from '../../js/fetch.js';
 
-        //     //Creamos la url
-        //     objectURL = URL.createObjectURL(file);
+        function obtenerUsuario() {
+            return new Promise((resolve, reject) => {
+                const token = localStorage.getItem('token');
+                const rol = localStorage.getItem('rol');
+                let url = '';
+                let email = /*[[${email}]]*/ '';
 
-        //     //Modificamos el atributo src de la etiqueta img
-        //     $imgPreview.src = objectURL;
-                        
-        //     };
+                if (rol == 'CLIENTE') {
+                    url = '/cliente/obtenerPorEmail';
+                } else if (rol == 'ADMIN') {
+                    url = '/admin/obtenerPorEmail';
+                } else if (rol == 'JEFE_COCINA') {
+                    url = '/jefe_cocina/obtenerPorEmail';
+                } else if (rol == 'MESERO') {
+                    url = '/mesero/obtenerPorEmail';
+                }
+
+                let userData = {
+                    email: email
+                }
+
+                enviarFetch(url, 'POST', userData,
+                    function (data) {
+                        resolve(data);
+                    },
+                    function (error) {
+                        reject(error);
+                    },
+                    token
+                );
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let usuario = {};
+            const inputFoto = document.getElementById('foto_subir');
+            const imgPreview = document.getElementById('imgPreview');
+            const labelFoto = document.querySelector('.foto-btn');
+            const perfil = document.querySelector('#perfil_btn');
+            perfil.addEventListener('click', function () {
+                obtenerUsuario()
+                    .then(data => {
+                        usuario = data;
+                        let inputNombre = document.getElementById('nombre-perfil');
+                        let inputEmail = document.getElementById('email-perfil');
+                        let inputDireccion = document.getElementById('direccion-perfil');
+
+                        inputNombre.textContent = usuario.nombre;
+                        inputEmail.textContent = usuario.email;
+                        if (usuario.direccion != null) {
+                            let direccion = `${usuario.direccion.ciudad}, ${usuario.direccion.calle} ${usuario.direccion.numero}`;
+                            inputDireccion.textContent = direccion;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
+
+            labelFoto.addEventListener('click', function (event) {
+                event.preventDefault();
+                inputFoto.click();
+            });
+
+            inputFoto.addEventListener('change', function () {
+                const file = this.files[0];
+                if (file) {
+                    previewImage(file);
+                    uploadImage(file);
+                }
+            });
+
+            function previewImage(file) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    imgPreview.src = reader.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            function uploadImage(file) {
+                const formData = new FormData();
+                formData.append('file', file);
+
+                const token = localStorage.getItem('token');
+
+                const headers = {};
+
+                if (token) {
+                    headers['Authorization'] = `Bearer ${token}`;
+                }
+
+                fetch('/foto/upload/usuario', {
+                    method: 'POST',
+                    headers,
+                    body: formData
+                })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Error al cargar la imagen: ' + response.statusText);
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        imgPreview.src = data.imageUrl;
+                        document.getElementById('imagenHeader').src = data.imageUrl;
+                        mostrarMensaje("Imagen cargada con éxito!", 'alert', 'alert-success', 'alerta-exito');
+                    })
+                    .catch(error => {
+                        mostrarMensaje(error, 'alert', 'alert-danger', 'alerta-error');
+                    });
+            }
+
+            function mostrarMensaje(mensaje, ...clases) {
+                let mensajeDiv = document.getElementById('mensaje');
+                if (!mensajeDiv) {
+                    mensajeDiv = document.createElement('div');
+                    mensajeDiv.id = 'mensaje';
+                }
+
+                mensajeDiv.textContent = mensaje;
+                mensajeDiv.role = 'alert';
+                mensajeDiv.className = '';
+
+                clases.forEach(clase => {
+                    mensajeDiv.classList.add(clase);
+                });
+
+                document.body.insertBefore(mensajeDiv, document.body.firstChild);
+                setTimeout(function () {
+                    mensajeDiv.style.display = 'none';
+                }, 4000);
+            }
+        });
+
 
         const btnVolver = document.querySelector('#btn_volver');
-        btnVolver.addEventListener('click', function(){
+        btnVolver.addEventListener('click', function () {
             const ocultarRow = document.querySelector('.perfil');
             ocultarRow.style.display = 'none';
             const mostrarVista = document.querySelector('.vista');
             mostrarVista.style.display = 'block';
-            
+
         });
 
         const btnEditinfo = document.querySelector('#editar_btn');
-        btnEditinfo.addEventListener('click', function(){
+        btnEditinfo.addEventListener('click', function () {
             const ocultarPerfil = document.querySelector('.perfil');
             ocultarPerfil.style.display = 'none';
             const mostrarEdicion = document.querySelector('.editar-perfil');
@@ -79,7 +195,7 @@
         });
 
         const btnEditPassword = document.querySelector('#cambiar_contraseña');
-        btnEditPassword.addEventListener('click', function(){
+        btnEditPassword.addEventListener('click', function () {
             const ocultarPerfil3 = document.querySelector('.perfil');
             ocultarPerfil3.style.display = 'none';
             const mostrarPasswordEdit = document.querySelector('#editar_password');
@@ -88,6 +204,16 @@
             ocultarMenu3.style.display = 'none';
         });
 
-        
+        const btnCerrarSesion = document.querySelector('#cerrar-sesion');
+        btnCerrarSesion.addEventListener('click', function () {
+            fetch('/logout', {
+                method: 'POST'
+            }).then(response => {
+                window.location.href = '/';
+            }).catch(error => {
+                console.error('Error al cerrar sesión:', error);
+            });
+        });
+
     </script>
 </div>

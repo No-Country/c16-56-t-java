@@ -40,7 +40,12 @@ public class SecurityConfig {
                 })
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider)
-                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+                .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout((logout) -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
+                        .invalidateHttpSession(true)
+                        .permitAll());
 
         return httpSecurity.build();
     }
@@ -48,18 +53,22 @@ public class SecurityConfig {
     private RequestMatcher endPointsPublicos() {
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/cliente/registrar"),
-                new AntPathRequestMatcher("/admin/registrar"),
-                new AntPathRequestMatcher("/jefe_cocina/registrar"),
+                // new AntPathRequestMatcher("/admin/registrar"),
+                // new AntPathRequestMatcher("/jefe_cocina/registrar"),
+                new AntPathRequestMatcher("/mesero/registrar"),
                 new AntPathRequestMatcher("/cliente"),
                 new AntPathRequestMatcher("/admin"),
                 new AntPathRequestMatcher("/jefe_cocina"),
+                new AntPathRequestMatcher("/mesero"),
                 new AntPathRequestMatcher("/auth/login"),
                 new AntPathRequestMatcher("/"),
-                new AntPathRequestMatcher("/js/*"),
-                new AntPathRequestMatcher("/css/*"),
+                new AntPathRequestMatcher("/download/**"),
+                new AntPathRequestMatcher("/download"),
+                new AntPathRequestMatcher("/js/**"),
+                new AntPathRequestMatcher("/css/**"),
                 new AntPathRequestMatcher("/images/**"),
-                new AntPathRequestMatcher("/images/favicon/*"),
-                new AntPathRequestMatcher("/images/Logo/*"));
+                new AntPathRequestMatcher("/images/favicon/**"),
+                new AntPathRequestMatcher("/images/Logo/**"));
     }
 
 }

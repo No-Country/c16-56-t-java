@@ -3,10 +3,14 @@
         <img src="images/logo/Logo.png" alt="">
     </div>
     <div class="perfil-link">
-        <a id="perfil_btn" href="#perfil_usuario">Nombre usuario  <img src="images/userdefult/perfiluser.png" alt="imagen_default_usuario"></a>
-        <script >
+        <a id="perfil_btn" href="#perfil_usuario">
+            <span th:text="${nombre}">Nombre usuario</span>
+            <img id="imagenHeader" th:src="${foto != null ? foto.url : 'images/userdefult/perfiluser.png'}"
+                alt="imagen_default_usuario">
+        </a>
+        <script>
             const abrirPerfil = document.querySelector('#perfil_btn');
-            abrirPerfil.addEventListener('click', function(){
+            abrirPerfil.addEventListener('click', function () {
                 const verPerfil = document.querySelector('#perfil_usuario');
                 verPerfil.style.display = 'block';
                 const ocultarVista = document.querySelector('.vista');
@@ -15,4 +19,3 @@
         </script>
     </div>
 </header>
-    

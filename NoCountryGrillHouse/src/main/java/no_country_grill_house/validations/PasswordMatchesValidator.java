@@ -6,6 +6,7 @@ import no_country_grill_house.exceptions.PasswordMismatchException;
 import no_country_grill_house.models.dtos.AdminDto;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.JefeCocinaDto;
+import no_country_grill_house.models.dtos.MeseroDto;
 
 public class PasswordMatchesValidator implements ConstraintValidator<PasswordMatches, Object> {
 
@@ -28,6 +29,11 @@ public class PasswordMatchesValidator implements ConstraintValidator<PasswordMat
         } else if (obj instanceof JefeCocinaDto) {
             JefeCocinaDto jefeCocinaDto = (JefeCocinaDto) obj;
             if (!jefeCocinaDto.getPassword().equals(jefeCocinaDto.getPassword2())) {
+                throw new PasswordMismatchException("Las contraseñas no coinciden");
+            }
+        } else if (obj instanceof MeseroDto) {
+            MeseroDto meseroDto = (MeseroDto) obj;
+            if (!meseroDto.getPassword().equals(meseroDto.getPassword2())) {
                 throw new PasswordMismatchException("Las contraseñas no coinciden");
             }
         }

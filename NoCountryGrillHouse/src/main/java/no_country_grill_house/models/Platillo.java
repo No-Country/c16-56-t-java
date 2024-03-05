@@ -32,7 +32,7 @@ public class Platillo implements Serializable {
     @Column(name = "nombre", nullable = false)
     private String nombre;
     @Column(name = "descripcion", nullable = false)
-    private StringBuilder descripcion;
+    private String descripcion;
     @Column(name = "precio", nullable = false)
     private Double precio;
     @Column(name = "tiempo_estimado", nullable = false)

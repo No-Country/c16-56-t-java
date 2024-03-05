@@ -10,11 +10,13 @@ import jakarta.transaction.Transactional;
 import no_country_grill_house.config.JwtService;
 import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.AdminMapper;
+import no_country_grill_house.mappers.DireccionMapper;
 import no_country_grill_house.mappers.FotoUsuarioMapper;
 import no_country_grill_house.models.Admin;
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.dtos.AdminDto;
 import no_country_grill_house.models.dtos.FotoUsuarioDto;
+import no_country_grill_house.models.dtos.PasswordDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.repositories.AdminRepository;
 
@@ -29,6 +31,12 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private FotoUsuarioMapper fotoUsuarioMapper;
+
+    @Autowired
+    private DireccionServiceImpl direccionServiceImpl;
+
+    @Autowired
+    private DireccionMapper direccionMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -65,6 +73,14 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.toAdminDto(admin);
     }
 
+    @Override
+    public AdminDto findByEmail(String email) {
+        Admin admin = repository.findAdminByEmail(email).orElseThrow(() -> {
+            throw new GrillHouseException("No existe el admin con el email: " + email);
+        });
+        return adminMapper.toAdminDto(admin);
+    }
+
     @Transactional
     @Override
     public AdminDto update(Long id, AdminDto adminDto) {
@@ -80,9 +96,40 @@ public class AdminServiceImpl implements AdminService {
             admin.setPassword(adminDto.getPassword());
         if (adminDto.getTelefono() != null)
             admin.setTelefono(adminDto.getTelefono());
+        if (adminDto.getFoto() != null) {
+            admin.setFoto(adminDto.getFoto());
+        }
+        if (adminDto.getDireccion() != null) {
+            if (admin.getDireccion() == null) {
+                if (adminDto.getDireccion().getCalle() != null && adminDto.getDireccion().getNumero() != null
+                        && adminDto.getDireccion().getCiudad() != null) {
+                    admin.setDireccion(direccionMapper.toDireccion(
+                            direccionServiceImpl.create(direccionMapper.toDireccionDto(adminDto.getDireccion()))));
+                }
+            } else {
+                direccionServiceImpl.update(admin.getDireccion().getId(),
+                        direccionMapper.toDireccionDto(adminDto.getDireccion()));
+            }
+        }
 
         repository.save(admin);
         return adminMapper.toAdminDto(admin);
+    }
+
+    @Override
+    public void modificarPassword(PasswordDto passwordDto) {
+        Admin admin = adminMapper.toAdmin(findByEmail(passwordDto.getEmail()));
+
+        if (!passwordEncoder.matches(passwordDto.getPasswordActual(), admin.getPassword())) {
+            throw new GrillHouseException("La contraseña actual no coincide con la ingresada");
+        }
+
+        if (!passwordDto.getPassword1().equals(passwordDto.getPassword2())) {
+            throw new GrillHouseException("Las contraseñas nuevas no coinciden");
+        }
+        admin.setPassword(passwordEncoder.encode(passwordDto.getPassword1()));
+        repository.save(admin);
+
     }
 
     public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {

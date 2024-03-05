@@ -26,12 +26,9 @@ public class Orden implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numeroOrden;
 
-    /*
-     * @OneToMany
-     * 
-     * @JoinColumn(name = "numeroMesa", referencedColumnName = "numeroMesa")
-     * private Mesa mesa;
-     */
+    @ManyToOne
+    @JoinColumn(name = "id_mesa", referencedColumnName = "id")
+    private Mesa mesa;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")

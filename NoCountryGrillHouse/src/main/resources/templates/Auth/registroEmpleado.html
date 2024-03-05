@@ -1,45 +1,156 @@
-<div id="registro_roles" class="ocultar registro-roles"  style="display: none;">
-    <a id="btn_volver3" class="volver" href="#vista">
-        <svg
-        width="28" height="16" viewBox="0 0 28 16" fill="none"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
+<div id="registro_roles" class="ocultar registro-roles" style="display: none;">
+  <a id="btn_volver3" class="volver" href="#vista">
+    <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path
         d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
-        fill="#252525"/>
-        </svg>
-      </a>
-      <h2>Nuevo usuario</h2>
-      <div class="empleado-form">
-        <form id="registro_empleado" action="">
-            <label for="name">Nombre y apellido</label>
-            <input class="form-control" type="text" name="name" placeholder="Nombre y apellido">
-            <label for="rol">Rol de empleado 
-                <select id="roles" class="form-control" name="rol">
-                    <option value="">(seleccionar un rol)</option>
-                    <option value="1">Cocina</option>
-                    <option value="2">Mesero</option>
-                    <option value="3">Cliente</option>
-                </select>
-            </label>          
-            <label for="email">Correo electrónico</label>
-            <input class="form-control" type="email" name="email" placeholder="Correo electrónico">
-            <label for="password">Contraseña</label>
-            <input class="form-control" type="password" name="password" placeholder="Contraseña">
-            <butto class="btn btn-primary">Crear usuario</butto>
-        </form>
-      </div>
-      <div class="large-line"></div>
-      <script>
-        const btnVolver4 = document.querySelector('#btn_volver3');
-        btnVolver4.addEventListener('click', function(){
-            const ocultarRow1 = document.querySelector('.registro-roles');
-            ocultarRow1.style.display = 'none';
-            const mostrarVista5 = document.querySelector('.vista');
-            mostrarVista5.style.display = 'block';
-            const mostrarMenuFlot3 = document.querySelector('.menu');
-            mostrarMenuFlot3.style.display = 'block';
-            
+        fill="#252525" />
+    </svg>
+  </a>
+  <h2>Nuevo usuario</h2>
+  <div class="empleado-form">
+    <form id="registro_empleado">
+      <label for="name">Nombre y apellido</label>
+      <input class="form-control" type="text" name="nombre" id="nombreRegEmp" placeholder="Nombre y apellido">
+      <label for="rol">Rol de empleado
+        <select id="rolesRegEmp" class="form-control" name="rol">
+          <option value="0">(seleccionar un rol)</option>
+          <option value="cocinero">Cocinero</option>
+          <option value="mesero">Mesero</option>
+        </select>
+      </label>
+      <label for="email">Correo electrónico</label>
+      <input class="form-control" type="email" name="email" id="emailRegEmp" placeholder="Correo electrónico">
+      <label for="password">Contraseña</label>
+      <input class="form-control" type="password" name="password" id="passwordRegEmp" placeholder="Contraseña">
+      <label for="password_confirm"> Repetir Contraseña</label>
+      <input class="form-control" type="password" name="password_confirm" id="password_confirmRegEmp"
+        placeholder="Repetir Contraseña">
+      <button type="submit" class="btn btn-primary">Crear usuario</button>
+    </form>
+  </div>
+  <div class="large-line"></div>
+  <script>
+    const btnVolver4 = document.querySelector('#btn_volver3');
+    btnVolver4.addEventListener('click', function () {
+      const ocultarRow1 = document.querySelector('.registro-roles');
+      ocultarRow1.style.display = 'none';
+      const mostrarVista5 = document.querySelector('.vista');
+      mostrarVista5.style.display = 'block';
+      const mostrarMenuFlot3 = document.querySelector('.menu');
+      mostrarMenuFlot3.style.display = 'block';
+
+    });
+
+
+    let registroForm = document.getElementById('registro_empleado');
+
+    registroForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      let nombre = document.getElementById('nombreRegEmp').value;
+      let email = document.getElementById('emailRegEmp').value;
+      let password = document.getElementById('passwordRegEmp').value;
+      let password2 = document.getElementById('password_confirmRegEmp').value;
+      var rol = document.getElementById('rolesRegEmp').value;
+      // let telefono = document.getElementById('telefono').value;
+
+      if (rol === "0") {
+        mostrarMensaje('Debe seleccionar un rol', false, 'alert', 'alert-danger', 'alerta-error');
+      } else {
+
+        let url;
+
+        let usuarioData = {
+          nombre: nombre,
+          email: email,
+          password: password,
+          password2: password2,
+        }
+
+        if (rol == 'cocinero') {
+          url = '/jefe_cocina/registrar';
+        } else if (rol == 'mesero') {
+          url = '/mesero/registrar';
+        }
+
+        fetch(url, {
+          method: 'POST',
+          headers: headers,
+          body: JSON.stringify(usuarioData)
+        })
+          .then(function (response) {
+            if (response.ok) {
+              return response.json();
+            } else {
+              return response.json().then(errorData => {
+                const nombrePropiedad = Object.keys(errorData)[0];
+                const mensajeError = errorData[nombrePropiedad];
+                throw new Error(mensajeError || 'Error en el servidor');
+              });
+            }
+          })
+          .then(data => {
+            mostrarMensaje(data, true, 'alert', 'alert-success', 'alerta-exito');
+          })
+          .catch(error => {
+            mostrarMensaje(error.message, false, 'alert', 'alert-danger', 'alerta-error');
+          });
+      }
+      function mostrarMensaje(mensaje, esExito, ...clases) {
+        let mensajeDiv = document.getElementById('mensaje');
+        if (!mensajeDiv) {
+          mensajeDiv = document.createElement('div');
+          mensajeDiv.id = 'mensaje';
+        }
+
+        mensajeDiv.role = 'alert';
+        mensajeDiv.className = '';
+
+        clases.forEach(clase => {
+          mensajeDiv.classList.add(clase);
         });
-      </script>
+
+        if (esExito) {
+          limpiarCampos();
+          const ocultarRow1 = document.querySelector('.registro-roles');
+          ocultarRow1.style.display = 'none';
+          const mostrarVista5 = document.querySelector('.vista');
+          mostrarVista5.style.display = 'block';
+          const mostrarMenuFlot3 = document.querySelector('.menu');
+          mostrarMenuFlot3.style.display = 'block';
+          if (rol == 'cocinero') {
+            var contenedorTarjetas = document.getElementById('contenedor-tarjetas');
+            contenedorTarjetas.innerHTML = '';
+            listar(urlListarJefesCocina);
+          } else if (rol == 'mesero') {
+            var contenedorTarjetas = document.getElementById('contenedor-tarjetas');
+            contenedorTarjetas.innerHTML = '';
+            listar(urlListarMeseros);
+          }
+          mensajeDiv.textContent = 'Se ha registrado correctamente!';
+          document.body.insertBefore(mensajeDiv, document.body.firstChild);
+          setTimeout(function () {
+            mensajeDiv.style.display = 'none';
+          }, 4000);
+        } else {
+          mensajeDiv.textContent = mensaje;
+          const primerElemento = registroForm.firstElementChild;
+          if (primerElemento) {
+            registroForm.insertBefore(mensajeDiv, primerElemento);
+          }
+        }
+      }
+
+      function limpiarCampos() {
+        document.getElementById('nombreRegEmp').value = '';
+        document.getElementById('emailRegEmp').value = '';
+        document.getElementById('passwordRegEmp').value = '';
+        document.getElementById('password_confirmRegEmp').value = '';
+        document.getElementById('rolesRegEmp').value = '0';
+      }
+    });
+
+
+  </script>
 
 </div>
