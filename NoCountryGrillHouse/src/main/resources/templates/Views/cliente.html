@@ -5,23 +5,223 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Grill House</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=SF+Pro+Text:wght@600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" />
+    <link rel="stylesheet" th:href="|/css/cliente.css|" />
+    <link rel="stylesheet" th:href="|/css/carrito.css|" />
+    <link rel="stylesheet" th:href="|/css/metodosPagos.css|" />
+    <link rel="stylesheet" th:href="|/css/comprobantes.css|" />
+    <link rel="stylesheet" th:href="|/css/misPedidos.css|" />
+    <link rel="stylesheet" th:href="|/css/seguimiento.css|" />
+    <link rel="stylesheet" th:href="|/css/detallePedido.css|" />
+    <link rel="icon" href="/images/favicon/favicon.png" type="image/png" />
 </head>
 
 <body>
-    <h1>cliente</h1>
-    <h2>Upload Image</h2>
-    <form action="/foto/upload/usuario" method="post" enctype="multipart/form-data">
-        <label for="file">Seleccionar imagen:</label><br>
-        <input type="file" id="file" name="file"><br><br>
-        <input type="submit" value="Enviar">
-    </form>
+<div id="cliente_vista" class="cliente-vista">
+  <div class="main-container">
+    <div class="flex-row-ff">
+      <div class="regroup">
+        <span class="jessica">Jessica</span>
+        <div class="usuario"></div>
+      </div>
+      <div class="vector"></div>
+    </div>
+    <div class="inicio-overflow">
+      <div class="elige-tu-comida">
+        <span class="elige-tu-comida-1">Elige <br />Tu Comida </span
+        ><span class="favorita">Favorita</span>
+      </div>
+      <div class="input-buscar">
+        <span class="buscar">Buscar</span>
+        <div class="icono-buscar"></div>
+      </div>
+      <div class="flex-row-ba">
+        <div class="boton-todos"><button class="todos">Todos</button></div>
+        <div class="boton-hamburguesa"><div class="burguer"></div></div>
+        <div class="boton-postre"><div class="cupcake"></div></div>
+        <div class="boton-bebida"><div class="bebida"></div></div>
+        <div class="boton-favoritos"><div class="corazon"></div></div>
+      </div>
+      <div class="flex-row-a">
+        <span class="comidas-populares">Comidas populares</span>
+        <div class="boton"><span class="ver-todo">Ver todo</span></div>
+      </div>
+      <div class="comidas-populares-2">
+        <div class="carta-de-plato">
+          <div class="hamburguesa-clasica">
+            <span class="hamburguesa">Hamburguesa </span
+            ><span class="clasica">Clásica</span>
+          </div>
+          <span class="hamburguesa-3">Hamburguesa</span>
+          <div class="icono-corazon"></div>
+          <div id="btn_detalle" class="hamburguesa-4"></div>
+          <div class="icono-carrito"><div class="icon-carritocero"></div></div>
+          <span class="precio">$12.50</span>
+        </div>
+        <div class="carta-plato">
+          <div class="hamburguesa-clasica-5">
+            <span class="cupcake-fresa">Cupcake de </span
+            ><span class="fresa">Fresa</span>
+          </div>
+          <span class="postre">Postre</span>
+          <div class="icono-corazon-6"></div>
+          <div class="cupcake-7"></div>
+          <div class="icono-carrito-8"><div class="icon-carritocero-9"></div></div>
+          <span class="precio-a">$12.50</span>
+        </div>
+        <div class="carta-plato-b">
+          <div class="hamburguesa-clasica-c">
+            <span class="coca-cola-clasica">Coca Cola </span
+            ><span class="clasica-d">Clásica</span>
+          </div>
+          <span class="bebida-e">Bebida</span>
+          <div class="icono-corazon-f"></div>
+          <div class="bebida-10"></div>
+          <div class="icono-carrito-11"><div class="icon-12"></div></div>
+          <span class="precio-13">$12.50</span>
+        </div>
+      </div>
+      <div class="flex-row-e">
+        <span class="hamburguesas">Hamburguesas</span>
+        <div class="boton-14"><span class="ver-todo-15">Ver todo</span></div>
+      </div>
+      <div class="barra-navegacion-cliente">
+        <div id="btn_carrito" class="icono-carrito-navbar"><div class="icon-16"></div></div>
+        <div class="icono-fuego"><div class="icon-17"></div></div>
+        <div class="icono-usuario"><div class="icon-18"></div></div>
+        <div id="btn_mispedidos" class="icono-compra"><div class="icon-19"></div></div>
+      </div>
+      <div class="flex-row-d">
+     
+        <div class="hamburguesas-1a">
+          <div class="carta-de-plato-1b">
+            <div class="hamburguesa-clasica-1c">
+              <span class="hamburguesa-1d">Hamburguesa </span
+              ><span class="clasica-1e">Clásica</span>
+            </div>
+            <span class="hamburguesa-1f">Hamburguesa</span>
+            <div class="icono-corazon-20"></div>
+            <div class="hamburguesa-21"></div>
+            <div class="icono-carrito-22"><div class="icon-23"></div></div>
+            <span class="precio-24">$12.50</span>
+          </div>
+          <div class="carta-de-plato-25">
+            <div class="hamburguesa-clasica-26">
+              <span class="hamburguesa-27">Hamburguesa </span
+              ><span class="clasica-28">Clásica</span>
+            </div>
+            <span class="hamburguesa-29">Hamburguesa</span>
+            <div class="icono-corazon-2a"></div>
+            <div class="hamburguesa-2b"></div>
+            <div class="icono-carrito-2c"><div class="icon-2d"></div></div>
+            <span class="precio-2e">$12.50</span>
+          </div>
+          <div class="carta-de-plato-2f">
+            <div class="hamburguesa-clasica-30">
+              <span class="hamburguesa-31">Hamburguesa </span
+              ><span class="clasica-32">Clásica</span>
+            </div>
+            <span class="hamburguesa-33">Hamburguesa</span>
+            <div class="icono-corazon-34"></div>
+            <div class="hamburguesa-35"></div>
+            <div class="icono-carrito-36"><div class="icon-37"></div></div>
+            <span class="dollar">$12.50</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex-row-a-38">
+        <span class="postres">Postres</span>
+        <div class="boton-39"><span class="ver-todo-3a">Ver todo</span></div>
+      </div>
+      <div class="postre-3b">
+        <div class="carta-de-plato-3c">
+          <div class="hamburguesa-clasica-3d">
+            <span class="cupcake-de-fresa">Cupcake de </span
+            ><span class="hamburguesa-postre">Fresa</span>
+          </div>
+          <span class="icono-corazon-3e">Postre</span>
+          <div class="cupcake-3f"></div>
+          <div class="icono-carrito-40"></div>
+          <div class="icon-41"><div class="dollar-42"></div></div>
+          <span class="carta-de-plato-43">$12.50</span>
+        </div>
+        <div class="hamburguesa-clasica-44">
+          <div class="cupcake-de-fresa-45">
+            <span class="hamburguesa-postre-46">Cupcake de </span
+            ><span class="icono-corazon-47">Fresa</span>
+          </div>
+          <span class="cupcake-48">Postre</span>
+          <div class="icono-carrito-49"></div>
+          <div class="icon-4a"></div>
+          <div class="dollar-4b"><div class="carta-de-plato-4c"></div></div>
+          <span class="hamburguesa-clasica-4d">$12.50</span>
+        </div>
+        <div class="cupcake-de-fresa-4e">
+          <div class="hamburguesa-postre-4f">
+            <span class="icono-corazon-50">Cupcake de </span
+            ><span class="cupcake-51">Fresa</span>
+          </div>
+          <span class="icono-carrito-52">Postre</span>
+          <div class="icon-53"></div>
+          <div class="pic-16"></div>
+          <div class="box-12"><div class="img-15"></div></div>
+          <span class="price">$12.50</span>
+        </div>
+      </div>
+      <div class="flex-row">
+        <span class="beverages">Bebidas</span>
+        <div class="button"><span class="see-all">Ver todo</span></div>
+      </div>
+      <div class="beverages-54">
+        <div class="menu-item">
+          <div class="classic-burger">
+            <span class="coca-cola">Coca Cola </span
+            ><span class="classic">Clásica</span>
+          </div>
+          <span class="soda">Refresco</span>
+          <div class="heart-icon"></div>
+          <div class="beverage"></div>
+          <div class="cart-icon"><div class="icon-55"></div></div>
+          <span class="price-56">$12.50</span>
+        </div>
+        <div class="menu-item-57">
+          <div class="classic-burger-58">
+            <span class="coca-cola-59">Coca Cola </span
+            ><span class="classic-5a">Clásica</span>
+          </div>
+          <span class="soda-5b">Refresco</span>
+          <div class="heart-icon-5c"></div>
+          <div class="beverage-5d"></div>
+          <div class="cart-icon-5e"><div class="icon-5f"></div></div>
+          <span class="price-60">$12.50</span>
+        </div>
+        <div class="menu-item-61">
+          <div class="classic-burger-62">
+            <span class="coca-cola-63">Coca Cola </span
+            ><span class="classic-64">Clásica</span>
+          </div>
+          <span class="soda-65">Refresco</span>
+          <div class="heart-icon-66"></div>
+          <div class="beverage-67"></div>
+          <div class="cart-icon-68"><div class="icon-69"></div></div>
+          <span class="price-6a">$12.50</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <h2>Update Image</h2>
-    <form action="/foto/update/usuario" method="post" enctype="multipart/form-data">
-        <label for="file">Seleccionar imagen:</label><br>
-        <input type="file" id="file" name="file"><br><br>
-        <input type="submit" value="Enviar">
-    </form>
+  <th:div th:replace="components/carrito.html :: div"></th:div>
+  <th:div th:replace="components/metodos-pago.html :: div"></th:div>
+  <th:div th:replace="components/comprobantes.html :: div"></th:div>
+  <th:div th:replace="components/misPedidos.html :: div"></th:div>
+  <th:div th:replace="components/seguimiento.html :: div"></th:div>
+  <th:div th:replace="components/detallePedido.html :: div"></th:div>
+
+  <script src="js/cliente.js"></script>
+
 </body>
 
 </html>
