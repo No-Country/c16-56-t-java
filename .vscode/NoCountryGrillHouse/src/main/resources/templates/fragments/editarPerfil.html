@@ -1,0 +1,202 @@
+<div id="editar_info" class="ocultar editar-perfil" style="display: none;">
+    <a id="btn_perfil" class="volver" href="#perfil_usuario">
+        <svg width="28" height="16" viewBox="0 0 28 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+                d="M7.94981 15.5201C8.0931 15.6553 8.28278 15.7304 8.47981 15.7301C8.6761 15.7318 8.86434 15.6521 8.99981 15.5101C9.14276 15.3708 9.22338 15.1797 9.22338 14.9801C9.22338 14.7805 9.14276 14.5894 8.99981 14.4501L3.29975 8.75H27.25C27.6642 8.75 28 8.41421 28 8C28 7.58579 27.6642 7.25 27.25 7.25H3.29756L9.00981 1.52006C9.15276 1.38077 9.23338 1.18965 9.23338 0.990063C9.23338 0.790475 9.15276 0.59935 9.00981 0.460063C8.71699 0.167609 8.24263 0.167609 7.94981 0.460063L0.949809 7.46006C0.657355 7.75288 0.657355 8.22724 0.949809 8.52006L7.94981 15.5201Z"
+                fill="#252525" />
+        </svg>
+    </a>
+    <h2>Editar perfil</h2>
+    <div class="perfil-form">
+        <form id="editar_form">
+            <div class="form-group">
+                <input class="form-control" type="text" id="nombre" placeholder="Nombre" disabled>
+                <button type="button" id="editar-nombre" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="email" id="email" placeholder="Correo electrónico" disabled>
+                <button type="button" id="editar-email" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="tel" id="telefono" placeholder="Teléfono" disabled>
+                <button type="button" id="editar-telefono" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="form-group">
+                <label for="calle">Direccion</label>
+                <input class="form-control" type="text" id="calle" name="calle" placeholder="Calle" disabled>
+                <button type="button" id="editar-calle" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" id="numero" placeholder="Número" disabled>
+                <button type="button" id="editar-numero" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <div class="form-group">
+                <input class="form-control" type="text" id="ciudad" placeholder="Ciudad" disabled>
+                <button type="button" id="editar-ciudad" class="btn"><i class="bi bi-pencil-square"></i></button>
+            </div>
+            <button type="submit" class="btn btn-primary">Editar</button>
+        </form>
+    </div>
+
+    <div class="large-line"></div>
+
+    <script type="module" th:inline="javascript">
+        const btnVolverPerfil = document.querySelector('#btn_perfil');
+        btnVolverPerfil.addEventListener('click', function () {
+            const mostrarPerfilVista = document.querySelector('#perfil_usuario');
+            mostrarPerfilVista.style.display = 'block';
+            const ocultarEdicion = document.querySelector('.editar-perfil');
+            ocultarEdicion.style.display = 'none';
+            const mostrarMenuFlot = document.querySelector('.menu');
+            mostrarMenuFlot.style.display = 'block';
+        });
+
+        import { enviarFetch } from '../../js/fetch.js';
+
+        function obtenerUsuario() {
+            return new Promise((resolve, reject) => {
+                const token = localStorage.getItem('token');
+                const rol = localStorage.getItem('rol');
+                let url = '';
+                let email = /*[[${email}]]*/ '';
+
+                if (rol == 'CLIENTE') {
+                    url = '/cliente/obtenerPorEmail';
+                } else if (rol == 'ADMIN') {
+                    url = '/admin/obtenerPorEmail';
+                } else if (rol == 'JEFE_COCINA') {
+                    url = '/jefe_cocina/obtenerPorEmail';
+                } else if (rol == 'MESERO') {
+                    url = '/mesero/obtenerPorEmail';
+                }
+
+                let userData = {
+                    email: email
+                }
+
+                enviarFetch(url, 'POST', userData,
+                    function (data) {
+                        resolve(data);
+                    },
+                    function (error) {
+                        reject(error);
+                    },
+                    token
+                );
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            let usuario = {};
+            const editar = document.querySelector('#editar_btn');
+            editar.addEventListener('click', function () {
+                obtenerUsuario()
+                    .then(data => {
+                        usuario = data;
+                        let inputNombre = document.getElementById('nombre');
+                        let inputEmail = document.getElementById('email');
+                        let inputTelefono = document.getElementById('telefono');
+                        let inputCalle = document.getElementById('calle');
+                        let inputNumero = document.getElementById('numero');
+                        let inputCiudad = document.getElementById('ciudad');
+                        inputNombre.value = usuario.nombre;
+                        inputEmail.value = usuario.email;
+                        if (usuario.telefono != null) {
+                            inputTelefono.value = usuario.telefono;
+                        }
+                        if (usuario.direccion != null) {
+                            inputCalle.value = usuario.direccion.calle;
+                            inputNumero.value = usuario.direccion.numero;
+                            inputCiudad.value = usuario.direccion.ciudad;
+                        }
+                    })
+                    .catch(error => {
+                        console.error(error);
+                    });
+            });
+
+
+            const editarForm = document.querySelector('#editar_form');
+            editarForm.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                let nombre = document.getElementById('nombre').value;
+                let email = document.getElementById('email').value;
+                let telefono = document.getElementById('telefono').value;
+                let calle = document.getElementById('calle').value;
+                let numero = document.getElementById('numero').value;
+                let ciudad = document.getElementById('ciudad').value;
+
+                let usuarioData = {
+                    id: usuario.id
+                };
+
+                if (usuario.email != email) {
+                    usuarioData.email = email;
+                }
+                if (usuario.telefono != telefono) {
+                    usuarioData.telefono = telefono;
+                }
+                if (usuario.nombre != nombre) {
+                    usuarioData.nombre = nombre;
+                }
+                if (usuario.direccion != null) {
+                    if (usuario.direccion.calle != calle) {
+                        usuarioData.calle = calle;
+                    }
+                    if (usuario.direccion.numero != numero) {
+                        usuarioData.numero = numero;
+                    }
+                    if (usuario.direccion.ciudad != ciudad) {
+                        usuarioData.ciudad = ciudad;
+                    }
+                } else {
+                    if (calle != '' && numero != '' && ciudad != '') {
+                        usuarioData.calle = calle;
+                        usuarioData.numero = numero;
+                        usuarioData.ciudad = ciudad;
+                    }
+                }
+
+                const token = localStorage.getItem('token');
+                const rol = localStorage.getItem('rol');
+                let url = '';
+
+                if (rol == 'CLIENTE') {
+                    url = '/cliente/actualizar';
+                } else if (rol == 'ADMIN') {
+                    url = '/admin/actualizar';
+                } else if (rol == 'JEFE_COCINA') {
+                    url = '/jefe_cocina/actualizar';
+                } else if (rol == 'MESERO') {
+                    url = '/mesero/actualizar';
+                }
+
+                enviarFetch(url, 'POST', usuarioData,
+                    function (data) {
+                        console.log(data);
+                    },
+                    function (error) {
+                        console.log(error);
+                    },
+                    token
+                );
+
+            });
+
+        });
+
+        const editButtons = document.querySelectorAll('[id^=editar-]');
+        editButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const inputId = this.id.split('-')[1];
+                const input = document.getElementById(inputId);
+
+                input.disabled = false;
+            });
+        });
+
+
+    </script>
+</div>

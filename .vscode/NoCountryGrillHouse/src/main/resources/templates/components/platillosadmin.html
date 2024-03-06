@@ -1,0 +1,236 @@
+<div id="platillos_admin" class="platillos-admin" style="height: 100vh; display: none;">
+  <th:header th:replace="fragments/header.html :: header"></th:header>
+
+  <div class="buscador">
+    <form class="d-flex align-items-center" role="search">
+      <button class="btn btn-inline-success" type="submit"><i class="bi bi-search"></i></button>
+      <input class="form-control me-2" type="search" placeholder="buscar" aria-label="Search">
+    </form>
+  </div>
+  <div class="navbar btn-group">
+    <button id="btnPlatillos" class="btn btn-primary">Todos</button>
+    <button id="btnComida" class="btn"><img src="images/burguer 1.png" alt=""></button>
+    <button id="btnPostre" class="btn"><img src="images/cupcake.png" alt=""></button>
+    <button id="btnBebida" class="btn"><img src="images/bebida.png" alt=""></button>
+    <button id="nuevo_platillo" class="btn"><img src="images/bebidacubierto.png" alt=""></button>
+  </div>
+
+  <div id="contenedor-platillos"></div>
+
+  <script>
+
+    const abrirRegistroPlatillo1 = document.querySelector('#nuevo_platillo');
+    abrirRegistroPlatillo1.addEventListener('click', function () {
+      const mostrarRegistroPlatillo1 = document.querySelector('#registro_platillos');
+      mostrarRegistroPlatillo1.style.display = 'block';
+      const ocultarPlatilloAdmin1 = document.querySelector('#platillos_admin');
+      ocultarPlatilloAdmin1.style.display = 'none';
+      const ocultarMenu5 = document.querySelector('.menu');
+      ocultarMenu5.style.display = 'none';
+    });
+
+    function listaPlatillos(url, nombre = null) {
+      if (nombre != null) {
+        url += `?nombre=${nombre}`;
+      }
+
+      fetch(url, {
+        method: 'GET',
+        headers: headers
+      })
+        .then(response => response.json())
+        .then(data => {
+
+          const contenedorPlatillos = document.getElementById('contenedor-platillos');
+
+          data.forEach(platillo => {
+            const mainContainer = document.createElement('div');
+            mainContainer.classList.add('main-container2');
+
+            const hiddenElements = document.createElement('div');
+            hiddenElements.classList.add('hidden-elements');
+
+            const line = document.createElement('div');
+            line.classList.add('line2');
+            hiddenElements.appendChild(line);
+
+            const dollarAmount = document.createElement('span');
+            dollarAmount.classList.add('dollar-amount2');
+            dollarAmount.textContent = `$${platillo.precio}`;
+            hiddenElements.appendChild(dollarAmount);
+
+            const time = document.createElement('span');
+            time.classList.add('time2');
+            time.textContent = 'Tiempo';
+            hiddenElements.appendChild(time);
+
+            const mins = document.createElement('span');
+            mins.classList.add('mins2');
+            mins.textContent = platillo.tiempoEstimado;
+            hiddenElements.appendChild(mins);
+
+            const descripcion = document.createElement('span');
+            descripcion.classList.add('descripcion2');
+            descripcion.textContent = 'Descripción';
+            hiddenElements.appendChild(descripcion);
+
+            const deliciosoPostre = document.createElement('span');
+            deliciosoPostre.classList.add('delicioso-postre2');
+            deliciosoPostre.textContent = platillo.descripcion;
+            hiddenElements.appendChild(deliciosoPostre);
+
+            const botonesMobile = document.createElement('button');
+            botonesMobile.classList.add('botones-mobile2');
+            hiddenElements.appendChild(botonesMobile);
+
+            const eliminarPlatillo = document.createElement('span');
+            eliminarPlatillo.classList.add('eliminar-platillo2');
+            eliminarPlatillo.textContent = 'Eliminar platillo';
+            botonesMobile.appendChild(eliminarPlatillo);
+            botonesMobile.dataset.platilloId = platillo.id;
+            eliminarPlatillo.dataset.platilloId = platillo.id;
+            botonesMobile.dataset.categoria = platillo.categoria.nombre;
+            eliminarPlatillo.dataset.categoria = platillo.categoria.nombre;
+
+            const icon = document.createElement('div');
+            icon.classList.add('icon2');
+            hiddenElements.appendChild(icon);
+
+            const fernandoAndrade = document.createElement('div');
+            fernandoAndrade.classList.add('fernando-andrade2');
+            if (platillo.foto == null) {
+              fernandoAndrade.style.backgroundImage = `url('/images/userdefult/perfiluser.png')`;
+            } else {
+              fernandoAndrade.style.backgroundImage = `url('${platillo.foto.url}')`;
+            }
+            mainContainer.appendChild(fernandoAndrade);
+
+            const iconArrow = document.createElement('div');
+            iconArrow.classList.add('icon-arrow2');
+            mainContainer.appendChild(iconArrow);
+
+            const strawberryCupcake = document.createElement('div');
+            strawberryCupcake.classList.add('strawberry-cupcake2');
+            mainContainer.appendChild(strawberryCupcake);
+
+            const cupcake = document.createElement('span');
+            cupcake.classList.add('cupcake2');
+            cupcake.textContent = platillo.nombre;
+            strawberryCupcake.appendChild(cupcake);
+
+            const dessert = document.createElement('span');
+            dessert.classList.add('dessert2');
+            dessert.textContent = platillo.categoria.nombre;
+            mainContainer.appendChild(dessert);
+
+            const precio = document.createElement('span');
+            precio.classList.add('precio2');
+            precio.textContent = 'Precio';
+            mainContainer.appendChild(precio);
+
+            mainContainer.appendChild(hiddenElements);
+
+            contenedorPlatillos.appendChild(mainContainer);
+          });
+        })
+        .catch(error => {
+          console.error('Error al obtener la lista de platillos:', error);
+        });
+    }
+    document.addEventListener('DOMContentLoaded', function () {
+      const botonPlatillos = document.getElementById('icon_menu');
+      botonPlatillos.addEventListener("click", function () {
+        let contenedorPlatillos = document.getElementById('contenedor-platillos');
+        contenedorPlatillos.innerHTML = '';
+        listaPlatillos('/platillo/listar');
+      });
+      btnComida.addEventListener("click", function () {
+        let contenedorPlatillos = document.getElementById('contenedor-platillos');
+        contenedorPlatillos.innerHTML = '';
+        listaPlatillos('/platillo/listar/categoria', 'Comida');
+      });
+      btnPostre.addEventListener("click", function () {
+        let contenedorPlatillos = document.getElementById('contenedor-platillos');
+        contenedorPlatillos.innerHTML = '';
+        listaPlatillos('/platillo/listar/categoria', 'Postre');
+      });
+      btnBebida.addEventListener("click", function () {
+        let contenedorPlatillos = document.getElementById('contenedor-platillos');
+        contenedorPlatillos.innerHTML = '';
+        listaPlatillos('/platillo/listar/categoria', 'Bebida');
+      });
+      btnPlatillos.addEventListener("click", function () {
+        let contenedorPlatillos = document.getElementById('contenedor-platillos');
+        contenedorPlatillos.innerHTML = '';
+        listaPlatillos('/platillo/listar');
+      });
+
+
+      const contenedorPlatillos = document.getElementById('contenedor-platillos');
+
+      contenedorPlatillos.addEventListener('click', function (event) {
+        const icono = event.target.closest('.icon-arrow2');
+        if (icono) {
+          const contenidoOculto = icono.closest('.main-container2').querySelector('.hidden-elements');
+
+          contenidoOculto.classList.toggle('visible2');
+
+          const mainContainer = icono.closest('.main-container2');
+          if (contenidoOculto.classList.contains('visible2')) {
+            mainContainer.style.height = '460px';
+          } else {
+            mainContainer.style.height = '110px';
+          }
+        }
+      });
+
+      document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('botones-mobile2') || event.target.classList.contains('eliminar-platillo2')) {
+          const clickedButton = event.target;
+
+          const platilloId = clickedButton.dataset.platilloId;
+          const categoria = clickedButton.dataset.categoria;
+
+          fetch('/platillo/borrar', {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(platilloId)
+          })
+            .then(response => {
+              if (!response.ok) {
+                throw new Error('Error en la solicitud de eliminación');
+              }
+              return response.text();
+            })
+            .then(data => {
+              let contenedorPlatillos = document.getElementById('contenedor-platillos');
+              switch (categoria) {
+                case 'Comida':
+                  contenedorPlatillos = document.getElementById('contenedor-platillos');
+                  contenedorPlatillos.innerHTML = '';
+                  listaPlatillos('/platillo/listar/categoria', 'Comida');
+                  break;
+                case 'Postre':
+                  contenedorPlatillos = document.getElementById('contenedor-platillos');
+                  contenedorPlatillos.innerHTML = '';
+                  listaPlatillos('/platillo/listar/categoria', 'Postre');
+                  break;
+                case 'Bebida':
+                  contenedorPlatillos = document.getElementById('contenedor-platillos');
+                  contenedorPlatillos.innerHTML = '';
+                  listaPlatillos('/platillo/listar/categoria', 'Bebida');
+                  break;
+              }
+            })
+            .catch(error => {
+              console.error('Error al enviar la solicitud de eliminación:', error);
+            });
+        }
+      });
+
+    });
+
+
+  </script>
+
+</div>

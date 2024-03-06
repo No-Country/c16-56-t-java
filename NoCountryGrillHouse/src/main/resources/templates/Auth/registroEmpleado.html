@@ -17,7 +17,7 @@
           <option value="cocinero">Cocinero</option>
           <option value="mesero">Mesero</option>
         </select>
-      </label>
+      </label><br>
       <label for="email">Correo electrónico</label>
       <input class="form-control" type="email" name="email" id="emailRegEmp" placeholder="Correo electrónico">
       <label for="password">Contraseña</label>
@@ -25,7 +25,9 @@
       <label for="password_confirm"> Repetir Contraseña</label>
       <input class="form-control" type="password" name="password_confirm" id="password_confirmRegEmp"
         placeholder="Repetir Contraseña">
+      <div class="logout-btn">
       <button type="submit" class="btn btn-primary">Crear usuario</button>
+      </div>
     </form>
   </div>
   <div class="large-line"></div>
@@ -37,7 +39,7 @@
       const mostrarVista5 = document.querySelector('.vista');
       mostrarVista5.style.display = 'block';
       const mostrarMenuFlot3 = document.querySelector('.menu');
-      mostrarMenuFlot3.style.display = 'block';
+      mostrarMenuFlot3.style.display = 'flex';
 
     });
 
