@@ -7,7 +7,7 @@
         </svg>
     </a>
     <h2>Mi perfil</h2>
-    <div class="login-form">
+    <div class="img-perfil">
         <img id="imgPreview" th:src="${foto != null ? foto.url : 'images/userdefult/perfiluser.png'}"
             alt="imagen_default_usuario">
         <label for="foto_subir" class="btn foto-btn">
@@ -18,20 +18,16 @@
 
 
     <ul class="user-info">
-        <li class="info">Nombre<span id="nombre-perfil"></span><button id="editar_btn" class="btn"><i
-                    class="bi bi-pencil-square"></i></button></li>
-        <li class="info">Correo electrónico<span id="email-perfil"></span></li>
-        <li class="info">Dirección<span id="direccion-perfil"></span></li>
-        <li class="info">Cambio de contraseña<button id="cambiar_contraseña" class="btn"><i
-                    class="bi bi-pencil-square"></i></button></li>
+        <button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button>
+        <li class="info">Nombre:<span id="nombre-perfil"></span></li>
+        <li class="info">Correo electrónico:<span id="email-perfil"></span></li>
+        <li class="info">Dirección:<span id="direccion-perfil"></span></li>
+        <button id="cambiar_contraseña" class="btn"><i class="bi bi-pencil-square"></i></button>
+        <li class="info">Cambio de contraseña</li>
     </ul>
-
-
-
-
-
-    <button class="btn btn-primary" id="cerrar-sesion" style="width: 80%; margin: 20px;">Cerrar sesión</button>
-
+    <div class="logout-btn">
+        <button class="btn btn-primary" id="cerrar-sesion" style="width: 50%; margin: 20px;">Cerrar sesión</button>
+    </div>
 
 
 

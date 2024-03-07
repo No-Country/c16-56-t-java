@@ -18,49 +18,55 @@
 </head>
 
 <body>
-  <div id="inicio">
+  <div id="inicio" class="inicio">
+    <div class="image-section"></div>
+    <div>
+      <div class="nav-bar">
+        <nav class="nav-home">
+          <a class="nav-gh" href="/">
+            <img th:src="|/images/Logo/Texto 2.png|" alt="grill_house_logo" />
+          </a>
+          <p>Bienvenidos a Grill House</p>
+        </nav>
+      </div>
 
-    <div class="nav-bar">
-      <nav class="nav-home">
-        <a class="nav-gh" href="/">
-          <img th:src="|/images/Logo/Texto 2.png|" alt="grill_house_logo" />
-        </a>
-        <p>Bienvenidos a Grill House</p>
-      </nav>
-    </div>
+      <!-- Inicio de sesión -->
 
-    <!-- Inicio de sesión -->
+      <div class="login-form">
+        <form id="login_form">
+          <label>Inicia sesión</label>
+          <div class="form-group">
+            <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" maxlength="35"
+              placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+              autocomplete="username" />
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control" id="loginContrasenia" placeholder="Contraseña"
+              autocomplete="new-password" />
+          </div>
+          <div class="form-btn">
+            <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
+            <button type="submit" class="btn btn-primary">Iniciar sesión</button>
+          </div>
+        </form>
+      </div>
 
-    <div class="login-form">
-      <form id="login_form">
-        <label>Inicia sesión</label>
-        <div class="form-group">
-          <input type="email" class="form-control" id="loginEmail" aria-describedby="emailHelp" maxlength="35"
-            placeholder="Correo electrónico" pattern="[a-z0-9.%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$" />
-        </div>
-        <div class="form-group">
-          <input type="password" class="form-control" id="loginContrasenia" placeholder="Contraseña" />
-        </div>
-        <div class="form-btn">
-          <a id="lost_password" href="#password_request">¿Olvidaste tu contraseña?</a>
-          <button type="submit" class="btn btn-primary">Iniciar sesión</button>
-        </div>
-      </form>
-    </div>
+      <div class="separador">
+        <div class="line"></div>
+        <p>o</p>
+        <div class="line"></div>
+      </div>
 
-    <div class="separador">
-      <div class="line"></div>o<div class="line"></div>
-    </div>
-
-    <div class="abrir-cuenta">
-      <p>¿No tienes cuenta?</p>
-      <a id="abrir_registro" class="nueva-cuenta" href="#registro">Crear cuenta</a>
+      <div class="abrir-cuenta">
+        <p>¿No tienes cuenta?</p>
+        <a id="abrir_registro" class="nueva-cuenta" href="#registro">Crear cuenta</a>
+      </div>
     </div>
   </div>
 
   <!-- Registro de clientes -->
 
-  <div id="registro" class="row">
+  <div id="registro" class="row" style="display: none;">
     <div class="container">
       <div justify-content="center">
         <div class="card">
@@ -85,7 +91,7 @@
               </div>
               <div class="form-group">
                 <input class="form-control" type="tel" id="telefono" required maxlength="15" placeholder="Teléfono"
-                  pattern="[0-9]{1,15}">
+                  pattern="[0-9]{1,15}" autocomplete="tel">
               </div>
               <!-- <div class="form-group">
                   <input class="form-control" type="text" id="calle"  placeholder="Calle">
@@ -97,11 +103,12 @@
                   <input class="form-control" type="text" id="ciudad"  placeholder="Ciudad">
                 </div> -->
               <div class="form-group">
-                <input class="form-control" type="password" id="password" required placeholder="Contraseña">
+                <input class="form-control" type="password" id="password" required placeholder="Contraseña"
+                  autocomplete="new-password">
               </div>
               <div class="form-group">
                 <input class="form-control" type="password" id="password_confirm" required
-                  placeholder="Repetir Contraseña">
+                  placeholder="Repetir Contraseña" autocomplete="new-password">
               </div>
               <button type="submit" class="btn btn-primary">Crear cuenta</button>
             </form>
@@ -114,7 +121,7 @@
 
   <!-- Olvidaste tu contraseña -->
 
-  <div id="password_request" class="row">
+  <div id="password_request" class="row" style="display: none;">
     <div class="container">
       <div class="card">
         <div class="card-header">

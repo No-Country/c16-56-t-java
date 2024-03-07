@@ -99,6 +99,8 @@ loginForm.addEventListener('submit', function (event) {
                 window.location.href = '/admin';
             } else if (data.rol == 'JEFE_COCINA') {
                 window.location.href = '/jefe_cocina';
+            } else if (data.rol == 'MESERO') {
+                window.location.href = '/mesero';
             }
 
 

@@ -84,7 +84,7 @@ function listaDePlatillos(url, nombre) {
                 iconDiv.classList.add('icon-55');
 
                 var priceSpan = document.createElement('span');
-                priceSpan.textContent = `$${producto.precio}`;
+                priceSpan.textContent = `$${producto.precio.toFixed(2)}`;
                 priceSpan.classList.add('price-56');
 
                 classicBurgerDiv.appendChild(cocaColaSpan);
@@ -282,7 +282,7 @@ async function crearMenuItem(producto) {
     iconDiv.classList.add('icon-55');
 
     var priceSpan = document.createElement('span');
-    priceSpan.textContent = `$${producto.precio}`;
+    priceSpan.textContent = `$${producto.precio.toFixed(2)}`;
     priceSpan.classList.add('price-56');
 
     classicBurgerDiv.appendChild(cocaColaSpan);
@@ -726,12 +726,16 @@ function generarOrdenMisPedidos(orden) {
         total += item.platillo.precio * item.cantidad;
     });
 
+    const totalConvertido = total.toFixed(2);
+
     const precioSpan = document.createElement('span');
     precioSpan.classList.add('text-b-pedidos');
-    precioSpan.textContent = `Total: $${total}`;
+    precioSpan.textContent = `Total: $${totalConvertido}`;
     nuevoPedidoDiv.appendChild(precioSpan);
 
     nuevoPedidoDiv.addEventListener('click', function () {
+        const contenedorSeguimiento = document.getElementById('contenedor-seguimiento');
+        contenedorSeguimiento.innerHTML = '';
         orden.detalles.forEach(item => {
             crearElementoCardSeguimiento(item.platillo, item.cantidad);
         })
@@ -773,7 +777,7 @@ function crearElementoCardSeguimiento(platillo, cantidad) {
 
     const precioSpan = document.createElement('span');
     precioSpan.classList.add('dollar-sign-seguimiento');
-    precioSpan.textContent = platillo.precio;
+    precioSpan.textContent = `$${platillo.precio.toFixed(2)}`;
 
     columnaFlex.appendChild(cupcakeContainer);
     columnaFlex.appendChild(precioSpan);
@@ -883,6 +887,8 @@ document.addEventListener('DOMContentLoaded', function () {
     btnMisPedidos.addEventListener('click', function () {
         vistaMisPedidos.style.display = 'block';
         vistaCliente.style.display = 'none';
+        const contenedorPedidos = document.getElementById('contenedor-ordenes');
+        contenedorPedidos.innerHTML = '';
         generarPedidos();
     });
 
@@ -907,7 +913,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const btnIrSeguimiento = document.querySelector('.botones-mobile-comprobante');
     btnIrSeguimiento.addEventListener('click', function () {
         vistaComprobantes.style.display = 'none';
-        vistaSeguimiento.style.display = 'block';
+        vistaMisPedidos.style.display = 'block';
+        const contenedorPedidos = document.getElementById('contenedor-ordenes');
+        contenedorPedidos.innerHTML = '';
+        generarPedidos();
     });
 
     const btnCerrarDetalle = document.querySelector('#cerra-detalle');

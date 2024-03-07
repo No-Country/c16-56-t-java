@@ -53,7 +53,7 @@ public class SecurityConfig {
     private RequestMatcher endPointsPublicos() {
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/cliente/registrar"),
-                new AntPathRequestMatcher("/mesero/registrar"),
+                new AntPathRequestMatcher("/admin/registrar"),
                 new AntPathRequestMatcher("/cliente"),
                 new AntPathRequestMatcher("/admin"),
                 new AntPathRequestMatcher("/jefe_cocina"),
