@@ -2,6 +2,8 @@ package no_country_grill_house.models;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -20,6 +22,7 @@ public class Cliente extends Usuario {
 
     @ManyToMany
     @JoinTable(name = "cliente_platillo", joinColumns = @JoinColumn(name = "cliente_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "platillo_id", referencedColumnName = "id"))
+    @JsonIgnore
     private List<Platillo> favoritos;
 
 }

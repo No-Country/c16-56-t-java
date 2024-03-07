@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import no_country_grill_house.models.enums.EstadoOrden;
 
 @Data
 @AllArgsConstructor
@@ -43,17 +44,6 @@ public class Orden implements Serializable {
     @Column(name = "alta", nullable = false)
     private Boolean alta;
 
-    /*
-     * @ManyToMany
-     * 
-     * @JoinTable(name = "detalle_orden",
-     * joinColumns = @JoinColumn(name = "orden_id", referencedColumnName =
-     * "numeroOrden"),
-     * inverseJoinColumns = @JoinColumn(name = "platillo_id", referencedColumnName =
-     * "id")
-     * private List<Platillo> platillos;
-     */
-
-    private boolean status;
+    private EstadoOrden estadoOrden;
 
 }

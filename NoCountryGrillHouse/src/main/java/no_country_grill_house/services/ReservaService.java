@@ -13,6 +13,4 @@ public interface ReservaService {
 
     ReservaDto updateStatus(Long id, String status);
 
-    ReservaDto update(Long id, ReservaDto reservaDto);
-
 }

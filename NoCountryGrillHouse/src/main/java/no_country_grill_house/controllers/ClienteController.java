@@ -1,6 +1,7 @@
 package no_country_grill_house.controllers;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
 import no_country_grill_house.models.Direccion;
+import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.ClienteDto;
+import no_country_grill_house.models.dtos.FavoritoRequestDto;
 import no_country_grill_house.models.dtos.PasswordDto;
 import no_country_grill_house.models.dtos.UpdateRequestDto;
 import no_country_grill_house.models.enums.Rol;
@@ -154,6 +157,62 @@ public class ClienteController {
             return ResponseEntity.ok(clienteDto);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+    }
+
+    @PostMapping("/favoritos")
+    public ResponseEntity<?> obtenerFavoritosCliente(@RequestBody String email) {
+        try {
+            List<Platillo> favoritos = clienteServiceImpl.obtenerFavoritosCliente(email);
+            return ResponseEntity.ok(favoritos);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/favoritos/agregar")
+    public ResponseEntity<?> agregarFavorito(@RequestBody FavoritoRequestDto favoritoRequestDto) {
+        try {
+            clienteServiceImpl.agregarFavorito(favoritoRequestDto.getEmail(), favoritoRequestDto.getId());
+            String exitoMessage = "El platillo se agregó a favoritos correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity
+                    .ok().body(exitoResponse);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/favoritos/eliminar")
+    public ResponseEntity<?> eliminarFavorito(@RequestBody FavoritoRequestDto favoritoRequestDto) {
+        try {
+            clienteServiceImpl.eliminarFavorito(favoritoRequestDto.getEmail(), favoritoRequestDto.getId());
+            String exitoMessage = "El platillo se eliminó de favoritos correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity
+                    .ok().body(exitoResponse);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
         }
     }
 

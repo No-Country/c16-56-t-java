@@ -20,4 +20,6 @@ public interface MesaService {
 
     MesaDto update(Long id, MesaDto mesaDto);
 
+    MesaDto findByCantidad(Integer cantidadPersonas);
+
 }

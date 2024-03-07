@@ -53,8 +53,6 @@ public class SecurityConfig {
     private RequestMatcher endPointsPublicos() {
         return new OrRequestMatcher(
                 new AntPathRequestMatcher("/cliente/registrar"),
-                // new AntPathRequestMatcher("/admin/registrar"),
-                // new AntPathRequestMatcher("/jefe_cocina/registrar"),
                 new AntPathRequestMatcher("/mesero/registrar"),
                 new AntPathRequestMatcher("/cliente"),
                 new AntPathRequestMatcher("/admin"),
@@ -68,7 +66,12 @@ public class SecurityConfig {
                 new AntPathRequestMatcher("/css/**"),
                 new AntPathRequestMatcher("/images/**"),
                 new AntPathRequestMatcher("/images/favicon/**"),
-                new AntPathRequestMatcher("/images/Logo/**"));
+                new AntPathRequestMatcher("/images/Logo/**"),
+                new AntPathRequestMatcher("/images/fotos/*"),
+                new AntPathRequestMatcher("/images/fotos/MenuImagen.png"),
+                new AntPathRequestMatcher("//src/main/resources/static/images/fotos/MenuImagen.png"),
+                new AntPathRequestMatcher("/images/icons/**"),
+                new AntPathRequestMatcher("//images/fotos/**"));
     }
 
 }

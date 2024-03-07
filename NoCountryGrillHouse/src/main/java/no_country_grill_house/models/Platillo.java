@@ -3,6 +3,8 @@ package no_country_grill_house.models;
 import java.io.Serializable;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -43,6 +45,7 @@ public class Platillo implements Serializable {
     @JoinColumn(name = "id_categoria", referencedColumnName = "id")
     private Categoria categoria;
     @ManyToMany(mappedBy = "favoritos", cascade = CascadeType.REMOVE)
+    @JsonIgnore
     private List<Cliente> clientes;
     @OneToOne
     @JoinColumn(name = "id_foto", referencedColumnName = "id")

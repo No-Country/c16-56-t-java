@@ -1,5 +1,6 @@
 package no_country_grill_house.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,6 +25,8 @@ public class ReservaServiceImpl implements ReservaService {
     @Transactional
     @Override
     public ReservaDto create(ReservaDto reservaDto) {
+        reservaDto.setEstadoReserva(EstadoReserva.CONFIRMADA);
+        reservaDto.setFechaWeb(LocalDateTime.now());
         reservaDto.setAlta(true);
         Reserva reserva = repository.save(reservaMapper.toReserva(reservaDto));
         return reservaMapper.toReservaDto(reserva);
@@ -63,17 +66,4 @@ public class ReservaServiceImpl implements ReservaService {
         return reservaMapper.toReservaDto(reserva);
     }
 
-    @Transactional
-    @Override
-    public ReservaDto update(Long id, ReservaDto reservaDto) {
-        Reserva reserva = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe la reserva con el id: " + id);
-        });
-
-        if (reservaDto.getFechaHora() != null)
-            reserva.setFechaHora(reservaDto.getFechaHora());
-
-        repository.save(reserva);
-        return reservaMapper.toReservaDto(reserva);
-    }
 }

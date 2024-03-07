@@ -39,6 +39,22 @@ public class MesaServiceImpl implements MesaService {
     }
 
     @Override
+    public MesaDto findByCantidad(Integer cantidadPersonas) {
+        List<MesaDto> mesas = repository.findByCantidadPersonas(cantidadPersonas)
+                .stream()
+                .map(mesaMapper::toMesaDto)
+                .collect(Collectors.toList());
+        if (mesas.size() > 0) {
+            Mesa mesa = mesaMapper.toMesa(mesas.get(0));
+            mesa.setAlta(false);
+            repository.save(mesa);
+            return mesaMapper.toMesaDto(mesa);
+        } else {
+            return null;
+        }
+    }
+
+    @Override
     public List<MesaDto> findAll() {
         return repository.findAll()
                 .stream()

@@ -1,7 +1,9 @@
 package no_country_grill_house.services;
 
 import java.time.LocalDateTime;
+import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +16,10 @@ import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.ClienteMapper;
 import no_country_grill_house.mappers.DireccionMapper;
 import no_country_grill_house.mappers.FotoUsuarioMapper;
+import no_country_grill_house.mappers.PlatilloMapper;
 import no_country_grill_house.models.AuthResponse;
 import no_country_grill_house.models.Cliente;
+import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.FotoUsuarioDto;
 import no_country_grill_house.models.dtos.PasswordDto;
@@ -39,6 +43,12 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Autowired
     private DireccionMapper direccionMapper;
+
+    @Autowired
+    private PlatilloServiceImpl platilloServiceImpl;
+
+    @Autowired
+    private PlatilloMapper platilloMapper;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -165,6 +175,33 @@ public class ClienteServiceImpl implements ClienteService {
         cliente.setPassword(passwordEncoder.encode(passwordDto.getPassword1()));
         repository.save(cliente);
 
+    }
+
+    @Override
+    public List<Platillo> obtenerFavoritosCliente(String email) {
+        Optional<Cliente> clienteOptional = repository.findClienteByEmail(email);
+        if (clienteOptional.isPresent()) {
+            Cliente cliente = clienteOptional.get();
+            return cliente.getFavoritos();
+        } else {
+            return Collections.emptyList();
+        }
+    }
+
+    @Override
+    public void agregarFavorito(String email, Long platilloId) {
+        Cliente cliente = clienteMapper.toCliente(findByEmail(email));
+        Platillo platillo = platilloMapper.toPlatillo(platilloServiceImpl.findById(platilloId));
+        cliente.getFavoritos().add(platillo);
+        repository.save(cliente);
+    }
+
+    @Override
+    public void eliminarFavorito(String email, Long platilloId) {
+        Cliente cliente = clienteMapper.toCliente(findByEmail(email));
+        Platillo platillo = platilloMapper.toPlatillo(platilloServiceImpl.findById(platilloId));
+        cliente.getFavoritos().remove(platillo);
+        repository.save(cliente);
     }
 
     public void guardarFotoPerfil(Long id, FotoUsuarioDto fotoUsuarioDto) {
