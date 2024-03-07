@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,12 +32,17 @@ public class JefeCocinaController {
     private JefeCocinaServiceImpl jefeCocinaServiceImpl;
 
     @GetMapping({ "", "/" })
-    public String inicioJefeCocina(HttpServletRequest request) {
+    public String inicioAdmin(HttpServletRequest request, ModelMap model) {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
             if (rol != null && rol.equals(Rol.JEFE_COCINA)) {
+                String email = (String) session.getAttribute("username");
+                JefeCocinaDto jefeCocinaDto = jefeCocinaServiceImpl.findByEmail(email);
+                model.addAttribute("nombre", jefeCocinaDto.getNombre());
+                model.addAttribute("foto", jefeCocinaDto.getFoto());
+                model.addAttribute("email", jefeCocinaDto.getEmail());
                 return "Views/cocina.html";
             } else {
                 return "Acceso denegado";

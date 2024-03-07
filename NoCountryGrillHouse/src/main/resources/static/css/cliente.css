@@ -51,6 +51,7 @@ button {
   left: calc(273 * var(--rpx));
   z-index: 9;
 }
+
 .jessica {
   flex-shrink: 0;
   position: relative;
@@ -64,29 +65,30 @@ button {
   white-space: nowrap;
   z-index: 9;
 }
+
 .usuario {
   flex-shrink: 0;
   position: relative;
   width: calc(36 * var(--rpx));
   height: calc(36 * var(--rpx));
-  background: url(../images/fotos/Usuario.png)
-    no-repeat center;
+  background: url(../images/fotos/Usuario.png) no-repeat center;
   background-size: cover;
   z-index: 8;
   overflow: scroll;
   border-radius: calc(50 * var(--rpx));
 }
+
 .vector {
   position: absolute;
   width: calc(28 * var(--rpx));
   height: calc(34 * var(--rpx));
   top: calc(1 * var(--rpx));
   left: 0;
-  background: url(../images/favicon/favicon.png)
-    no-repeat center;
+  background: url(../images/favicon/favicon.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 7;
 }
+
 .inicio-overflow {
   position: relative;
   width: calc(400 * var(--rpx));
@@ -95,6 +97,7 @@ button {
   z-index: 10;
   overflow: scroll;
 }
+
 .elige-tu-comida {
   position: relative;
   width: calc(215 * var(--rpx));
@@ -109,6 +112,7 @@ button {
   white-space: nowrap;
   z-index: 11;
 }
+
 .elige-tu-comida-1 {
   position: relative;
   color: #252525;
@@ -118,6 +122,7 @@ button {
   line-height: calc(32 * var(--rpx));
   text-align: left;
 }
+
 .favorita {
   position: relative;
   color: #e70820;
@@ -127,6 +132,7 @@ button {
   line-height: calc(32 * var(--rpx));
   text-align: left;
 }
+
 .input-buscar {
   position: relative;
   width: calc(370 * var(--rpx));
@@ -138,6 +144,7 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .buscar {
   display: flex;
   align-items: center;
@@ -155,17 +162,18 @@ button {
   text-align: left;
   z-index: 13;
 }
+
 .icono-buscar {
   position: absolute;
   width: calc(24 * var(--rpx));
   height: calc(24 * var(--rpx));
   top: calc(13 * var(--rpx));
   left: calc(17 * var(--rpx));
-  background: url(../images/icons/Icono\ Buscar.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Buscar.png) no-repeat center;
   background-size: cover;
   z-index: 14;
 }
+
 .flex-row-ba {
   display: flex;
   align-items: center;
@@ -176,6 +184,7 @@ button {
   margin: calc(20 * var(--rpx)) 0 0 0;
   z-index: 135;
 }
+
 .boton-todos {
   display: flex;
   align-items: center;
@@ -185,13 +194,13 @@ button {
   gap: calc(10 * var(--rpx));
   position: relative;
   width: calc(84 * var(--rpx));
-  padding: calc(15 * var(--rpx)) calc(20 * var(--rpx)) calc(15 * var(--rpx))
-    calc(20 * var(--rpx));
+  padding: calc(15 * var(--rpx)) calc(20 * var(--rpx)) calc(15 * var(--rpx)) calc(20 * var(--rpx));
   background: linear-gradient(180deg, #e70808, #800c1b);
   z-index: 15;
   overflow: scroll;
   border-radius: calc(50 * var(--rpx));
 }
+
 .todos {
   flex-shrink: 0;
   position: relative;
@@ -208,6 +217,7 @@ button {
   border: none;
   z-index: 16;
 }
+
 .boton-hamburguesa {
   flex-shrink: 0;
   position: relative;
@@ -219,17 +229,18 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .burguer {
   position: relative;
   width: calc(25 * var(--rpx));
   height: calc(25 * var(--rpx));
   margin: calc(12 * var(--rpx)) 0 0 calc(20 * var(--rpx));
-  background: url(../images/icons/burguer\ 1.png)
-    no-repeat center;
+  background: url(../images/icons/burguer\ 1.png) no-repeat center;
   background-size: cover;
   opacity: 1;
   z-index: 18;
 }
+
 .boton-postre {
   flex-shrink: 0;
   position: relative;
@@ -241,17 +252,18 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .cupcake {
   position: relative;
   width: calc(25 * var(--rpx));
   height: calc(25 * var(--rpx));
   margin: calc(12 * var(--rpx)) 0 0 calc(20 * var(--rpx));
-  background: url(../images/icons/cupcake.png)
-    no-repeat center;
+  background: url(../images/icons/cupcake.png) no-repeat center;
   background-size: cover;
   opacity: 1;
   z-index: 20;
 }
+
 .boton-bebida {
   flex-shrink: 0;
   position: relative;
@@ -263,17 +275,18 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .bebida {
   position: relative;
   width: calc(25 * var(--rpx));
   height: calc(25 * var(--rpx));
   margin: calc(12 * var(--rpx)) 0 0 calc(20 * var(--rpx));
-  background: url(../images/icons/bebida.png)
-    no-repeat center;
+  background: url(../images/icons/bebida.png) no-repeat center;
   background-size: cover;
   opacity: 1;
   z-index: 22;
 }
+
 .boton-favoritos {
   flex-shrink: 0;
   position: relative;
@@ -285,16 +298,17 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .corazon {
   position: relative;
   width: calc(25 * var(--rpx));
   height: calc(25 * var(--rpx));
   margin: calc(13 * var(--rpx)) 0 0 calc(20 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 136;
 }
+
 .flex-row-a {
   display: flex;
   align-items: center;
@@ -305,6 +319,7 @@ button {
   margin: calc(20 * var(--rpx)) 0 0 0;
   z-index: 127;
 }
+
 .comidas-populares {
   flex-shrink: 0;
   position: relative;
@@ -318,6 +333,7 @@ button {
   white-space: nowrap;
   z-index: 23;
 }
+
 .boton {
   flex-shrink: 0;
   position: relative;
@@ -325,6 +341,7 @@ button {
   height: calc(20 * var(--rpx));
   z-index: 127;
 }
+
 .ver-todo {
   display: flex;
   align-items: flex-start;
@@ -342,6 +359,7 @@ button {
   white-space: nowrap;
   z-index: 128;
 }
+
 .comidas-populares-2 {
   display: flex;
   align-items: flex-start;
@@ -354,6 +372,7 @@ button {
   z-index: 26;
   overflow: scroll;
 }
+
 .carta-de-plato {
   flex-shrink: 0;
   position: relative;
@@ -365,6 +384,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica {
   position: relative;
   width: calc(142 * var(--rpx));
@@ -379,6 +399,7 @@ button {
   white-space: nowrap;
   z-index: 30;
 }
+
 .hamburguesa {
   position: relative;
   color: #252525;
@@ -388,6 +409,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .clasica {
   position: relative;
   color: #e70820;
@@ -397,6 +419,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .hamburguesa-3 {
   display: block;
   position: relative;
@@ -411,29 +434,30 @@ button {
   white-space: nowrap;
   z-index: 32;
 }
+
 .icono-corazon {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 28;
 }
+
 .hamburguesa-4 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Hamburguesa.png)
-    no-repeat center;
+  background: url(../images/fotos/Hamburguesa.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 29;
 }
+
 .icono-carrito {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -442,16 +466,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 33;
 }
+
 .icon-carritocero {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 34;
 }
+
 .precio {
   display: flex;
   align-items: flex-start;
@@ -469,6 +494,7 @@ button {
   white-space: nowrap;
   z-index: 31;
 }
+
 .carta-plato {
   flex-shrink: 0;
   position: relative;
@@ -480,6 +506,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-5 {
   position: relative;
   width: calc(114 * var(--rpx));
@@ -494,6 +521,7 @@ button {
   white-space: nowrap;
   z-index: 38;
 }
+
 .cupcake-fresa {
   position: relative;
   color: #252525;
@@ -503,6 +531,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .fresa {
   position: relative;
   color: #e70820;
@@ -512,6 +541,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .postre {
   display: block;
   position: relative;
@@ -526,29 +556,30 @@ button {
   white-space: nowrap;
   z-index: 40;
 }
+
 .icono-corazon-6 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 36;
 }
+
 .cupcake-7 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 37;
 }
+
 .icono-carrito-8 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -557,16 +588,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 41;
 }
+
 .icon-carritocero-9 {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 42;
 }
+
 .precio-a {
   display: flex;
   align-items: flex-start;
@@ -584,6 +616,7 @@ button {
   white-space: nowrap;
   z-index: 39;
 }
+
 .carta-plato-b {
   flex-shrink: 0;
   position: relative;
@@ -595,6 +628,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-c {
   position: relative;
   width: calc(115 * var(--rpx));
@@ -609,6 +643,7 @@ button {
   white-space: nowrap;
   z-index: 46;
 }
+
 .coca-cola-clasica {
   position: relative;
   color: #252525;
@@ -618,6 +653,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .clasica-d {
   position: relative;
   color: #e70820;
@@ -627,6 +663,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .bebida-e {
   display: block;
   position: relative;
@@ -641,29 +678,30 @@ button {
   white-space: nowrap;
   z-index: 48;
 }
+
 .icono-corazon-f {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 44;
 }
+
 .bebida-10 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Bebida.png)
-    no-repeat center;
+  background: url(../images/fotos/Bebida.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 45;
 }
+
 .icono-carrito-11 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -672,16 +710,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 49;
 }
+
 .icon-12 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 50;
 }
+
 .precio-13 {
   display: flex;
   align-items: flex-start;
@@ -699,6 +738,7 @@ button {
   white-space: nowrap;
   z-index: 47;
 }
+
 .flex-row-e {
   display: flex;
   align-items: center;
@@ -709,6 +749,7 @@ button {
   margin: calc(20 * var(--rpx)) 0 0 0;
   z-index: 129;
 }
+
 .hamburguesas {
   flex-shrink: 0;
   position: relative;
@@ -722,6 +763,7 @@ button {
   white-space: nowrap;
   z-index: 101;
 }
+
 .boton-14 {
   flex-shrink: 0;
   position: relative;
@@ -729,6 +771,7 @@ button {
   height: calc(20 * var(--rpx));
   z-index: 129;
 }
+
 .ver-todo-15 {
   display: flex;
   align-items: flex-start;
@@ -746,6 +789,7 @@ button {
   white-space: nowrap;
   z-index: 130;
 }
+
 .flex-row-d {
   position: relative;
   width: calc(400 * var(--rpx));
@@ -754,11 +798,12 @@ button {
   z-index: 137;
   overflow: scroll;
 }
+
 .barra-navegacion-cliente {
   position: fixed;
   bottom: 10%;
   /* right: 10%; */
-  
+
   width: calc(370 * var(--rpx));
   height: calc(83 * var(--rpx));
   margin: calc(90 * var(--rpx)) 0 0 0;
@@ -767,6 +812,7 @@ button {
   overflow: scroll;
   border-radius: calc(50 * var(--rpx));
 }
+
 .icono-carrito-navbar {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -776,16 +822,30 @@ button {
   transform: translate(0, -48.75%);
   z-index: 138;
 }
+
 .icon-16 {
   position: relative;
   width: calc(30.99365234375 * var(--rpx));
   height: calc(27.9169921875 * var(--rpx));
   margin: calc(7.0830078125 * var(--rpx)) 0 0 calc(4.533447265625 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito\ Navbar.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito\ Navbar.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 139;
 }
+
+.cantidad-carrito {
+  position: absolute;
+  top: -10px;
+  /* Ajusta la posición verticalmente según sea necesario */
+  right: -10px;
+  /* Ajusta la posición horizontalmente según sea necesario */
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 14px;
+}
+
 .icono-fuego {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -795,16 +855,17 @@ button {
   transform: translate(0, -48.75%);
   z-index: 140;
 }
+
 .icon-17 {
   position: relative;
   width: calc(23.3349609375 * var(--rpx));
   height: calc(32.2275390625 * var(--rpx));
   margin: calc(3.3330078125 * var(--rpx)) 0 0 calc(8.33447265625 * var(--rpx));
-  background: url(../images/icons/Icono\ Fuego.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Fuego.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 141;
 }
+
 .icono-usuario {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -814,16 +875,17 @@ button {
   transform: translate(0, -48.75%);
   z-index: 142;
 }
+
 .icon-18 {
   position: relative;
   width: calc(26.356201171875 * var(--rpx));
   height: calc(33.3330078125 * var(--rpx));
   margin: calc(3.3330078125 * var(--rpx)) 0 0 calc(6.822021484375 * var(--rpx));
-  background: url(../images/icons/Icono\ Usuario.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Usuario.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 143;
 }
+
 .icono-compra {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -833,16 +895,17 @@ button {
   transform: translate(0, -48.75%);
   z-index: 144;
 }
+
 .icon-19 {
   position: relative;
   width: calc(33.862850189208984 * var(--rpx));
   height: calc(33.05506134033203 * var(--rpx));
   margin: calc(3.71484375 * var(--rpx)) 0 0 calc(3.06884765625 * var(--rpx));
-  background: url(../images/icons/Icono\ Compra.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Compra.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 145;
 }
+
 .hamburguesas-1a {
   display: flex;
   align-items: flex-start;
@@ -856,6 +919,7 @@ button {
   z-index: 102;
   overflow: scroll;
 }
+
 .carta-de-plato-1b {
   flex-shrink: 0;
   position: relative;
@@ -867,6 +931,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-1c {
   position: relative;
   width: calc(142 * var(--rpx));
@@ -881,6 +946,7 @@ button {
   white-space: nowrap;
   z-index: 106;
 }
+
 .hamburguesa-1d {
   position: relative;
   color: #252525;
@@ -890,6 +956,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .clasica-1e {
   position: relative;
   color: #e70820;
@@ -899,6 +966,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .hamburguesa-1f {
   display: block;
   position: relative;
@@ -913,29 +981,29 @@ button {
   white-space: nowrap;
   z-index: 108;
 }
+
 .icono-corazon-20 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 104;
 }
+
 .hamburguesa-21 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Hamburguesa.png)
-    no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 105;
 }
+
 .icono-carrito-22 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -944,16 +1012,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 109;
 }
+
 .icon-23 {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(8.6875 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 110;
 }
+
 .precio-24 {
   display: flex;
   align-items: flex-start;
@@ -971,6 +1040,7 @@ button {
   white-space: nowrap;
   z-index: 107;
 }
+
 .carta-de-plato-25 {
   flex-shrink: 0;
   position: relative;
@@ -982,6 +1052,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-26 {
   position: relative;
   width: calc(142 * var(--rpx));
@@ -996,6 +1067,7 @@ button {
   white-space: nowrap;
   z-index: 114;
 }
+
 .hamburguesa-27 {
   position: relative;
   color: #252525;
@@ -1005,6 +1077,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .clasica-28 {
   position: relative;
   color: #e70820;
@@ -1014,6 +1087,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .hamburguesa-29 {
   display: block;
   position: relative;
@@ -1028,29 +1102,30 @@ button {
   white-space: nowrap;
   z-index: 116;
 }
+
 .icono-corazon-2a {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 112;
 }
+
 .hamburguesa-2b {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Hamburguesa.png)
-    no-repeat center;
+  background: url(../images/fotos/Hamburguesa.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 113;
 }
+
 .icono-carrito-2c {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1059,16 +1134,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 117;
 }
+
 .icon-2d {
   position: relative;
   width: calc(23.245361328125 * var(--rpx));
   height: calc(8.6875 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 118;
 }
+
 .precio-2e {
   display: flex;
   align-items: flex-start;
@@ -1086,6 +1162,7 @@ button {
   white-space: nowrap;
   z-index: 115;
 }
+
 .carta-de-plato-2f {
   flex-shrink: 0;
   position: relative;
@@ -1097,6 +1174,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-30 {
   position: relative;
   width: calc(142 * var(--rpx));
@@ -1111,6 +1189,7 @@ button {
   white-space: nowrap;
   z-index: 122;
 }
+
 .hamburguesa-31 {
   position: relative;
   color: #252525;
@@ -1120,6 +1199,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .clasica-32 {
   position: relative;
   color: #e70820;
@@ -1129,6 +1209,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .hamburguesa-33 {
   display: block;
   position: relative;
@@ -1143,29 +1224,30 @@ button {
   white-space: nowrap;
   z-index: 124;
 }
+
 .icono-corazon-34 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 120;
 }
+
 .hamburguesa-35 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Hamburguesa.png)
-    no-repeat center;
+  background: url(../images/fotos/Hamburguesa.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 121;
 }
+
 .icono-carrito-36 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1174,16 +1256,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 125;
 }
+
 .icon-37 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 126;
 }
+
 .dollar {
   display: flex;
   align-items: flex-start;
@@ -1201,6 +1284,7 @@ button {
   white-space: nowrap;
   z-index: 123;
 }
+
 .flex-row-a-38 {
   display: flex;
   align-items: center;
@@ -1211,6 +1295,7 @@ button {
   margin: calc(20 * var(--rpx)) 0 0 0;
   z-index: 131;
 }
+
 .postres {
   flex-shrink: 0;
   position: relative;
@@ -1224,6 +1309,7 @@ button {
   white-space: nowrap;
   z-index: 25;
 }
+
 .boton-39 {
   flex-shrink: 0;
   position: relative;
@@ -1231,6 +1317,7 @@ button {
   height: calc(20 * var(--rpx));
   z-index: 131;
 }
+
 .ver-todo-3a {
   display: flex;
   align-items: flex-start;
@@ -1248,6 +1335,7 @@ button {
   white-space: nowrap;
   z-index: 132;
 }
+
 .postre-3b {
   display: flex;
   align-items: flex-start;
@@ -1260,6 +1348,7 @@ button {
   z-index: 76;
   overflow: scroll;
 }
+
 .carta-de-plato-3c {
   flex-shrink: 0;
   position: relative;
@@ -1271,6 +1360,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-clasica-3d {
   position: relative;
   width: calc(114 * var(--rpx));
@@ -1285,6 +1375,7 @@ button {
   white-space: nowrap;
   z-index: 80;
 }
+
 .cupcake-de-fresa {
   position: relative;
   color: #252525;
@@ -1294,6 +1385,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .hamburguesa-postre {
   position: relative;
   color: #e70820;
@@ -1303,6 +1395,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .icono-corazon-3e {
   display: block;
   position: relative;
@@ -1317,29 +1410,30 @@ button {
   white-space: nowrap;
   z-index: 82;
 }
+
 .cupcake-3f {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 78;
 }
+
 .icono-carrito-40 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 79;
 }
+
 .icon-41 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1348,16 +1442,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 83;
 }
+
 .dollar-42 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 84;
 }
+
 .carta-de-plato-43 {
   display: flex;
   align-items: flex-start;
@@ -1375,6 +1470,7 @@ button {
   white-space: nowrap;
   z-index: 81;
 }
+
 .hamburguesa-clasica-44 {
   flex-shrink: 0;
   position: relative;
@@ -1386,6 +1482,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .cupcake-de-fresa-45 {
   position: relative;
   width: calc(114 * var(--rpx));
@@ -1400,6 +1497,7 @@ button {
   white-space: nowrap;
   z-index: 88;
 }
+
 .hamburguesa-postre-46 {
   position: relative;
   color: #252525;
@@ -1409,6 +1507,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .icono-corazon-47 {
   position: relative;
   color: #e70820;
@@ -1418,6 +1517,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .cupcake-48 {
   display: block;
   position: relative;
@@ -1432,29 +1532,30 @@ button {
   white-space: nowrap;
   z-index: 90;
 }
+
 .icono-carrito-49 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 86;
 }
+
 .icon-4a {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 87;
 }
+
 .dollar-4b {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1463,16 +1564,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 91;
 }
+
 .carta-de-plato-4c {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 92;
 }
+
 .hamburguesa-clasica-4d {
   display: flex;
   align-items: flex-start;
@@ -1490,6 +1592,7 @@ button {
   white-space: nowrap;
   z-index: 89;
 }
+
 .cupcake-de-fresa-4e {
   flex-shrink: 0;
   position: relative;
@@ -1501,6 +1604,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .hamburguesa-postre-4f {
   position: relative;
   width: calc(114 * var(--rpx));
@@ -1515,6 +1619,7 @@ button {
   white-space: nowrap;
   z-index: 96;
 }
+
 .icono-corazon-50 {
   position: relative;
   color: #252525;
@@ -1524,6 +1629,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .cupcake-51 {
   position: relative;
   color: #e70820;
@@ -1533,6 +1639,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .icono-carrito-52 {
   display: block;
   position: relative;
@@ -1547,29 +1654,30 @@ button {
   white-space: nowrap;
   z-index: 98;
 }
+
 .icon-53 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 94;
 }
+
 .pic-16 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 95;
 }
+
 .box-12 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1578,16 +1686,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 99;
 }
+
 .img-15 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 100;
 }
+
 .price {
   display: flex;
   align-items: flex-start;
@@ -1605,7 +1714,8 @@ button {
   white-space: nowrap;
   z-index: 97;
 }
-.flex-row {
+
+.flex-row-platillo {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1615,6 +1725,7 @@ button {
   margin: calc(20 * var(--rpx)) 0 0 0;
   z-index: 133;
 }
+
 .beverages {
   flex-shrink: 0;
   position: relative;
@@ -1628,6 +1739,7 @@ button {
   white-space: nowrap;
   z-index: 24;
 }
+
 .button {
   flex-shrink: 0;
   position: relative;
@@ -1635,6 +1747,7 @@ button {
   height: calc(20 * var(--rpx));
   z-index: 133;
 }
+
 .see-all {
   display: flex;
   align-items: flex-start;
@@ -1652,6 +1765,7 @@ button {
   white-space: nowrap;
   z-index: 134;
 }
+
 .beverages-54 {
   display: flex;
   align-items: flex-start;
@@ -1664,6 +1778,7 @@ button {
   z-index: 51;
   overflow: scroll;
 }
+
 .menu-item {
   flex-shrink: 0;
   position: relative;
@@ -1675,6 +1790,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .classic-burger {
   position: relative;
   width: calc(115 * var(--rpx));
@@ -1689,6 +1805,7 @@ button {
   white-space: nowrap;
   z-index: 55;
 }
+
 .coca-cola {
   position: relative;
   color: #252525;
@@ -1698,6 +1815,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .classic {
   position: relative;
   color: #e70820;
@@ -1707,6 +1825,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .soda {
   display: block;
   position: relative;
@@ -1721,29 +1840,40 @@ button {
   white-space: nowrap;
   z-index: 57;
 }
+
 .heart-icon {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
-  z-index: 53;
+  z-index: 100;
 }
+
+.heart-icon.favorito {
+  position: absolute;
+  width: calc(30 * var(--rpx));
+  height: calc(30 * var(--rpx));
+  top: calc(15 * var(--rpx));
+  left: calc(145 * var(--rpx));
+  background: url(../images/icons/CorazonRojo.png) no-repeat center;
+  background-size: cover;
+  z-index: 100;
+}
+
 .beverage {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Bebida.png)
-    no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 54;
 }
+
 .cart-icon {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1752,16 +1882,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 58;
 }
+
 .icon-55 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 59;
 }
+
 .price-56 {
   display: flex;
   align-items: flex-start;
@@ -1779,6 +1910,7 @@ button {
   white-space: nowrap;
   z-index: 56;
 }
+
 .menu-item-57 {
   flex-shrink: 0;
   position: relative;
@@ -1790,6 +1922,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .classic-burger-58 {
   position: relative;
   width: calc(115 * var(--rpx));
@@ -1804,6 +1937,7 @@ button {
   white-space: nowrap;
   z-index: 63;
 }
+
 .coca-cola-59 {
   position: relative;
   color: #252525;
@@ -1813,6 +1947,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .classic-5a {
   position: relative;
   color: #e70820;
@@ -1822,6 +1957,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .soda-5b {
   display: block;
   position: relative;
@@ -1836,29 +1972,30 @@ button {
   white-space: nowrap;
   z-index: 65;
 }
+
 .heart-icon-5c {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 61;
 }
+
 .beverage-5d {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Bebida.png)
-    no-repeat center;
+  background: url(../images/fotos/Bebida.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 62;
 }
+
 .cart-icon-5e {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1867,16 +2004,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 66;
 }
+
 .icon-5f {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 67;
 }
+
 .price-60 {
   display: flex;
   align-items: flex-start;
@@ -1894,6 +2032,7 @@ button {
   white-space: nowrap;
   z-index: 64;
 }
+
 .menu-item-61 {
   flex-shrink: 0;
   position: relative;
@@ -1905,6 +2044,7 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .classic-burger-62 {
   position: relative;
   width: calc(115 * var(--rpx));
@@ -1919,6 +2059,7 @@ button {
   white-space: nowrap;
   z-index: 71;
 }
+
 .coca-cola-63 {
   position: relative;
   color: #252525;
@@ -1928,6 +2069,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .classic-64 {
   position: relative;
   color: #e70820;
@@ -1937,6 +2079,7 @@ button {
   line-height: calc(20 * var(--rpx));
   text-align: left;
 }
+
 .soda-65 {
   display: block;
   position: relative;
@@ -1951,29 +2094,30 @@ button {
   white-space: nowrap;
   z-index: 73;
 }
+
 .heart-icon-66 {
   position: absolute;
   width: calc(30 * var(--rpx));
   height: calc(30 * var(--rpx));
   top: calc(15 * var(--rpx));
   left: calc(145 * var(--rpx));
-  background: url(../images/icons/Corazon.png)
-    no-repeat center;
+  background: url(../images/icons/Corazon.png) no-repeat center;
   background-size: cover;
   z-index: 69;
 }
+
 .beverage-67 {
   position: absolute;
   width: calc(142 * var(--rpx));
   height: calc(125 * var(--rpx));
   top: calc(19 * var(--rpx));
   left: 50%;
-  background: url(../images/fotos/Bebida.png)
-    no-repeat center;
+  background: url(../images/fotos/Bebida.png) no-repeat center;
   background-size: cover;
   transform: translate(-50%, 0);
   z-index: 70;
 }
+
 .cart-icon-68 {
   position: absolute;
   width: calc(30 * var(--rpx));
@@ -1982,16 +2126,17 @@ button {
   left: calc(145 * var(--rpx));
   z-index: 74;
 }
+
 .icon-69 {
   position: relative;
   width: calc(23.24531364440918 * var(--rpx));
   height: calc(20.9375 * var(--rpx));
   margin: calc(5.3125 * var(--rpx)) 0 0 calc(3.39990234375 * var(--rpx));
-  background: url(../images/icons/Icono\ Carrito.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Carrito.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 75;
 }
+
 .price-6a {
   display: flex;
   align-items: flex-start;
@@ -2008,4 +2153,42 @@ button {
   text-align: left;
   white-space: nowrap;
   z-index: 72;
+}
+
+.fila {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

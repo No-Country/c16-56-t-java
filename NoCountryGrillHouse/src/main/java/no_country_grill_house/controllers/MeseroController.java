@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,12 +32,17 @@ public class MeseroController {
     private MeseroServiceImpl meseroServiceImpl;
 
     @GetMapping({ "", "/" })
-    public String inicioMesero(HttpServletRequest request) {
+    public String inicioAdmin(HttpServletRequest request, ModelMap model) {
         HttpSession session = request.getSession(false);
 
         if (session != null) {
             Rol rol = (Rol) session.getAttribute("rol");
             if (rol != null && rol.equals(Rol.MESERO)) {
+                String email = (String) session.getAttribute("username");
+                MeseroDto meseroDto = meseroServiceImpl.findByEmail(email);
+                model.addAttribute("nombre", meseroDto.getNombre());
+                model.addAttribute("foto", meseroDto.getFoto());
+                model.addAttribute("email", meseroDto.getEmail());
                 return "Views/mesero.html";
             } else {
                 return "Acceso denegado";

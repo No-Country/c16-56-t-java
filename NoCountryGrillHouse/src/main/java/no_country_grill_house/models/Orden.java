@@ -15,6 +15,7 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import no_country_grill_house.models.enums.EstadoOrden;
 
 @Data
 @AllArgsConstructor
@@ -42,6 +43,7 @@ public class Orden implements Serializable {
     private LocalDateTime fechaAlta;
     @Column(name = "alta", nullable = false)
     private Boolean alta;
-    private boolean status;
+
+    private EstadoOrden estadoOrden;
 
 }

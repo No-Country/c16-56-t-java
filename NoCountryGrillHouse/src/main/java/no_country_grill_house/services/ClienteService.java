@@ -3,6 +3,7 @@ package no_country_grill_house.services;
 import java.util.List;
 
 import no_country_grill_house.models.AuthResponse;
+import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.PasswordDto;
 
@@ -25,5 +26,11 @@ public interface ClienteService {
     ClienteDto findByEmail(String email);
 
     void modificarPassword(PasswordDto passwordDto);
+
+    List<Platillo> obtenerFavoritosCliente(String email);
+
+    void agregarFavorito(String email, Long platilloId);
+
+    void eliminarFavorito(String email, Long platilloId);
 
 }

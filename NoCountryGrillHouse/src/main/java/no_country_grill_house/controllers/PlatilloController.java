@@ -1,6 +1,8 @@
 package no_country_grill_house.controllers;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -53,10 +55,21 @@ public class PlatilloController {
     }
 
     @GetMapping("/listar/categoria")
-    public ResponseEntity<List<PlatilloDto>> getByCategoria(@RequestParam String nombre) {
-        CategoriaDto categoriaDto = categoriaServiceImpl.findByNombre(nombre);
-        List<PlatilloDto> platillos = platilloServiceImpl.findByCategoria(categoriaMapper.toCategoria(categoriaDto));
-        return ResponseEntity.ok(platillos);
+    public ResponseEntity<?> getByCategoria(@RequestParam String nombre) {
+        try {
+            CategoriaDto categoriaDto = categoriaServiceImpl.findByNombre(nombre);
+            List<PlatilloDto> platillos = platilloServiceImpl
+                    .findByCategoria(categoriaMapper.toCategoria(categoriaDto));
+            return ResponseEntity.ok(platillos);
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
+        }
     }
 
     @PostMapping("/registrar")

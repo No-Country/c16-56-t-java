@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:head th:replace="./fragments/head.html :: head"></th:head>
+
 <body>
+  <th:header th:replace="fragments/header.html :: header"></th:header>
   <div id="vista" class="vista administrador">
-    <th:header th:replace="fragments/header.html :: header"></th:header>
+   
 
     <div class="buscador">
       <form class="d-flex align-items-center" role="search">
@@ -31,6 +33,8 @@
         mostrarNuevorol.style.display = 'block';
         const ocultarMenu4 = document.querySelector('.menu');
         ocultarMenu4.style.display = 'none';
+        const ocultarHeader = document.querySelector('header');
+        ocultarHeader.style.display = 'none';
       });
 
       const urlListarClientes = '/cliente/listar';
@@ -250,13 +254,9 @@
         });
   </script> -->
 
-  
+
   </div>
-  <th:div th:replace="components/registroplatillos.html :: div"></th:div>
 
-  <th:div th:replace="components/platillosadmin.html :: div"></th:div>
-
-  <th:div th:replace="Auth/registroEmpleado.html :: div"></th:div>
   <th:div th:replace="components/registroplatillos.html :: div"></th:div>
 
   <th:div th:replace="components/platillosadmin.html :: div"></th:div>

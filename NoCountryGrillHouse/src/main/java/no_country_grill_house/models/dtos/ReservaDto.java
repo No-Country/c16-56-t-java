@@ -15,7 +15,6 @@ import no_country_grill_house.models.enums.EstadoReserva;
 public class ReservaDto {
     private long id;
     private Cliente cliente;
-    private LocalDateTime fechaHora;
     private EstadoReserva estadoReserva;
     private LocalDateTime fechaWeb;
     private Boolean alta;

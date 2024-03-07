@@ -16,19 +16,17 @@
         <input type="file" name="foto_subir" id="foto_subir" style="display: none;">
     </div>
 
-    
+
     <ul class="user-info">
-        <button id="editar_btn" class="btn"><i
-            class="bi bi-pencil-square"></i></button>
+        <button id="editar_btn" class="btn"><i class="bi bi-pencil-square"></i></button>
         <li class="info">Nombre:<span id="nombre-perfil"></span></li>
         <li class="info">Correo electrónico:<span id="email-perfil"></span></li>
         <li class="info">Dirección:<span id="direccion-perfil"></span></li>
-        <button id="cambiar_contraseña" class="btn"><i
-            class="bi bi-pencil-square"></i></button>
+        <button id="cambiar_contraseña" class="btn"><i class="bi bi-pencil-square"></i></button>
         <li class="info">Cambio de contraseña</li>
     </ul>
     <div class="logout-btn">
-    <button class="btn btn-primary" id="cerrar-sesion" style="width: 50%; margin: 20px;">Cerrar sesión</button>
+        <button class="btn btn-primary" id="cerrar-sesion" style="width: 50%; margin: 20px;">Cerrar sesión</button>
     </div>
 
 
@@ -179,6 +177,8 @@
             ocultarRow.style.display = 'none';
             const mostrarVista = document.querySelector('.vista');
             mostrarVista.style.display = 'block';
+            const mostrarHeader2 = document.querySelector('header');
+            mostrarHeader2.style.display = 'flex';
 
         });
 

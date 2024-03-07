@@ -89,10 +89,10 @@ ul {
 }
 
 .ocultar {
-    height: 100%;
+    height: 90%;
     background-color: white;
     margin: 2vh 3vh 0 3vh;
-    
+
 }
 
 /* menu Flotante Styles */
@@ -101,9 +101,9 @@ ul {
     width: 100%;
     display: flex;
     justify-content: center;
-    
 
-    
+
+
 }
 
 .menu-flotante {
@@ -111,7 +111,7 @@ ul {
     bottom: 10%;
     width: 90%;
     height: 83px;
-    
+
     z-index: 40;
     padding: 22px 30px 22px 30px;
     border-radius: 50px;
@@ -178,7 +178,7 @@ select {
     border-radius: 50px;
     /* min-width: 350px; */
     margin: 10px 0 10px 0;
-} 
+}
 
 .form-control::placeholder {
     color: rgba(113, 113, 113, 1);
@@ -200,6 +200,7 @@ header {
     display: flex;
     justify-content: space-between;
     font-size: 16px;
+    
 }
 
 .perfil-link img {
@@ -210,7 +211,7 @@ header {
 
 .user-info {
     height: 30vh;
-      
+
 }
 
 .info {
@@ -218,7 +219,7 @@ header {
     width: 90%;
     height: fit-content;
     border-bottom: solid 1px rgba(231, 8, 32, 1);
-    
+
 }
 
 .info span {
@@ -241,10 +242,9 @@ header {
     position: absolute;
     top: 180px;
     right: 20%;
-    background-image: url(../images/icons/Lapiz.png);
     width: 40px;
     height: 40px;
-    
+
 }
 
 #imgPreview {
@@ -266,7 +266,7 @@ header {
     margin: 20% 5% 0 5%;
 }
 
-.user-info button{
+.user-info button {
     position: absolute;
     right: 5%;
 }
@@ -326,13 +326,13 @@ header {
     text-align: center;
 }
 
-.separador p{
-   width: fit-content;
-   height: fit-content;
-   margin: 0 2px 0 2px;
-   padding: 0 0 0 10px;
-   
-   
+.separador p {
+    width: fit-content;
+    height: fit-content;
+    margin: 0 2px 0 2px;
+    padding: 0 0 0 10px;
+
+
 }
 
 .line {
@@ -451,7 +451,7 @@ button {
     position: relative;
     width: 370px;
     height: 110px;
-    margin: 0 auto;
+    margin: 15px auto;
     background: #ffffff;
     overflow: hidden;
     border-radius: 35px;
@@ -692,7 +692,7 @@ button {
     position: relative;
     width: 370px;
     height: 110px;
-    margin: 0 auto;
+    margin: 15px auto;
     background: #ffffff;
     overflow: hidden;
     border-radius: 35px;
@@ -930,19 +930,56 @@ button {
     z-index: 14;
 }
 
+.inicio {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-inicio {
+    width: 100%;
+    margin: 0 5vh 0 5vh;
+}
+
 @media (min-width: 1024px) {
     .image-section {
         position: relative;
-        width: 1200px;
-        height: 1000px;
+        width: 800px;
+        height: 800px;
         top: 0;
         left: 0;
-        background: url(../images/fotos/imagen.png)
-          no-repeat center;
+        background: url(../images/fotos/imagen.png) no-repeat center;
         background-size: cover;
         overflow: hidden;
-      }
+    }
+
     .inicio {
         display: flex;
+        flex-direction: row;
+    }
+
+    .registro {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .password-request {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .inicio-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .separador {
+        margin: 15vh 3vh 0 3vh;
+        
+    }
+
+    .large-line {
+        display: none;
     }
 }

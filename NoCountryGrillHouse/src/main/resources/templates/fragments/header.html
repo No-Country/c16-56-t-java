@@ -3,18 +3,20 @@
         <img src="images/logo/Logo.png" alt="">
     </div>
     <div class="perfil-link">
-        <a id="perfil_btn" href="#perfil_usuario">
+        <a id="perfil_btn" class="perfil-btn" href="#perfil_usuario">
             <span th:text="${nombre}">Nombre usuario</span>
             <img id="imagenHeader" th:src="${foto != null ? foto.url : 'images/userdefult/perfiluser.png'}"
                 alt="imagen_default_usuario">
         </a>
         <script>
-            const abrirPerfil = document.querySelector('#perfil_btn');
+            const abrirPerfil = document.querySelector('a.perfil-btn');
             abrirPerfil.addEventListener('click', function () {
-                const verPerfil = document.querySelector('#perfil_usuario');
+                const verPerfil = document.querySelector('.perfil');
                 verPerfil.style.display = 'block';
                 const ocultarVista = document.querySelector('.vista');
                 ocultarVista.style.display = 'none';
+                const ocultarHeader2 = document.querySelector('header');
+                ocultarHeader2.style.display = 'none';
             });
         </script>
     </div>

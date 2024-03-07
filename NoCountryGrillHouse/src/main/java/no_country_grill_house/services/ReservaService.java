@@ -11,12 +11,6 @@ public interface ReservaService {
 
     List<ReservaDto> findAll();
 
-    ReservaDto updateStatus(ReservaDto reservaDto);
-
-    ReservaDto update(Long id, ReservaDto reservaDto);
-
-    void softDeleteById(Long id);
-
-    void deleteById(Long id);
+    ReservaDto updateStatus(Long id, String status);
 
 }

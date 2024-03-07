@@ -1,5 +1,5 @@
 <div id="platillos_admin" class="platillos-admin" style="height: 100vh; display: none;">
-  <th:header th:replace="fragments/header.html :: header"></th:header>
+  
 
   <div class="buscador">
     <form class="d-flex align-items-center" role="search">
@@ -27,6 +27,8 @@
       ocultarPlatilloAdmin1.style.display = 'none';
       const ocultarMenu5 = document.querySelector('.menu');
       ocultarMenu5.style.display = 'none';
+      const ocultarHeader1 = document.querySelector('header');
+      ocultarHeader1.style.display = 'none';
     });
 
     function listaPlatillos(url, nombre = null) {

@@ -1,5 +1,6 @@
 package no_country_grill_house.services;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,7 @@ import no_country_grill_house.exceptions.GrillHouseException;
 import no_country_grill_house.mappers.ReservaMapper;
 import no_country_grill_house.models.Reserva;
 import no_country_grill_house.models.dtos.ReservaDto;
+import no_country_grill_house.models.enums.EstadoReserva;
 import no_country_grill_house.repositories.ReservaRepository;
 
 @Service
@@ -23,6 +25,8 @@ public class ReservaServiceImpl implements ReservaService {
     @Transactional
     @Override
     public ReservaDto create(ReservaDto reservaDto) {
+        reservaDto.setEstadoReserva(EstadoReserva.CONFIRMADA);
+        reservaDto.setFechaWeb(LocalDateTime.now());
         reservaDto.setAlta(true);
         Reserva reserva = repository.save(reservaMapper.toReserva(reservaDto));
         return reservaMapper.toReservaDto(reserva);
@@ -46,47 +50,20 @@ public class ReservaServiceImpl implements ReservaService {
 
     @Transactional
     @Override
-    public ReservaDto updateStatus( ReservaDto reservaDto) {
-        Reserva reserva = repository.findById(reservaDto.getId()).orElseThrow(() -> {
-            throw new GrillHouseException("No existe reserva con ID: " + reservaDto.getId());
+    public ReservaDto updateStatus(Long id, String status) {
+        if (EstadoReserva.valueOf(status) == null) {
+            throw new GrillHouseException("No existe un Estado de Reserva " + status);
+        }
+
+        Reserva reserva = repository.findById(id).orElseThrow(() -> {
+            throw new GrillHouseException("No existe reserva con ID: " + id);
         });
 
-        if (reserva.getEstadoReserva() != reservaDto.getEstadoReserva()) {
-            reserva.setEstadoReserva(reservaDto.getEstadoReserva());
+        if (reserva.getEstadoReserva().toString() != status) {
+            reserva.setEstadoReserva(EstadoReserva.valueOf(status));
         }
         repository.save(reserva);
         return reservaMapper.toReservaDto(reserva);
     }
 
-    @Transactional
-    @Override
-    public ReservaDto update(Long id, ReservaDto reservaDto) {
-        Reserva reserva = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe la reserva con el id: " + id);
-        });
-
-        if (reservaDto.getFechaHora() != null)
-            reserva.setFechaHora(reservaDto.getFechaHora());
-
-        repository.save(reserva);
-        return reservaMapper.toReservaDto(reserva);
-    }
-
-    @Transactional
-    @Override
-    public void softDeleteById(Long id) {
-        Reserva reserva = repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe la reserva con el id: " + id);
-        });
-        reserva.setAlta(false);
-        repository.save(reserva);
-    }
-
-    @Override
-    public void deleteById(Long id) {
-        repository.findById(id).orElseThrow(() -> {
-            throw new GrillHouseException("No existe la reserva con el id: " + id);
-        });
-        repository.deleteById(id);
-    }
 }

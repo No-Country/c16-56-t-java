@@ -2,13 +2,12 @@
     position: relative;
     width: calc(44.800048828125 * var(--rpx));
     height: calc(25.17041015625 * var(--rpx));
-    margin: calc(30.39111328125 * var(--rpx)) 0 0
-      calc(30.199951171875 * var(--rpx));
-    background: url(../images/icons/Icono\ Flecha\ Atras.png)
-      no-repeat center;
+    margin: calc(30.39111328125 * var(--rpx)) 0 0 calc(30.199951171875 * var(--rpx));
+    background: url(../images/icons/Icono\ Flecha\ Atras.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 2;
   }
+
   .mi-carrito {
     display: block;
     position: relative;
@@ -23,6 +22,7 @@
     white-space: nowrap;
     z-index: 5;
   }
+
   .reservar-mesa {
     display: block;
     position: relative;
@@ -37,6 +37,7 @@
     white-space: nowrap;
     z-index: 7;
   }
+
   .reserva {
     position: relative;
     width: calc(370 * var(--rpx));
@@ -48,28 +49,56 @@
     border-radius: calc(20 * var(--rpx));
     box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
   }
+
   .toggle-switch {
     position: absolute;
     width: calc(63 * var(--rpx));
     height: calc(30 * var(--rpx));
     top: calc(10 * var(--rpx));
     left: calc(290 * var(--rpx));
-    background: linear-gradient(90deg, #e70820, #800c1b);
     z-index: 10;
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
-  .ellipse {
+
+  .lbl-switch {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: calc(50 * var(--rpx));
+    background: #aaa;
     position: relative;
+    cursor: pointer;
+  }
+
+  #btn-switch:checked~.lbl-switch {
+    background: linear-gradient(90deg, #e70820, #800c1b);
+  }
+
+  .lbl-switch:after {
+    position: absolute;
+    content: '';
     width: calc(24 * var(--rpx));
     height: calc(24 * var(--rpx));
-    margin: calc(3 * var(--rpx)) 0 0 calc(36 * var(--rpx));
-    background: url(../images/icons/Ellipse\ 56.png)
-      no-repeat center;
-    background-size: cover;
-    z-index: 11;
+    background: #fff;
     border-radius: 50%;
+    top: calc(3 * var(--rpx));
+    left: calc(4 * var(--rpx));
+    transition: 0.3s;
   }
+
+  #btn-switch:checked~.lbl-switch:after {
+    left: calc(35 * var(--rpx));
+  }
+
+  #btn-switch {
+    display: none;
+  }
+
+  .oculto {
+    display: none !important;
+  }
+
   .flex-column-efb {
     position: absolute;
     width: calc(164 * var(--rpx));
@@ -79,6 +108,7 @@
     font-size: 0px;
     z-index: 13;
   }
+
   .reservar-mesa-1 {
     display: block;
     position: relative;
@@ -93,6 +123,7 @@
     white-space: nowrap;
     z-index: 9;
   }
+
   .para-cuantas-personas {
     display: block;
     position: relative;
@@ -107,6 +138,7 @@
     white-space: nowrap;
     z-index: 12;
   }
+
   .aumentar-cantidad {
     display: flex;
     align-items: center;
@@ -117,6 +149,7 @@
     margin: calc(14 * var(--rpx)) 0 0 0;
     z-index: 13;
   }
+
   .boton-menos {
     flex-shrink: 0;
     position: relative;
@@ -127,6 +160,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icono-menos {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -135,16 +169,17 @@
     z-index: 15;
     overflow: visible auto;
   }
+
   .icon-2 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(1.5 * var(--rpx));
     margin: calc(11 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icon.png)
-      no-repeat center;
+    background: url(../images/icons/Icon.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 16;
   }
+
   .numero-1 {
     flex-shrink: 0;
     flex-basis: auto;
@@ -159,6 +194,7 @@
     white-space: nowrap;
     z-index: 17;
   }
+
   .boton-mas {
     flex-shrink: 0;
     position: relative;
@@ -169,6 +205,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icono-mas {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -177,16 +214,17 @@
     z-index: 19;
     overflow: visible auto;
   }
+
   .icon-3 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(17.5 * var(--rpx));
     margin: calc(3 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icono\ Mas.png)
-      no-repeat center;
+    background: url(../images/icons/Icono\ Mas.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 20;
   }
+
   .productos {
     display: block;
     position: relative;
@@ -201,6 +239,7 @@
     white-space: nowrap;
     z-index: 6;
   }
+
   .card {
     position: relative;
     width: calc(370 * var(--rpx));
@@ -212,6 +251,7 @@
     border-radius: calc(35 * var(--rpx));
     box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
   }
+
   .icono-cerrar {
     position: absolute;
     width: calc(24 * var(--rpx));
@@ -220,16 +260,17 @@
     left: calc(330 * var(--rpx));
     z-index: 38;
   }
+
   .icon-4 {
     position: relative;
     width: calc(18 * var(--rpx));
     height: calc(18 * var(--rpx));
     margin: calc(3 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icono\ Cerrar.png)
-      no-repeat center;
+    background: url(../images/icons/Icono\ Cerrar.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 39;
   }
+
   .flex-column-b {
     position: absolute;
     width: calc(164 * var(--rpx));
@@ -238,6 +279,7 @@
     left: calc(113 * var(--rpx));
     z-index: 30;
   }
+
   .cupcake-de-fresa {
     position: relative;
     width: calc(147 * var(--rpx));
@@ -252,6 +294,7 @@
     white-space: nowrap;
     z-index: 28;
   }
+
   .cupcake {
     position: relative;
     color: #252525;
@@ -261,6 +304,7 @@
     line-height: calc(24 * var(--rpx));
     text-align: left;
   }
+
   .fresa {
     position: relative;
     color: #e70820;
@@ -270,6 +314,7 @@
     line-height: calc(24 * var(--rpx));
     text-align: left;
   }
+
   .price {
     display: block;
     position: relative;
@@ -284,6 +329,7 @@
     white-space: nowrap;
     z-index: 29;
   }
+
   .increase-quantity {
     display: flex;
     align-items: center;
@@ -294,6 +340,7 @@
     margin: calc(12 * var(--rpx)) 0 0 0;
     z-index: 30;
   }
+
   .button-minus {
     flex-shrink: 0;
     position: relative;
@@ -304,6 +351,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icon-minus {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -312,16 +360,17 @@
     z-index: 32;
     overflow: visible auto;
   }
+
   .icon-5 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(1.5 * var(--rpx));
     margin: calc(11 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icon.png)
-      no-repeat center;
+    background: url(../images/icons/Icon.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 33;
   }
+
   .quantity {
     flex-shrink: 0;
     flex-basis: auto;
@@ -336,6 +385,7 @@
     white-space: nowrap;
     z-index: 34;
   }
+
   .button-plus {
     flex-shrink: 0;
     position: relative;
@@ -346,6 +396,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icon-plus {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -354,28 +405,29 @@
     z-index: 36;
     overflow: visible auto;
   }
+
   .icon-6 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(17.5 * var(--rpx));
     margin: calc(3 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icono\ Mas.png)
-      no-repeat center;
+    background: url(../images/icons/Icono\ Mas.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 37;
   }
+
   .fernando-andrade-ptrhtwde-unsplash {
     position: absolute;
     width: calc(96 * var(--rpx));
     height: calc(96 * var(--rpx));
     top: 50%;
     left: 50%;
-    background: url(../images/fotos/Cupcake\ \(1\).png)
-      no-repeat center;
+    background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
     background-size: cover;
     transform: translate(-176.04%, -50%);
     z-index: 27;
   }
+
   .card-7 {
     position: relative;
     width: calc(370 * var(--rpx));
@@ -387,6 +439,7 @@
     border-radius: calc(35 * var(--rpx));
     box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
   }
+
   .icono-cerrar-8 {
     position: absolute;
     width: calc(24 * var(--rpx));
@@ -395,16 +448,17 @@
     left: calc(330 * var(--rpx));
     z-index: 52;
   }
+
   .icon-9 {
     position: relative;
     width: calc(18 * var(--rpx));
     height: calc(18 * var(--rpx));
     margin: calc(3 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icono\ Cerrar.png)
-      no-repeat center;
+    background: url(../images/icons/Icono\ Cerrar.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 53;
   }
+
   .flex-column-a {
     position: absolute;
     width: calc(164 * var(--rpx));
@@ -413,6 +467,7 @@
     left: calc(113 * var(--rpx));
     z-index: 44;
   }
+
   .cupcake-de-fresa-a {
     position: relative;
     width: calc(147 * var(--rpx));
@@ -427,6 +482,7 @@
     white-space: nowrap;
     z-index: 42;
   }
+
   .cupcake-de {
     position: relative;
     color: #252525;
@@ -436,6 +492,7 @@
     line-height: calc(24 * var(--rpx));
     text-align: left;
   }
+
   .fresa-b {
     position: relative;
     color: #e70820;
@@ -445,6 +502,7 @@
     line-height: calc(24 * var(--rpx));
     text-align: left;
   }
+
   .price-c {
     display: block;
     position: relative;
@@ -459,6 +517,7 @@
     white-space: nowrap;
     z-index: 43;
   }
+
   .aumentar-cantidad-d {
     display: flex;
     align-items: center;
@@ -469,6 +528,7 @@
     margin: calc(12 * var(--rpx)) 0 0 0;
     z-index: 44;
   }
+
   .boton-menos-e {
     flex-shrink: 0;
     position: relative;
@@ -479,6 +539,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icono-menos-f {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -487,16 +548,17 @@
     z-index: 46;
     overflow: visible auto;
   }
+
   .icon-10 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(1.5 * var(--rpx));
     margin: calc(11 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icon.png)
-      no-repeat center;
+    background: url(../images/icons/Icon.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 47;
   }
+
   .quantity-11 {
     flex-shrink: 0;
     flex-basis: auto;
@@ -511,6 +573,7 @@
     white-space: nowrap;
     z-index: 48;
   }
+
   .boton-mas-12 {
     flex-shrink: 0;
     position: relative;
@@ -521,6 +584,7 @@
     overflow: scroll;
     border-radius: calc(50 * var(--rpx));
   }
+
   .icono-mas-13 {
     position: relative;
     width: calc(24 * var(--rpx));
@@ -529,28 +593,28 @@
     z-index: 50;
     overflow: visible auto;
   }
+
   .icon-14 {
     position: relative;
     width: calc(17.5 * var(--rpx));
     height: calc(17.5 * var(--rpx));
     margin: calc(3 * var(--rpx)) 0 0 calc(3 * var(--rpx));
-    background: url(../images/icons/Icono\ Mas.png)
-      no-repeat center;
+    background: url(../images/icons/Icono\ Mas.png) no-repeat center;
     background-size: 100% 100%;
     z-index: 51;
   }
+
   .fernando-andrade-unsplash {
     position: absolute;
     width: calc(96 * var(--rpx));
     height: calc(96 * var(--rpx));
     top: 50%;
     left: 50%;
-    background: url(../images/fotos/Cupcake\ \(1\).png)
-      no-repeat center;
     background-size: cover;
     transform: translate(-176.04%, -50%);
     z-index: 41;
   }
+
   .flex-row-dca {
     display: flex;
     align-items: center;
@@ -561,6 +625,7 @@
     margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
     z-index: 23;
   }
+
   .subtotal {
     flex-shrink: 0;
     position: relative;
@@ -574,6 +639,7 @@
     white-space: nowrap;
     z-index: 21;
   }
+
   .subtotal-price {
     flex-shrink: 0;
     position: relative;
@@ -587,16 +653,17 @@
     white-space: nowrap;
     z-index: 23;
   }
+
   .line {
     position: relative;
     width: calc(370.002685546875 * var(--rpx));
     height: calc(2 * var(--rpx));
     margin: calc(15 * var(--rpx)) 0 0 calc(30 * var(--rpx));
-    background: url(../images/icons/Line\ 16.png)
-      no-repeat center;
+    background: url(../images/icons/Line\ 16.png) no-repeat center;
     background-size: cover;
     z-index: 25;
   }
+
   .flex-row {
     display: flex;
     align-items: center;
@@ -607,6 +674,7 @@
     margin: calc(16 * var(--rpx)) 0 0 calc(30 * var(--rpx));
     z-index: 24;
   }
+
   .total {
     flex-shrink: 0;
     position: relative;
@@ -620,6 +688,7 @@
     white-space: nowrap;
     z-index: 22;
   }
+
   .total-price {
     flex-shrink: 0;
     position: relative;
@@ -633,6 +702,7 @@
     white-space: nowrap;
     z-index: 24;
   }
+
   .botones-mobile {
     display: flex;
     align-items: center;
@@ -642,8 +712,7 @@
     position: relative;
     width: calc(370 * var(--rpx));
     margin: calc(15 * var(--rpx)) 0 0 calc(30 * var(--rpx));
-    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx))
-      calc(24 * var(--rpx));
+    padding: calc(13 * var(--rpx)) calc(24 * var(--rpx)) calc(13 * var(--rpx)) calc(24 * var(--rpx));
     cursor: pointer;
     background: linear-gradient(90deg, #e70820, #800c1b);
     border: none;
@@ -651,6 +720,7 @@
     overflow: hidden;
     border-radius: calc(50 * var(--rpx));
   }
+
   .boton {
     flex-shrink: 0;
     flex-basis: auto;
@@ -665,4 +735,3 @@
     white-space: nowrap;
     z-index: 4;
   }
-  

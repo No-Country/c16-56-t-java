@@ -33,9 +33,6 @@ public class Reserva {
     @JoinColumn(name = "id_cliente", referencedColumnName = "id")
     private Cliente cliente;
 
-    @Column(name = "fechaHora", nullable = false)
-    private LocalDateTime fechaHora;
-
     @Enumerated(EnumType.STRING)
     @Column(name = "estado", nullable = false)
     private EstadoReserva estadoReserva;
