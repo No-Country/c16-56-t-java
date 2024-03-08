@@ -254,7 +254,7 @@ header {
 }
 
 .perfil-form {
-    margin: 20% 10% 0 10%;
+    margin: 13vh 3vh 0 3vh;
 }
 
 .info {
@@ -372,9 +372,9 @@ header {
 
 .form-group {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    align-items: center;
 }
 
 .form-group input {
@@ -943,8 +943,8 @@ button {
 @media (min-width: 1024px) {
     .image-section {
         position: relative;
-        width: 800px;
-        height: 800px;
+        width: 90vh;
+        height: 100vh;
         top: 0;
         left: 0;
         background: url(../images/fotos/imagen.png) no-repeat center;
@@ -975,7 +975,7 @@ button {
     }
 
     .separador {
-        margin: 15vh 3vh 0 3vh;
+        margin: 5vh 3vh 0 3vh;
         
     }
 
