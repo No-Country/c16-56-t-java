@@ -222,30 +222,18 @@
 .pedido {
   color: #252525;
   font-family: Nunito, var(--default-font-family);
-  font-weight: 700;
   line-height: calc(24 * var(--rpx));
-  font-size: 15px;
-  text-align: left;
+  font-size: 14px;
   white-space: nowrap;
   z-index: 24;
   box-sizing: border-box;
-  margin-left: 10px;
+  margin-left: 40px;
+  margin-bottom: 55px;
 }
 
 .timeline {
-  margin: 20px 0;
   position: relative;
-  margin-left: 20px;
-}
-
-.timeline:before {
-  content: '';
-  position: absolute;
-  top: 10px;
-  bottom: 10px;
-  left: -10px;
-  width: 4px;
-  background-color: #717171;
+  margin: 20px 20px 0 20px;
 }
 
 .pedido:before {
@@ -258,40 +246,95 @@
 
 .card-seguimiento-prueba span {
   display: block;
-  margin-bottom: 52px;
   position: relative;
 }
 
-.card-seguimiento-prueba span:before {
+.card-seguimiento-prueba span .pedido:before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: -28px;
-  width: 20px;
-  height: 20px;
+  left: -33px;
+  width: 18px;
+  height: 18px;
   background-color: #717171;
   border-radius: 50%;
-  transform: translateY(-50%);
+  transform: translateX(-80%);
 }
 
-.timeline.estado-1:before {
-  background-color: #e70820;
-  /* Color para estado 1 */
+.card-seguimiento-prueba span .pedido.rojo:before {
+  content: '';
+  position: absolute;
+  left: -33px;
+  width: 18px;
+  height: 18px;
+  background-color: #E70820;
+  border-radius: 50%;
+  transform: translateX(-80%);
 }
 
-.timeline.estado-2:before {
-  background-color: #ffcc00;
-  /* Color para estado 2 */
+.card-seguimiento-prueba span .pedido.rojo.completo {
+  color: #252525;
+  font-family: Nunito, var(--default-font-family);
+  font-weight: bold;
+  line-height: calc(24 * var(--rpx));
+  font-size: 15px;
+  white-space: nowrap;
+  z-index: 24;
+  box-sizing: border-box;
+  margin-left: 40px;
+  margin-bottom: 55px;
 }
 
-.timeline.estado-3:before {
-  background-color: #009933;
-  /* Color para estado 3 */
+.card-seguimiento-prueba span .pedido.rojo {
+  color: #E70820;
+  font-family: Nunito, var(--default-font-family);
+  font-weight: bold;
+  line-height: calc(24 * var(--rpx));
+  font-size: 15px;
+  white-space: nowrap;
+  z-index: 24;
+  box-sizing: border-box;
+  margin-left: 40px;
+  margin-bottom: 55px;
 }
 
-.timeline.estado-4:before {
-  background-color: #3366cc;
-  /* Color para estado 4 */
+.timeline-segment {
+  position: absolute;
+  width: 4px;
+  background-color: #717171;
+  top: -10px;
+}
+
+.segment-1 {
+  height: 55px;
+  top: 0;
+}
+
+.segment-1.rojo {
+  background-color: #E70820;
+  height: 55px;
+  top: 0;
+}
+
+.segment-2 {
+  height: 55px;
+  top: 0;
+}
+
+.segment-2.rojo {
+  background-color: #E70820;
+  height: 55px;
+  top: 0;
+}
+
+.segment-3 {
+  height: 55px;
+  top: 0;
+}
+
+.segment-3.rojo {
+  background-color: #E70820;
+  height: 55px;
+  top: 0;
 }
 
 .flex-row-seguimiento {

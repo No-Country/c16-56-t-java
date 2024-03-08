@@ -22,6 +22,7 @@ import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.ClienteDto;
 import no_country_grill_house.models.dtos.FavoritoRequestDto;
 import no_country_grill_house.models.dtos.PasswordDto;
+import no_country_grill_house.models.dtos.PlatilloClienteRequestDto;
 import no_country_grill_house.models.dtos.UpdateRequestDto;
 import no_country_grill_house.models.enums.Rol;
 import no_country_grill_house.services.ClienteServiceImpl;
@@ -80,8 +81,9 @@ public class ClienteController {
     }
 
     @PostMapping("/borrar")
-    public ResponseEntity<?> delete(@RequestBody Long id) {
+    public ResponseEntity<?> delete(@RequestBody PlatilloClienteRequestDto request) {
         try {
+            Long id = request.getId();
             clienteServiceImpl.deleteById(id);
             return ResponseEntity.ok("Cliente eliminado correctamente");
         } catch (Exception e) {

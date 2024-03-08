@@ -739,6 +739,12 @@ function generarOrdenMisPedidos(orden) {
         orden.detalles.forEach(item => {
             crearElementoCardSeguimiento(item.platillo, item.cantidad);
         })
+
+        var seguimientoPedidosDiv = document.querySelector(".card-seguimiento-seguimiento");
+        seguimientoPedidosDiv.innerHTML = '';
+        generarElementosSeguimiento();
+        generarEstadoSeguimiento(orden.estadoOrden);
+
         vistaMisPedidos.style.display = 'none';
         vistaSeguimiento.style.display = 'block';
     });
@@ -786,6 +792,83 @@ function crearElementoCardSeguimiento(platillo, cantidad) {
     cardSeguimiento.appendChild(columnaFlex);
 
     contenedorSeguimiento.appendChild(cardSeguimiento);
+}
+
+function generarEstadoSeguimiento(estado) {
+    const circuloTomado = document.getElementById('circulo-tomado');
+    const circuloProceso = document.getElementById('circulo-en-proceso');
+    const circuloTerminado = document.getElementById('circulo-terminado');
+    const circuloEntregado = document.getElementById('circulo-entregado');
+    const segmento1 = document.querySelector('.segment-1');
+    const segmento2 = document.querySelector('.segment-2');
+    const segmento3 = document.querySelector('.segment-3');
+
+    if (estado == 'INICIADO') {
+        circuloTomado.classList.add('rojo');
+    } else if (estado == 'EN_PROCESO') {
+        circuloTomado.classList.add('rojo');
+        circuloTomado.classList.add('completo');
+        segmento1.classList.add('rojo');
+        circuloProceso.classList.add('rojo');
+    } else if (estado == 'TERMINADO') {
+        circuloTomado.classList.add('rojo');
+        circuloTomado.classList.add('completo');
+        segmento1.classList.add('rojo');
+        circuloProceso.classList.add('rojo');
+        circuloProceso.classList.add('completo');
+        segmento2.classList.add('rojo');
+        circuloTerminado.classList.add('rojo');
+    } else {
+        circuloTomado.classList.add('rojo');
+        circuloTomado.classList.add('completo');
+        segmento1.classList.add('rojo');
+        circuloProceso.classList.add('rojo');
+        circuloProceso.classList.add('completo');
+        segmento2.classList.add('rojo');
+        circuloTerminado.classList.add('rojo');
+        circuloTerminado.classList.add('completo');
+        segmento3.classList.add('rojo');
+        circuloEntregado.classList.add('rojo');
+    }
+}
+
+function generarElementosSeguimiento() {
+    var seguimientoPedidoSpan = document.createElement("span");
+    seguimientoPedidoSpan.classList.add("seguimiento-pedido-seguimiento");
+    seguimientoPedidoSpan.textContent = "Seguimiento del pedido";
+
+    var timelineDiv = document.createElement("div");
+    timelineDiv.classList.add("timeline");
+
+    var cardSeguimientoDiv = document.createElement("div");
+    cardSeguimientoDiv.classList.add("card-seguimiento-prueba");
+
+    for (var i = 1; i < 4; i++) {
+        var segmentSpan = document.createElement("span");
+        segmentSpan.classList.add("timeline-segment", "segment-" + i);
+
+        var circuloSpan = document.createElement("span");
+        circuloSpan.id = "circulo-" + (i === 4 ? "entregado" : (i === 1 ? "tomado" : (i === 2 ? "en-proceso" : "terminado")));
+        circuloSpan.classList.add("pedido");
+        circuloSpan.textContent = (i === 4 ? "Entregado" : (i === 1 ? "Pedido tomado" : (i === 2 ? "En proceso" : "Terminado")));
+
+        segmentSpan.appendChild(circuloSpan);
+        cardSeguimientoDiv.appendChild(segmentSpan);
+    }
+
+    var ultimoSegmentSpan = document.createElement("span");
+    var ultimoCirculoSpan = document.createElement("span");
+    ultimoCirculoSpan.id = "circulo-entregado";
+    ultimoCirculoSpan.classList.add("pedido");
+    ultimoCirculoSpan.textContent = "Entregado";
+
+    ultimoSegmentSpan.appendChild(ultimoCirculoSpan);
+    cardSeguimientoDiv.appendChild(ultimoSegmentSpan);
+    timelineDiv.appendChild(cardSeguimientoDiv);
+
+    var seguimientoPedidosDiv = document.querySelector(".card-seguimiento-seguimiento");
+    seguimientoPedidosDiv.appendChild(seguimientoPedidoSpan);
+    seguimientoPedidosDiv.appendChild(timelineDiv);
 }
 
 document.addEventListener('DOMContentLoaded', function () {

@@ -21,6 +21,7 @@ import no_country_grill_house.mappers.FotoPlatilloMapper;
 import no_country_grill_house.models.Categoria;
 import no_country_grill_house.models.dtos.CategoriaDto;
 import no_country_grill_house.models.dtos.FotoPlatilloDto;
+import no_country_grill_house.models.dtos.PlatilloClienteRequestDto;
 import no_country_grill_house.models.dtos.PlatilloDto;
 import no_country_grill_house.services.CategoriaServiceImpl;
 import no_country_grill_house.services.PlatilloServiceImpl;
@@ -105,8 +106,9 @@ public class PlatilloController {
     }
 
     @PostMapping("/borrar")
-    public ResponseEntity<?> delete(@RequestBody Long id) {
+    public ResponseEntity<?> delete(@RequestBody PlatilloClienteRequestDto requestDto) {
         try {
+            Long id = requestDto.getId();
             platilloServiceImpl.deleteById(id);
             return ResponseEntity.ok("Platillo eliminado correctamente");
         } catch (Exception e) {
