@@ -89,7 +89,7 @@ ul {
 }
 
 .ocultar {
-    height: 100%;
+    height: 90%;
     background-color: white;
     margin: 2vh 3vh 0 3vh;
 
@@ -200,6 +200,7 @@ header {
     display: flex;
     justify-content: space-between;
     font-size: 16px;
+    
 }
 
 .perfil-link img {
@@ -253,7 +254,7 @@ header {
 }
 
 .perfil-form {
-    margin: 20% 10% 0 10%;
+    margin: 13vh 3vh 0 3vh;
 }
 
 .info {
@@ -371,9 +372,9 @@ header {
 
 .form-group {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: flex-start;
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    align-items: center;
 }
 
 .form-group input {
@@ -929,11 +930,21 @@ button {
     z-index: 14;
 }
 
+.inicio {
+    display: flex;
+    flex-direction: column;
+}
+
+.container-inicio {
+    width: 100%;
+    margin: 0 5vh 0 5vh;
+}
+
 @media (min-width: 1024px) {
     .image-section {
         position: relative;
-        width: 1200px;
-        height: 1000px;
+        width: 90vh;
+        height: 100vh;
         top: 0;
         left: 0;
         background: url(../images/fotos/imagen.png) no-repeat center;
@@ -943,5 +954,32 @@ button {
 
     .inicio {
         display: flex;
+        flex-direction: row;
+    }
+
+    .registro {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .password-request {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .inicio-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+
+    .separador {
+        margin: 5vh 3vh 0 3vh;
+        
+    }
+
+    .large-line {
+        display: none;
     }
 }

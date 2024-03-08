@@ -32,6 +32,22 @@ button {
   border-radius: calc(50 * var(--rpx));
 }
 
+.menu-flotante2 {
+  position: fixed;
+  bottom: 10%;
+  left: 5%;
+  width: 90%;
+  height: 83px;
+  z-index: 40;
+  padding: 22px 30px 22px 30px;
+  border-radius: 50px;
+  background: linear-gradient(180deg, #E70808 0%, #800C1B 100%);
+  min-width: 300px;
+  max-width: 500px;
+  color: white;
+
+}
+
 .flex-row-fd {
   position: relative;
   width: calc(367 * var(--rpx));
@@ -39,30 +55,30 @@ button {
   margin: calc(24 * var(--rpx)) 0 0 calc(31 * var(--rpx));
   z-index: 9;
 }
+
 .usuario {
-  position: absolute;
+  flex-shrink: 0;
+  position: relative;
   width: calc(36 * var(--rpx));
   height: calc(36 * var(--rpx));
-  top: 0;
-  left: calc(331 * var(--rpx));
-  background: url(../images/fotos/Usuario.png)
-    no-repeat center;
+  background: url(../images/fotos/Usuario.png) no-repeat center;
   background-size: cover;
   z-index: 8;
-  overflow: hidden;
+  overflow: scroll;
   border-radius: calc(50 * var(--rpx));
 }
+
 .vector {
   position: absolute;
   width: calc(28 * var(--rpx));
   height: calc(34 * var(--rpx));
   top: calc(1 * var(--rpx));
   left: 0;
-  background: url(../images/favicon/favicon.png)
-    no-repeat center;
+  background: url(../images/favicon/favicon.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 7;
 }
+
 .mario-ruiz {
   display: flex;
   align-items: flex-start;
@@ -81,6 +97,7 @@ button {
   white-space: nowrap;
   z-index: 9;
 }
+
 .ordenes {
   display: block;
   position: relative;
@@ -95,6 +112,7 @@ button {
   white-space: nowrap;
   z-index: 10;
 }
+
 .flex-row-c {
   position: relative;
   width: calc(370 * var(--rpx));
@@ -102,6 +120,7 @@ button {
   margin: calc(26 * var(--rpx)) 0 0 calc(30 * var(--rpx));
   z-index: 15;
 }
+
 .botones-mobile {
   display: flex;
   align-items: center;
@@ -113,8 +132,7 @@ button {
   height: calc(44 * var(--rpx));
   top: 0;
   left: 0;
-  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx))
-    calc(20 * var(--rpx));
+  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx)) calc(20 * var(--rpx));
   cursor: pointer;
   background: linear-gradient(90deg, #e70820, #800c1b);
   border: none;
@@ -122,6 +140,7 @@ button {
   overflow: hidden;
   border-radius: calc(50 * var(--rpx));
 }
+
 .boton {
   flex-shrink: 0;
   flex-basis: auto;
@@ -136,6 +155,7 @@ button {
   white-space: nowrap;
   z-index: 12;
 }
+
 .botones-mobile-1 {
   display: flex;
   align-items: center;
@@ -147,8 +167,7 @@ button {
   height: calc(44 * var(--rpx));
   top: 0;
   left: calc(122 * var(--rpx));
-  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx))
-    calc(20 * var(--rpx));
+  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx)) calc(20 * var(--rpx));
   cursor: pointer;
   background: #717171;
   border: none;
@@ -156,6 +175,7 @@ button {
   overflow: hidden;
   border-radius: calc(50 * var(--rpx));
 }
+
 .boton-2 {
   flex-shrink: 0;
   flex-basis: auto;
@@ -170,6 +190,7 @@ button {
   white-space: nowrap;
   z-index: 14;
 }
+
 .botones-mobile-3 {
   display: flex;
   align-items: center;
@@ -181,8 +202,7 @@ button {
   height: calc(44 * var(--rpx));
   top: 0;
   left: calc(251 * var(--rpx));
-  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx))
-    calc(20 * var(--rpx));
+  padding: calc(12 * var(--rpx)) calc(20 * var(--rpx)) calc(12 * var(--rpx)) calc(20 * var(--rpx));
   cursor: pointer;
   background: #717171;
   border: none;
@@ -190,6 +210,7 @@ button {
   overflow: hidden;
   border-radius: calc(50 * var(--rpx));
 }
+
 .button {
   flex-shrink: 0;
   flex-basis: auto;
@@ -204,6 +225,7 @@ button {
   white-space: nowrap;
   z-index: 16;
 }
+
 .card {
   position: relative;
   width: calc(370 * var(--rpx));
@@ -215,18 +237,19 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .fernando-andrade-unsplash {
   position: absolute;
   width: calc(78 * var(--rpx));
   height: calc(78 * var(--rpx));
   top: calc(16 * var(--rpx));
   left: calc(16 * var(--rpx));
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   z-index: 23;
   border-radius: calc(50 * var(--rpx));
 }
+
 .flex-column-dfe {
   position: absolute;
   height: calc(108 * var(--rpx));
@@ -235,6 +258,7 @@ button {
   left: calc(97 * var(--rpx));
   z-index: 26;
 }
+
 .mario-ruiz-4 {
   position: relative;
   width: calc(147 * var(--rpx));
@@ -249,6 +273,7 @@ button {
   white-space: nowrap;
   z-index: 24;
 }
+
 .cupcake-de {
   position: relative;
   color: #252525;
@@ -258,6 +283,7 @@ button {
   line-height: calc(24 * var(--rpx));
   text-align: left;
 }
+
 .fresa {
   position: relative;
   color: #e70820;
@@ -267,6 +293,7 @@ button {
   line-height: calc(24 * var(--rpx));
   text-align: left;
 }
+
 .chef {
   display: block;
   position: relative;
@@ -281,6 +308,7 @@ button {
   white-space: nowrap;
   z-index: 25;
 }
+
 .botones-mobile-5 {
   display: flex;
   align-items: center;
@@ -290,8 +318,7 @@ button {
   position: relative;
   width: calc(177 * var(--rpx));
   margin: calc(26 * var(--rpx)) 0 0 0;
-  padding: calc(8 * var(--rpx)) calc(17 * var(--rpx)) calc(8 * var(--rpx))
-    calc(17 * var(--rpx));
+  padding: calc(8 * var(--rpx)) calc(17 * var(--rpx)) calc(8 * var(--rpx)) calc(17 * var(--rpx));
   cursor: pointer;
   background: linear-gradient(90deg, #e70820, #800c1b);
   border: none;
@@ -299,6 +326,7 @@ button {
   overflow: hidden;
   border-radius: calc(50 * var(--rpx));
 }
+
 .en-proceso {
   flex-shrink: 0;
   flex-basis: auto;
@@ -313,6 +341,7 @@ button {
   white-space: nowrap;
   z-index: 27;
 }
+
 .card-6 {
   position: relative;
   width: calc(370 * var(--rpx));
@@ -324,18 +353,19 @@ button {
   border-radius: calc(35 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(4 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .fernando-andrade-ptrhtwde-unsplash {
   position: absolute;
   width: calc(78 * var(--rpx));
   height: calc(78 * var(--rpx));
   top: calc(16 * var(--rpx));
   left: calc(16 * var(--rpx));
-  background: url(../images/fotos/Cupcake\ \(1\).png)
-    no-repeat center;
+  background: url(../images/fotos/Cupcake\ \(1\).png) no-repeat center;
   background-size: cover;
   z-index: 29;
   border-radius: calc(50 * var(--rpx));
 }
+
 .flex-column-ba {
   position: absolute;
   height: calc(108 * var(--rpx));
@@ -344,6 +374,7 @@ button {
   left: calc(97 * var(--rpx));
   z-index: 32;
 }
+
 .mario-ruiz-7 {
   position: relative;
   width: calc(147 * var(--rpx));
@@ -358,6 +389,7 @@ button {
   white-space: nowrap;
   z-index: 30;
 }
+
 .cupcake-de-8 {
   position: relative;
   color: #252525;
@@ -367,6 +399,7 @@ button {
   line-height: calc(24 * var(--rpx));
   text-align: left;
 }
+
 .fresa-9 {
   position: relative;
   color: #e70820;
@@ -376,6 +409,7 @@ button {
   line-height: calc(24 * var(--rpx));
   text-align: left;
 }
+
 .chef-a {
   display: block;
   position: relative;
@@ -390,6 +424,7 @@ button {
   white-space: nowrap;
   z-index: 31;
 }
+
 .botones-mobile-b {
   display: flex;
   align-items: center;
@@ -399,8 +434,7 @@ button {
   position: relative;
   width: calc(177 * var(--rpx));
   margin: calc(26 * var(--rpx)) 0 0 0;
-  padding: calc(8 * var(--rpx)) calc(17 * var(--rpx)) calc(8 * var(--rpx))
-    calc(17 * var(--rpx));
+  padding: calc(8 * var(--rpx)) calc(17 * var(--rpx)) calc(8 * var(--rpx)) calc(17 * var(--rpx));
   cursor: pointer;
   background: linear-gradient(90deg, #e70820, #800c1b);
   border: none;
@@ -408,6 +442,7 @@ button {
   overflow: hidden;
   border-radius: calc(50 * var(--rpx));
 }
+
 .boton-en-proceso {
   flex-shrink: 0;
   flex-basis: auto;
@@ -422,6 +457,7 @@ button {
   white-space: nowrap;
   z-index: 33;
 }
+
 .button-barra-navegacion {
   position: relative;
   width: calc(370 * var(--rpx));
@@ -435,6 +471,7 @@ button {
   border-radius: calc(50 * var(--rpx));
   box-shadow: 0 calc(4 * var(--rpx)) calc(50 * var(--rpx)) 0 rgba(0, 0, 0, 0.1);
 }
+
 .icono-inicio {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -444,16 +481,17 @@ button {
   transform: translate(0, -48.75%);
   z-index: 18;
 }
+
 .icon {
   position: relative;
   width: calc(30 * var(--rpx));
   height: calc(29.966999053955078 * var(--rpx));
   margin: calc(5 * var(--rpx)) 0 0 calc(5 * var(--rpx));
-  background: url(../images/icons/Icono\ Inicio.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Inicio.png) no-repeat center;
   background-size: cover;
   z-index: 19;
 }
+
 .icono-usuario {
   position: absolute;
   width: calc(40 * var(--rpx));
@@ -463,14 +501,13 @@ button {
   transform: translate(0, -48.75%);
   z-index: 20;
 }
+
 .icon-c {
   position: relative;
   width: calc(26.356201171875 * var(--rpx));
   height: calc(33.3330078125 * var(--rpx));
   margin: calc(3.3330078125 * var(--rpx)) 0 0 calc(6.822021484375 * var(--rpx));
-  background: url(../images/icons/Icono\ Usuario.png)
-    no-repeat center;
+  background: url(../images/icons/Icono\ Usuario.png) no-repeat center;
   background-size: 100% 100%;
   z-index: 21;
 }
-

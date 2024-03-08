@@ -25,8 +25,10 @@ import no_country_grill_house.models.Platillo;
 import no_country_grill_house.models.dtos.DetalleDto;
 import no_country_grill_house.models.dtos.DetalleOrdenDto;
 import no_country_grill_house.models.dtos.GenerarOrdenDto;
+import no_country_grill_house.models.dtos.MeseroOrdenDto;
 import no_country_grill_house.models.dtos.OrdenDto;
 import no_country_grill_house.models.dtos.ReservaDto;
+import no_country_grill_house.models.enums.EstadoOrden;
 import no_country_grill_house.services.ClienteServiceImpl;
 import no_country_grill_house.services.DetalleOrdenServiceImpl;
 import no_country_grill_house.services.MesaServiceImpl;
@@ -168,13 +170,30 @@ public class OrdenController {
         }
     }
 
-    @PostMapping("/listar/mesero")
-    public ResponseEntity<?> listarPorMesero(@RequestBody String email) {
+    // @PostMapping("/listar/mesero")
+    // public ResponseEntity<?> listarPorMesero(@RequestBody String email) {
+    // try {
+    // Mesero mesero = meseroMapper.toMesero(meseroServiceImpl.findByEmail(email));
+    // return ResponseEntity
+    // .status(HttpStatus.OK)
+    // .body(ordenServiceImpl.obtenerOrdenesConDetallesPorMesero(mesero));
+    // } catch (Exception e) {
+    // String errorMessage = e.getMessage();
+    // Map<String, Object> errorResponse = new HashMap<>();
+    // errorResponse.put("message", errorMessage);
+
+    // return ResponseEntity
+    // .status(HttpStatus.BAD_REQUEST)
+    // .body(errorResponse);
+    // }
+    // }
+
+    @GetMapping("/listar/detalle")
+    public ResponseEntity<?> listarConDetalle() {
         try {
-            Mesero mesero = meseroMapper.toMesero(meseroServiceImpl.findByEmail(email));
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(ordenServiceImpl.obtenerOrdenesConDetallesPorMesero(mesero));
+                    .body(ordenServiceImpl.obtenerOrdenesConDetalles());
         } catch (Exception e) {
             String errorMessage = e.getMessage();
             Map<String, Object> errorResponse = new HashMap<>();
@@ -186,12 +205,52 @@ public class OrdenController {
         }
     }
 
-    @GetMapping("/listar/detalle")
-    public ResponseEntity<?> listarConDetalle() {
+    @PostMapping("/listar/estado")
+    public ResponseEntity<?> listarPorEstado(@RequestBody String estado) {
         try {
+            EstadoOrden estadoOrden = EstadoOrden.valueOf(estado);
             return ResponseEntity
                     .status(HttpStatus.OK)
-                    .body(ordenServiceImpl.obtenerOrdenesConDetalles());
+                    .body(ordenServiceImpl.obtenerOrdenesPorEstado(estadoOrden));
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/listar/estado/mesero")
+    public ResponseEntity<?> listarPorEstado(@RequestBody MeseroOrdenDto meseroOrdenDto) {
+        try {
+            EstadoOrden estadoOrden = EstadoOrden.valueOf(meseroOrdenDto.getEstadoOrden());
+            Mesero mesero = meseroMapper.toMesero(meseroServiceImpl.findByEmail(meseroOrdenDto.getEmail()));
+            return ResponseEntity
+                    .status(HttpStatus.OK)
+                    .body(ordenServiceImpl.obtenerOrdenesPorEstadoYMesero(estadoOrden, mesero));
+        } catch (Exception e) {
+            String errorMessage = e.getMessage();
+            Map<String, Object> errorResponse = new HashMap<>();
+            errorResponse.put("message", errorMessage);
+
+            return ResponseEntity
+                    .status(HttpStatus.BAD_REQUEST)
+                    .body(errorResponse);
+        }
+    }
+
+    @PostMapping("/cambiar/estado")
+    public ResponseEntity<?> cambiarEstado(@RequestBody Long numeroOrden) {
+        try {
+            ordenServiceImpl.actualizarEstado(numeroOrden);
+            String exitoMessage = "El estado se modificó correctamente!";
+            Map<String, Object> exitoResponse = new HashMap<>();
+            exitoResponse.put("message", exitoMessage);
+            return ResponseEntity
+                    .ok().body(exitoResponse);
         } catch (Exception e) {
             String errorMessage = e.getMessage();
             Map<String, Object> errorResponse = new HashMap<>();

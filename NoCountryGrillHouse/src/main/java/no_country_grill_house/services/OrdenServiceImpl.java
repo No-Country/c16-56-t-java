@@ -91,9 +91,41 @@ public class OrdenServiceImpl implements OrdenService {
         return ordenesConDetalles;
     }
 
+    // @Override
+    // public List<OrdenConDetalleDto> obtenerOrdenesConDetallesPorMesero(Mesero
+    // mesero) {
+    // List<Orden> ordenes = repository.findByMesero(mesero.getId());
+    // List<OrdenConDetalleDto> ordenesConDetalles = new ArrayList<>();
+
+    // for (Orden orden : ordenes) {
+    // List<DetalleOrden> detalles = detalleOrdenRepository.findByOrden(orden);
+    // List<DetalleDto> detallesDto = new ArrayList<>();
+
+    // for (DetalleOrden detalle : detalles) {
+    // DetalleDto detalleDto = new DetalleDto();
+    // detalleDto.setCantidad(detalle.getCantidad());
+    // detalleDto.setPlatillo(detalle.getPlatillo());
+
+    // detallesDto.add(detalleDto);
+    // }
+
+    // OrdenConDetalleDto ordenConDetalleDto = new OrdenConDetalleDto();
+    // ordenConDetalleDto.setNumeroOrden(orden.getNumeroOrden());
+    // ordenConDetalleDto.setMesa(orden.getMesa());
+    // ordenConDetalleDto.setEstadoOrden(orden.getEstadoOrden());
+    // ordenConDetalleDto.setCliente(orden.getCliente());
+    // ordenConDetalleDto.setDetalles(detallesDto);
+    // ordenConDetalleDto.setFechaAlta(orden.getFechaAlta());
+
+    // ordenesConDetalles.add(ordenConDetalleDto);
+    // }
+
+    // return ordenesConDetalles;
+    // }
+
     @Override
-    public List<OrdenConDetalleDto> obtenerOrdenesConDetallesPorMesero(Mesero mesero) {
-        List<Orden> ordenes = repository.findByMesero(mesero.getId());
+    public List<OrdenConDetalleDto> obtenerOrdenesConDetalles() {
+        List<Orden> ordenes = repository.findAll();
         List<OrdenConDetalleDto> ordenesConDetalles = new ArrayList<>();
 
         for (Orden orden : ordenes) {
@@ -123,8 +155,55 @@ public class OrdenServiceImpl implements OrdenService {
     }
 
     @Override
-    public List<OrdenConDetalleDto> obtenerOrdenesConDetalles() {
-        List<Orden> ordenes = repository.findAll();
+    public List<OrdenConDetalleDto> obtenerOrdenesPorEstado(EstadoOrden estado) {
+        List<Orden> ordenes = repository.findByEstado(estado);
+        List<OrdenConDetalleDto> ordenesConDetalles = new ArrayList<>();
+
+        for (Orden orden : ordenes) {
+            List<DetalleOrden> detalles = detalleOrdenRepository.findByOrden(orden);
+            List<DetalleDto> detallesDto = new ArrayList<>();
+
+            for (DetalleOrden detalle : detalles) {
+                DetalleDto detalleDto = new DetalleDto();
+                detalleDto.setCantidad(detalle.getCantidad());
+                detalleDto.setPlatillo(detalle.getPlatillo());
+
+                detallesDto.add(detalleDto);
+            }
+
+            OrdenConDetalleDto ordenConDetalleDto = new OrdenConDetalleDto();
+            ordenConDetalleDto.setNumeroOrden(orden.getNumeroOrden());
+            ordenConDetalleDto.setMesa(orden.getMesa());
+            ordenConDetalleDto.setEstadoOrden(orden.getEstadoOrden());
+            ordenConDetalleDto.setCliente(orden.getCliente());
+            ordenConDetalleDto.setDetalles(detallesDto);
+            ordenConDetalleDto.setFechaAlta(orden.getFechaAlta());
+
+            ordenesConDetalles.add(ordenConDetalleDto);
+        }
+
+        return ordenesConDetalles;
+    }
+
+    @Override
+    public void actualizarEstado(Long numeroOrden) {
+        Orden orden = repository.findById(numeroOrden).orElseThrow(() -> {
+            throw new GrillHouseException("No existe una orden con ID: " + numeroOrden);
+        });
+        EstadoOrden cambiarAEstado = null;
+        if (orden.getEstadoOrden() == EstadoOrden.INICIADO) {
+            cambiarAEstado = EstadoOrden.EN_PROCESO;
+        } else if (orden.getEstadoOrden() == EstadoOrden.EN_PROCESO) {
+            cambiarAEstado = EstadoOrden.TERMINADO;
+        } else if (orden.getEstadoOrden() == EstadoOrden.TERMINADO) {
+            cambiarAEstado = EstadoOrden.ENTREGADO;
+        }
+        repository.actualizarEstadoOrden(numeroOrden, cambiarAEstado);
+    }
+
+    @Override
+    public List<OrdenConDetalleDto> obtenerOrdenesPorEstadoYMesero(EstadoOrden estadoOrden, Mesero mesero) {
+        List<Orden> ordenes = repository.findByEstadoYMesero(mesero, estadoOrden);
         List<OrdenConDetalleDto> ordenesConDetalles = new ArrayList<>();
 
         for (Orden orden : ordenes) {

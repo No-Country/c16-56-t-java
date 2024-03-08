@@ -1,11 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grill House</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grill House</title>
+  <link rel="stylesheet" th:href="|/css/cocina.css|">
+  <link rel="stylesheet" th:href="|/css/perfil.css|" />
+  <link rel="icon" href="/images/favicon/favicon.png" type="image/png" />
 </head>
+
 <body>
-    <h1>mesero</h1>
+  <div class="vista">
+    <th:header th:replace="fragments/header.html :: header"></th:header>
+    <div class="main-container">
+      <span class="ordenes">Ordenes</span>
+      <div class="flex-row-c">
+        <button class="botones-mobile">
+          <span id="pendiente" class="boton">Pendiente</span></button><button class="botones-mobile-3">
+          <span id="entregado" class="button">Entregado</span>
+        </button>
+      </div>
+
+      <div id="contenedor-ordenes"></div>
+
+      <button class="menu-flotante2">
+        <div class="icono-inicio">
+          <div class="icon"></div>
+        </div>
+        <div class="icono-usuario">
+          <div class="icon-c"></div>
+        </div>
+      </button>
+    </div>
+  </div>
+  <th:div th:replace="fragments/perfilUsuario.html :: div"></th:div>
+  <th:div th:replace="fragments/editarPerfil.html :: div"></th:div>
+  <th:div th:replace="fragments/cambiarcontraseña.html :: div"></th:div>
+
+  <script th:inline="javascript">
+    var email = /*[[${email}]]*/ '';
+  </script>
+  <script src="js/mesero.js"></script>
 </body>
+
 </html>

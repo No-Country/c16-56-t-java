@@ -76,6 +76,17 @@ public class JefeCocinaController {
         }
     }
 
+    @PostMapping("/obtenerPorEmail")
+    public ResponseEntity<?> getUserByEmail(@RequestBody Map<String, String> requestBody) {
+        String email = requestBody.get("email");
+        JefeCocinaDto jefeCocinaDto = jefeCocinaServiceImpl.findByEmail(email);
+        if (jefeCocinaDto != null) {
+            return ResponseEntity.ok(jefeCocinaDto);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found");
+        }
+    }
+
     @PostMapping("/borrar")
     public ResponseEntity<?> delete(@RequestBody Long id) {
         try {
